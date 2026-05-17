@@ -77,6 +77,13 @@ def parse_sections(md_text: str) -> list[dict]:
                 i += 1
                 continue
 
+        # --- 구분선이면 sub-summary 닫기
+        if in_sub and stripped == '---':
+            current['body'] += '</div>\n'
+            in_sub = False
+            i += 1
+            continue
+
         # 본문 처리
         if current:
             current['body'] += process_line(stripped) + '\n'
