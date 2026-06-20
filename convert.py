@@ -693,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 def main():
-    src = Path(r"G:\내 드라이브\default vaultrealrealreal\30. PROJECT (현재 진행 프로젝트)\33. 생활사 (투자, 개인 블로그 등)\주식 스터디\학습 모음\2026년 학습 모음.md")
+    src = Path(r"G:\내 드라이브\default vaultrealrealreal\30. PROJECT (현재 진행 프로젝트)\33. 생활사 (투자, 개인 블로그 등)\주식 스터디\학습 모음\2026년 상반기 학습 모음~6월 말까지.md")
     dst = Path(r"D:\code_project\md2html\2026_학습모음.html")
 
     print(f"Reading: {src}")
