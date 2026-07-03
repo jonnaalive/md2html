@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026년 학습 모음</title>
+<style>
+:root {
+    --bg: #f5f5f0;
+    --bg-card: #ffffff;
+    --bg-sidebar: #fafaf7;
+    --text: #1a1a1a;
+    --text-sub: #666;
+    --border: #e0ddd5;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --quote-bg: #f8f7f4;
+    --quote-border: #c9c4b8;
+    --memo-bg: #fef9e7;
+    --memo-border: #f0c040;
+    --highlight: #fef08a;
+    --summary-bg: #f0fdf4;
+    --summary-border: #86efac;
+    --wiki-link: #7c3aed;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --header-bg: #ffffff;
+}
+[data-theme="dark"] {
+    --bg: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --bg-sidebar: #141414;
+    --text: #e5e5e5;
+    --text-sub: #999;
+    --border: #2a2a2a;
+    --accent: #60a5fa;
+    --accent-light: #1e3a5f;
+    --quote-bg: #1e1e1a;
+    --quote-border: #555040;
+    --memo-bg: #2a2510;
+    --memo-border: #b8942e;
+    --highlight: #854d0e;
+    --summary-bg: #0a200f;
+    --summary-border: #22c55e;
+    --wiki-link: #a78bfa;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    --header-bg: #1a1a1a;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* 헤더 */
+.top-header {
+    position: fixed; top:0; left:0; right:0; z-index: 100;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex; align-items: center; gap: 16px;
+    backdrop-filter: blur(10px);
+}
+.top-header h1 { font-size: 18px; font-weight: 700; white-space: nowrap; }
+.top-header .count { color: var(--text-sub); font-size: 13px; }
+
+.search-box {
+    flex: 1; max-width: 400px;
+    position: relative;
+}
+.search-box input {
+    width: 100%; padding: 8px 12px 8px 36px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--text);
+    font-size: 14px; outline: none;
+}
+.search-box input:focus { border-color: var(--accent); }
+.search-box::before {
+    content: '🔍'; position: absolute; left: 10px; top: 50%;
+    transform: translateY(-50%); font-size: 14px;
+}
+
+.header-actions { display: flex; gap: 8px; margin-left: auto; }
+.btn {
+    padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text); cursor: pointer;
+    font-size: 13px; white-space: nowrap;
+}
+.btn:hover { border-color: var(--accent); }
+
+/* 레이아웃 */
+.layout {
+    display: flex;
+    max-width: 100%; overflow-x: hidden;
+}
+
+/* 사이드바 */
+.sidebar {
+    position: fixed; top: var(--header-h, 52px); left: 0; bottom: 0;
+    width: 280px; background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow-y: auto; padding: 12px 0;
+    transition: transform 0.3s;
+    z-index: 50;
+}
+.sidebar.hidden { transform: translateX(-100%); }
+
+.sidebar ul { list-style: none; }
+.sidebar li { border-bottom: 1px solid var(--border); }
+.toc-link {
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 8px 16px; color: var(--text); text-decoration: none;
+    font-size: 13px; line-height: 1.4;
+    transition: background 0.15s;
+}
+.toc-link:hover { background: var(--accent-light); }
+.toc-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+.toc-num {
+    color: var(--text-sub); font-size: 11px; min-width: 24px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 메인 콘텐츠 */
+.main {
+    margin-left: 280px; flex: 1;
+    padding: 20px 24px 60px; max-width: 860px;
+}
+.sidebar.hidden ~ .main { margin-left: 0; }
+
+/* 섹션 카드 */
+.section-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+.section-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.section-card.hidden { display: none; }
+.section-card.highlight { border-color: var(--accent); }
+
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px; cursor: pointer;
+    user-select: none;
+}
+.section-header:hover { background: var(--accent-light); }
+.section-num {
+    background: var(--accent); color: #fff;
+    font-size: 11px; font-weight: 700;
+    min-width: 28px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 4px;
+}
+.section-title { flex:1; font-size: 15px; font-weight: 600; }
+.toggle-icon {
+    font-size: 12px; color: var(--text-sub);
+    transition: transform 0.2s;
+}
+.section-card.collapsed .toggle-icon { transform: rotate(-90deg); }
+.section-card.collapsed .section-body { display: none; }
+
+.section-body { padding: 0 18px 16px; }
+
+/* 블록쿼트 */
+.source-quote {
+    border-left: 3px solid var(--quote-border);
+    background: var(--quote-bg);
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--text);
+}
+.quote-line { margin: 3px 0; }
+
+/* 메모 (내 생각) */
+.memo-item, .memo-bullet {
+    padding: 4px 0 4px 8px;
+    border-left: 3px solid var(--memo-border);
+    margin: 4px 0 4px 4px;
+    background: var(--memo-bg);
+    border-radius: 0 4px 4px 0;
+    padding-left: 12px;
+    font-size: 14px;
+}
+.memo-item.indent, .memo-bullet.indent {
+    margin-left: 24px;
+    border-left-color: #ddd;
+    background: transparent;
+}
+.memo-num { font-weight: 700; color: var(--accent); }
+
+/* 3-Line Summary / 요약 */
+.sub-summary {
+    background: var(--summary-bg);
+    border: 1px solid var(--summary-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+}
+.sub-summary h4 {
+    font-size: 13px; color: var(--summary-border);
+    margin-bottom: 6px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* 기타 */
+mark { background: var(--highlight); padding: 0 2px; border-radius: 2px; }
+.wiki-link { color: var(--wiki-link); font-weight: 500; }
+.note-image { margin: 14px 0; }
+.note-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+.missing-image {
+    margin: 10px 0;
+    padding: 10px 12px;
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    font-size: 13px;
+}
+.bold-line { font-weight: 700; margin: 6px 0; }
+.text-line { margin: 2px 0; }
+.data-table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px;
+}
+.data-table td {
+    border: 1px solid var(--border); padding: 6px 10px;
+}
+.data-table tr:first-child td { font-weight: 700; background: var(--bg); }
+
+h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
+
+/* 검색 하이라이트 */
+.search-highlight { background: #fbbf24; color: #000; padding: 0 1px; border-radius: 2px; }
+
+/* 스크롤 투 탑 */
+.scroll-top {
+    position: fixed; bottom: 24px; right: 24px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px; border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    opacity: 0; transition: opacity 0.3s;
+}
+.scroll-top.visible { opacity: 1; }
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .top-header { padding: 8px 10px; gap: 6px; flex-wrap: wrap; }
+    .top-header h1 { font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .top-header .count { display: none; }
+    .search-box { order: 10; flex: 1 1 100%; max-width: 100%; }
+    .header-actions { gap: 4px; }
+    .header-actions .btn { padding: 4px 6px; font-size: 11px; }
+    .sidebar {
+        width: min(280px, 85vw); transform: translateX(-100%);
+        box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+    }
+    .sidebar.visible { transform: translateX(0); }
+    .main {
+        margin-left: 0 !important; padding: 10px 8px;
+        max-width: 100vw; width: 100%; overflow-x: hidden;
+    }
+    .section-card { border-radius: 8px; }
+    .section-header { padding: 10px 12px; gap: 8px; }
+    .section-title { font-size: 14px; word-break: keep-all; overflow-wrap: break-word; }
+    .section-body { padding: 0 12px 12px; overflow-x: auto; word-break: keep-all; overflow-wrap: break-word; }
+    .source-quote { padding: 10px 12px; font-size: 13px; }
+    .quote-line { word-break: keep-all; overflow-wrap: break-word; }
+    .memo-item, .memo-bullet { font-size: 13px; }
+    .data-table { font-size: 12px; display: block; overflow-x: auto; }
+    .sidebar-overlay {
+        display: none; position: fixed; inset: 0; top: var(--header-h, 52px);
+        background: rgba(0,0,0,0.4); z-index: 40;
+    }
+    .sidebar-overlay.visible { display: block; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+    <button class="btn" onclick="toggleSidebar()" id="sidebarBtn">☰</button>
+    <h1>2026년 학습 모음</h1>
+    <span class="count">9개 섹션</span>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="검색어 입력... (제목 + 본문)" oninput="handleSearch(this.value)">
+    </div>
+    <div class="header-actions">
+        <button class="btn" onclick="expandAll()">전체 펼치기</button>
+        <button class="btn" onclick="collapseAll()">전체 접기</button>
+        <button class="btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+    </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<div class="layout">
+    <nav class="sidebar" id="sidebar">
+        <ul id="tocList">
+            <li><a href="#section-0" class="toc-link" data-index="0"><span class="toc-num">1</span>승도리~260703</a></li>
+<li><a href="#section-1" class="toc-link" data-index="1"><span class="toc-num">2</span>! A급 인재는 존재하는가</a></li>
+<li><a href="#section-2" class="toc-link" data-index="2"><span class="toc-num">3</span>! Today’s Top Founders All Have One Thin...</a></li>
+<li><a href="#section-3" class="toc-link" data-index="3"><span class="toc-num">4</span>! 굿 라이프</a></li>
+<li><a href="#section-4" class="toc-link" data-index="4"><span class="toc-num">5</span>! 머니콘서트 2026 윤지호 경제평론가 반도체 탑2에 50%…나머지는 ...</a></li>
+<li><a href="#section-5" class="toc-link" data-index="5"><span class="toc-num">6</span>! 어쩌다 보니 AI 시대를 맞아버린 빌더의 자세</a></li>
+<li><a href="#section-6" class="toc-link" data-index="6"><span class="toc-num">7</span>! 절판되지 않는 브랜딩 민음사 마케팅부 인터뷰</a></li>
+<li><a href="#section-7" class="toc-link" data-index="7"><span class="toc-num">8</span>! 🧢 큰 한 방이 아니라, 수년에 걸쳐 반복된 작은 결정들이 삶을 바꿉...</a></li>
+<li><a href="#section-8" class="toc-link" data-index="8"><span class="toc-num">9</span>! 2026-06-29_토스_광고_5원칙</a></li>
+        </ul>
+    </nav>
+    <main class="main" id="mainContent">
+        
+        <div class="section-card" id="section-0" data-index="0">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">1</span>
+                <h2 class="section-title">승도리~260703</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 빅테크는 지금부터 관심 가져도 되고</div>
+<div class="quote-line"><strong>- 분할 매수해라. 잘 못 팔 거 같으면 하락할 때마다 분할 매수만 해도 평타 침</strong></div>
+<div class="quote-line"><strong>- 쌀 때 사서 비쌀 때 팔아라</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<br>
+<div class="memo-bullet">• 지정학 리스크로 원유 물류와 해운 흐름은 전쟁 전 수준으로 정상화되기 어렵고, 유가 자체보다 석유 장비·강관·해운·미드스트림에 집중하는 관점이다.</div>
+<div class="memo-bullet">• 반도체는 삼성전자·하이닉스 같은 IDM보다 CAPEX 수혜를 받는 장비·소부장이 더 유리하며, MS·구글은 CAPEX 부담으로 밸류에이션 하락 시 편입을 고민할 만하다.</div>
+<div class="memo-bullet">• 조선·에너지·반도체 모두 중장기적으로 좋게 보지만 변동성이 크므로 노 레버리지, 신용잔고 축소와 반대매매 이후 <mark>분할매수 전략을 선호한다.</mark></div>
+<br>
+</div>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<br>
+<div class="memo-bullet">• 전체 투자 관점</div>
+<div class="memo-bullet">• 글쓴이는 현재 시장을 “업황은 나쁘지 않지만 변동성이 매우 큰 장”으로 본다.</div>
+<div class="memo-bullet">• 에너지, 해운, 조선, 반도체 장비·소부장에 긍정적이다.</div>
+<div class="memo-bullet">• 다만 고점 대비 -20~30% 조정은 충분히 가능하다고 보고, 레버리지 사용을 강하게 경계한다.</div>
+<div class="memo-bullet">• <mark>무리한 추격매수보다 시장이 흔들릴 때, 특히 반대매매와 신용잔고 축소가 나타날 때 천천히 매수하는 전략을 선호한다.</mark></div>
+<br>
+<br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 투자는 통제불가능함. 그렇기에 내가 통제 가능한 다른 것에 에너지를 쏟으면서 불안을 극복하라</strong></div>
+</blockquote>
+<div class="memo-bullet">• 예를 들어 군것질 줄이기 등 -&gt; 성공한 나 자신 칭찬하기</div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260701174117.png" alt="Pasted image 20260701174117" loading="lazy"></figure>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-1" data-index="1">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">2</span>
+                <h2 class="section-title">! A급 인재는 존재하는가</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- S급 인재가 조직의 전체 효율성을 높여줌. 그런데, 그들이 없다고 또 무너지진 않음.</div>
+<div class="quote-line"><strong>- 요지는 승률을 높이기 위해서 어떻게 조직을 운영하는지임.</strong></div>
+<div class="quote-line">- a급 선수를 어떻게 대할까보다 <strong>우리 전체의 승리를 위해서 무엇을 해야 하는지 봐야 함</strong></div>
+<div class="quote-line">- 우리 전체를 위해 s가 필요한가?</div>
+<div class="quote-line">- 근데 저 새끼가 우리 전체를 갉아먹나?</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• <mark>조직은 특정 인재 한 명의 이탈로 쉽게 무너지지 않지만, 장기적으로는 성장이 둔화될 수 있습니다.</mark></div>
+<div class="memo-bullet">• &#x27;팀보다 위대한 선수는 없다&#x27;는 논리로 A급 인재의 기여를 부정하거나 배척하는 조직은 경쟁력을 잃기 쉽습니다.</div>
+<div class="memo-bullet">• <mark>진정한 강한 팀은 인재의 가치를 인정하고 그들이 성과를 낼 수 있는 최적의 환경을 조성하는 리더십에서 나옵니다.</mark></div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-2" data-index="2">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">3</span>
+                <h2 class="section-title">! Today’s Top Founders All Have One Thing in Common</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 창업자의 미디어 전략은 양날의 컴.</div>
+<div class="quote-line">- 본질적으로 제품 제작 비용이 줄어들었기에 유통이 더욱 중요해짐.</div>
+<div class="quote-line">- 대표의 미디어는 팬을 모을 수 있는 채널이자 곧 유통망.</div>
+<div class="quote-line">- 근데 망하면..</div>
+<div class="quote-line"><strong>- 결국 대표 등 리더를 위한 미디어 컨설턴트도 필요함</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• 현대 스타트업의 핵심 역량은 제품력보다 창업자의 영향력과 커뮤니티 구축을 통한 배포(Distribution) 능력입니다.</div>
+<div class="memo-bullet">• 창업자가 인플루언서가 되어 직접 소통하는 것이 고객 신뢰를 얻고 마케팅 비용을 절감하는 강력한 해자가 되었습니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-3" data-index="3">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">4</span>
+                <h2 class="section-title">! 굿 라이프</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 불필요한 수사를 줄이고, 담백하게 살자! 인생도! 관계도!</strong> -&gt; 남이 좋다고 평가하는 환경이 아니라 내가 진짜 편한 환경에 가야 한다.</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• 서울대 최인철 교수의 저서 &#x27;굿 라이프&#x27;를 통해 행복한 삶을 위한 쾌락과 의미의 균형을 고찰합니다.</div>
+<div class="memo-bullet">• <mark>타인의 시선에서 벗어나 내면의 소리에 집중하고, 행복을 위한 최적의 환경을 스스로 구축해야 합니다.</mark></div>
+<div class="memo-bullet">• 불필요한 수식어를 줄이고 단순하고 담백한 삶을 사는 것이 진정한 굿 라이프의 핵심입니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-4" data-index="4">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">5</span>
+                <h2 class="section-title">! 머니콘서트 2026 윤지호 경제평론가 반도체 탑2에 50%…나머지는 현금으로 들고 가라</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 기업의 본질 = FCF 현금창출력.</strong></div>
+<div class="quote-line"><strong>- 주가 -&gt; 이익을 따라 간다.</strong></div>
+<div class="quote-line">- FCF가 나오는 기업에 돈을 넣어둬라.</div>
+<div class="quote-line"><strong>- 대형주 중심으로 가고, 병목이 발생해서 가격 전가할 수 있는 회사, 구조적으로 좋아져서 주주 환원이 되는 회사에 투자할 것</strong></div>
+<div class="quote-line">- 예수금 비중 꼭!</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• 윤지호 평론가는 반도체 상위 2개 종목에 자산의 50%를 투자하고 나머지는 현금으로 보유할 것을 권고했습니다.</div>
+<div class="memo-bullet">• <mark>주식 투자의 본질은 기업의 현금창출력이며, 단기 변동성에 흔들리지 않는 장기적 관점의 중요성을 강조했습니다.</mark></div>
+<div class="memo-bullet">• 향후 10년은 고금리와 인플레이션이 지속될 가능성이 높으므로, 대형주 위주의 보수적인 포트폴리오를 유지해야 합니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-5" data-index="5">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">6</span>
+                <h2 class="section-title">! 어쩌다 보니 AI 시대를 맞아버린 빌더의 자세</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <blockquote class="source-quote">
+<div class="quote-line">- 모바일 = 유통 비용 낮춤. AI = 개발 비용 낮춤</div>
+<div class="quote-line"><strong>- 고로 지금 중요한 것은 역설적으로 1) 어떻게 유통 시킬지 2) 어떻게 만들지보다 3) 무엇을 4) 왜 만들지임.</strong></div>
+<div class="quote-line">- 왜 이 일을 하는가, 왜 만드는가, 누구를 위해서 만든가가 명확해야 나머지 전략이 뚜렷해짐</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• AI 시대에는 만드는 능력보다 무엇을, 왜 만들어야 할지 결정하는 &#x27;판단&#x27;과 &#x27;의도&#x27;가 핵심 경쟁력입니다.</div>
+<div class="memo-bullet">• <mark>도구를 쫓는 FOMO에서 벗어나 자신만의 문제의식과 관점을 세우는 것이 중요합니다.</mark></div>
+<div class="memo-bullet">• AI는 실행과 검증을 돕는 레버리지 도구로 활용하되, 방향성만큼은 인간이 주도적으로 쥐어야 합니다.</div>
+<br>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-6" data-index="6">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">7</span>
+                <h2 class="section-title">! 절판되지 않는 브랜딩 민음사 마케팅부 인터뷰</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 매번 새로운 변화에 적응해야 한다는 뜻은 난 매번 초심자라는 뜻. 전문가가 되지 못했다는 압박에 시달리지 말자.</strong></div>
+<div class="quote-line">- 오히려 노하우가 쌓인다는 건 내가 변화하지 않는다는 게 아닐까</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• 60년 전통의 민음사가 유튜브 채널 ‘민음사TV’를 통해 1020세대의 팬덤을 확보하며 브랜드 영향력을 확장했습니다.</div>
+<div class="memo-bullet">• 제품 판매보다 사람과 콘텐츠를 먼저 앞세워 고객과의 관계를 구축하고, 이를 통해 신간과 구간의 선순환 구조를 만들었습니다.</div>
+<div class="memo-bullet">• 변화하는 시장 환경 속에서도 상품에 대한 확신을 바탕으로 새로운 포맷에 끊임없이 도전하며 지속 가능한 브랜딩을 실천하고 있습니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-7" data-index="7">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">8</span>
+                <h2 class="section-title">! 🧢 큰 한 방이 아니라, 수년에 걸쳐 반복된 작은 결정들이 삶을 바꿉니다</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 단순하지만 <strong>합리적인 의사결정을 추구하면, 이상적인 최적의 의사결정과 유사한 결과를 가져온다.</strong> -&gt; 심플 이즈 더 베스트</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-bullet">• <mark>터크먼의 책에서 얻는 가장 근본적인 결론은, ‘최적의 전략을 기다리는 대신 합리적인 전략을 채택하고 이를 고수하면 대개는 성공한다’는 것이다.</mark></div>
+<div class="memo-bullet">• (즉, 전쟁에서) <mark>끈기는 탁월함만큼이나 중요하다.</mark> 독일군과 프랑스군 모두 뛰어난 참모진이 있었지만, 어느 쪽도 전쟁 전의 계획을 고수하는 끈기를 발휘하지 못했다. 그 결과, 전쟁은 발발 후 90일이 지나고부터 4년간의 유혈 사태로 빠져들었다.</div>
+<div class="memo-bullet">• (이후) 나는 사업을 하면서 겪는 문제들에 대해 늘 최적의 해결책이 아니라, <mark>그저 합리적인 해결책을 찾으면 된다는 결론을 내렸다.</mark></div>
+<div class="memo-bullet">• <mark>(좀 더 심하게 말하면) 사업을 하면서 최적의 해결책을 찾으려고 하는 것은 시간 낭비다. 방정식은 늘 변하기 때문이다.</mark></div>
+<br>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-8" data-index="8">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">9</span>
+                <h2 class="section-title">! 2026-06-29_토스_광고_5원칙</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 모든 장점을 나열하기보다 딱 하나의 메시지를 자랑하자</strong></div>
+<div class="quote-line">- 주절주절 -&gt; 현학적. 개싸요! -&gt; 직관적</div>
+<div class="quote-line">- 최대치의 보상이 아니라 <strong>가장 확실한 보상을 주자.</strong></div>
+<div class="quote-line">- 무조건 xx원 할인, 무조건 뽑기 등</div>
+<div class="quote-line">- <strong>심리적 부담을 줄여주는 cta 문구를 쓰자 : 뽑기, 준비하기 등</strong></div>
+<div class="quote-line">- <strong>조건과 행동을 유도할 때는 최대한 구체적으로 하기 : 부담을 줄여주자</strong></div>
+<div class="quote-line">- 금융 미션 풀기 -&gt; 퀴즈 4개 풀기 등</div>
+<div class="quote-line"><strong>- 평상시에 쓰는 말로 풀어쓰기</strong></div>
+<div class="quote-line">- 복잡한 문장은 <strong>쪼개서 다시 만들고</strong></div>
+<div class="quote-line">- 막연한 문구는 <strong>더 구체적으로 -&gt; 보자마자 이해하게끔 수정하고</strong></div>
+<div class="quote-line">- 어색한 문구는 읽어보면서 수정하자</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<div class="bold-line">광고 소재 5원칙 (필승 문구 특징)</div>
+<div class="memo-bullet">• <mark>단 하나의 핵심만 전달하기: 서비스의 모든 장점 나열보다 단일 핵심 메시지 전달이 효과적입니다. 예시로, &#x27;소비 궁합&#x27;과 &#x27;신혼부부 지원금&#x27; 두 핵심이 섞인 경우보다 단일 컨셉에 집중했을 때 CTR이 10배 높았습니다.</mark></div>
+<div class="memo-bullet">• 확실한 보상 약속하기: &#x27;최대 100만 원&#x27;보다 &#x27;최소 100원 뽑기&#x27;처럼 확실한 보상이 클릭을 유도합니다. 불확실한 큰 금액보다 작은 금액이라도 무조건 받을 수 있다는 확신을 줍니다.</div>
+<div class="memo-bullet">• 행동을 가볍게 표현하기: &#x27;가입하기&#x27; 대신 &#x27;준비하기&#x27;, &#x27;결제수단 바꾸고&#x27; 대신 &#x27;고르고&#x27;처럼 심리적 부담을 줄이는 가벼운 동사 사용이 CTR을 최대 3배 높일 수 있습니다.</div>
+<div class="memo-bullet">• 조건, 행동 구체적으로 쓰기: &#x27;금융 미션&#x27;보다 &#x27;금융 미션 4개&#x27;, &#x27;빈칸 채우기&#x27;보다 &#x27;8칸 채우기&#x27;처럼 구체적인 숫자 제시가 불확실성을 제거하고 클릭으로 이어집니다.</div>
+<div class="memo-bullet">• <mark>자주 쓰는 말로 풀어쓰기: 외래어나 한자어 대신 &#x27;타임어택&#x27;을 &#x27;시간 제한 고스톱&#x27;으로, &#x27;최저가&#x27;를 &#x27;제일 싼&#x27;으로 바꾸는 등 쉽고 친근한 단어 사용이 클릭률을 높입니다.</mark></div>
+<br>
+<div class="bold-line">저효율 소재 개선 3단계 프로세스</div>
+<div class="memo-bullet">• 복잡한 문장: 의미 단위로 쪼개 핵심 단어 2~3개로 다시 조합합니다.</div>
+<div class="memo-bullet">• 막연한 문구: 랜딩 페이지에서 사용자가 실제로 하는 구체적인 행동(예: &#x27;내 지역 선택하고 보조금 확인하기&#x27;)을 문구에 담습니다.</div>
+<div class="memo-bullet">• 어색한 문구: 소리 내어 읽어보고 더 친근하고 쉬운 단어로 바꿉니다.</div>
+</div>
+
+            </div>
+        </div>
+    </main>
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// 테마
+function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeBtn').textContent = isDark ? '🌙 다크' : '☀️ 라이트';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+(function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('themeBtn').textContent = '☀️ 라이트';
+        });
+    }
+})();
+
+// 헤더 높이 동적 측정
+function syncHeaderHeight() {
+    const h = document.querySelector('.top-header').offsetHeight;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+    document.querySelector('.layout').style.marginTop = h + 'px';
+}
+syncHeaderHeight();
+window.addEventListener('resize', syncHeaderHeight);
+
+// 사이드바
+function isMobile() { return window.innerWidth <= 768; }
+function toggleSidebar() {
+    const sb = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (isMobile()) {
+        sb.classList.toggle('visible');
+        overlay.classList.toggle('visible');
+    } else {
+        const main = document.getElementById('mainContent');
+        sb.classList.toggle('hidden');
+        main.style.marginLeft = sb.classList.contains('hidden') ? '0' : '280px';
+    }
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('visible');
+    document.getElementById('sidebarOverlay').classList.remove('visible');
+}
+document.getElementById('sidebar').addEventListener('click', function(e) {
+    if (e.target.closest('a') && isMobile()) closeSidebar();
+});
+
+// 섹션 접기/펼치기
+function toggleSection(header) {
+    header.parentElement.classList.toggle('collapsed');
+}
+function expandAll() {
+    document.querySelectorAll('.section-card').forEach(c => c.classList.remove('collapsed'));
+}
+function collapseAll() {
+    document.querySelectorAll('.section-card').forEach(c => c.classList.add('collapsed'));
+}
+
+// 검색
+let searchTimeout;
+function handleSearch(query) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => doSearch(query), 200);
+}
+function doSearch(query) {
+    const cards = document.querySelectorAll('.section-card');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const q = query.trim().toLowerCase();
+
+    // 이전 하이라이트 제거
+    document.querySelectorAll('.search-highlight').forEach(el => {
+        el.replaceWith(el.textContent);
+    });
+
+    if (!q) {
+        cards.forEach(c => { c.classList.remove('hidden'); c.classList.remove('highlight'); });
+        tocLinks.forEach(l => l.parentElement.style.display = '');
+        return;
+    }
+
+    cards.forEach((card, i) => {
+        const text = card.textContent.toLowerCase();
+        const match = text.includes(q);
+        card.classList.toggle('hidden', !match);
+        card.classList.toggle('highlight', match);
+        tocLinks[i].parentElement.style.display = match ? '' : 'none';
+        if (match) {
+            card.classList.remove('collapsed');
+        }
+    });
+}
+
+// TOC 활성화 (스크롤)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const idx = entry.target.dataset.index;
+            document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+            const active = document.querySelector(`.toc-link[data-index="${idx}"]`);
+            if (active) {
+                active.classList.add('active');
+                active.scrollIntoView({ block: 'nearest' });
+            }
+        }
+    });
+}, { threshold: 0.1, rootMargin: '-60px 0px -60% 0px' });
+
+document.querySelectorAll('.section-card').forEach(c => observer.observe(c));
+
+// 스크롤 투 탑
+window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+// 기본 접기
+document.addEventListener('DOMContentLoaded', () => {
+    // 처음에 전체 펼침 상태로 시작
+});
+</script>
+
+</body>
+</html>

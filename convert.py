@@ -7,7 +7,11 @@ Markdown 학습 노트 → HTML 대시보드 변환기
 import re
 import html
 import sys
+import shutil
+from urllib.parse import quote
 from pathlib import Path
+
+IMAGE_URLS = {}
 
 
 def parse_sections(md_text: str) -> list[dict]:
@@ -116,6 +120,22 @@ def process_line(line: str) -> str:
     if not line:
         return '<br>'
 
+    image_match = re.match(r'^!\[\[([^|\]]+)(?:\|([^\]]+))?\]\]$', line)
+    if image_match:
+        name = image_match.group(1).strip()
+        alt = Path(name).stem
+        src = IMAGE_URLS.get(name)
+        if src:
+            return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
+        return f'<div class="missing-image">이미지를 찾을 수 없음: {html.escape(name)}</div>'
+
+    md_image_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)$', line)
+    if md_image_match:
+        alt = md_image_match.group(1).strip()
+        name = md_image_match.group(2).strip()
+        src = IMAGE_URLS.get(name) or name
+        return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
+
     # 블록쿼트
     if line.startswith('>'):
         content = line.lstrip('>').strip()
@@ -175,6 +195,69 @@ def inline_format(text: str) -> str:
     # [[위키링크]]
     text = re.sub(r'\[\[([^\]|]+)(?:\|([^\]]+))?\]\]', lambda m: f'<span class="wiki-link">{m.group(2) or m.group(1)}</span>', text)
     return text
+
+
+def extract_image_refs(md_text: str) -> list[str]:
+    refs = []
+    seen = set()
+    patterns = [
+        r'!\[\[([^|\]]+)(?:\|[^\]]+)?\]\]',
+        r'!\[[^\]]*\]\(([^)]+)\)',
+    ]
+    for pattern in patterns:
+        for match in re.finditer(pattern, md_text):
+            name = match.group(1).strip()
+            if name and name not in seen:
+                seen.add(name)
+                refs.append(name)
+    return refs
+
+
+def find_vault_root(src: Path) -> Path:
+    for parent in [src.parent, *src.parents]:
+        if parent.name == 'default vaultrealrealreal':
+            return parent
+    return src.parents[0]
+
+
+def prepare_images(md_text: str, src: Path, out_dir: Path) -> dict[str, str]:
+    refs = extract_image_refs(md_text)
+    if not refs:
+        return {}
+
+    vault_root = find_vault_root(src)
+    image_dir = vault_root / '90. ARCHIVE (완료)' / '901. IMAGE'
+    assets_dir = out_dir / 'assets' / 'images'
+    assets_dir.mkdir(parents=True, exist_ok=True)
+
+    urls = {}
+    copied = 0
+    missing = []
+    for ref in refs:
+        filename = Path(ref).name
+        candidates = []
+        direct = image_dir / filename
+        if direct.exists():
+            candidates.append(direct)
+        else:
+            candidates.extend(vault_root.rglob(filename))
+
+        if not candidates:
+            missing.append(ref)
+            continue
+
+        source = candidates[0]
+        target = assets_dir / filename
+        shutil.copy2(source, target)
+        urls[ref] = f'assets/images/{quote(filename)}'
+        urls[filename] = urls[ref]
+        copied += 1
+
+    print(f"  {copied} images copied")
+    if missing:
+        print(f"  {len(missing)} images missing: {', '.join(missing[:5])}")
+
+    return urls
 
 
 def generate_html(sections: list[dict]) -> str:
@@ -475,6 +558,24 @@ body {
 /* 기타 */
 mark { background: var(--highlight); padding: 0 2px; border-radius: 2px; }
 .wiki-link { color: var(--wiki-link); font-weight: 500; }
+.note-image { margin: 14px 0; }
+.note-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+.missing-image {
+    margin: 10px 0;
+    padding: 10px 12px;
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    font-size: 13px;
+}
 .bold-line { font-weight: 700; margin: 6px 0; }
 .text-line { margin: 2px 0; }
 .data-table {
@@ -693,12 +794,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 def main():
-    src = Path(r"G:\내 드라이브\default vaultrealrealreal\30. PROJECT (현재 진행 프로젝트)\33. 생활사 (투자, 개인 블로그 등)\주식 스터디\학습 모음\2026년 상반기 학습 모음~6월 말까지.md")
-    dst = Path(r"D:\code_project\md2html\2026_학습모음.html")
+    global IMAGE_URLS
+
+    src = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r"G:\내 드라이브\default vaultrealrealreal\30. PROJECT (현재 진행 프로젝트)\33. 생활사 (투자, 개인 블로그 등)\주식 스터디\학습 모음\2026년 상반기 학습 모음~6월 말까지.md")
+    dst = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(r"D:\code_project\md2html\2026_학습모음.html")
 
     print(f"Reading: {src}")
     md_text = src.read_text(encoding='utf-8')
     print(f"  {len(md_text):,} chars, {md_text.count(chr(10)):,} lines")
+
+    IMAGE_URLS = prepare_images(md_text, src, dst.parent)
 
     sections = parse_sections(md_text)
     print(f"  {len(sections)} sections parsed")

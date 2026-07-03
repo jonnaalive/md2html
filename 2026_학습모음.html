@@ -216,6 +216,24 @@ body {
 /* 기타 */
 mark { background: var(--highlight); padding: 0 2px; border-radius: 2px; }
 .wiki-link { color: var(--wiki-link); font-weight: 500; }
+.note-image { margin: 14px 0; }
+.note-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+.missing-image {
+    margin: 10px 0;
+    padding: 10px 12px;
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    font-size: 13px;
+}
 .bold-line { font-weight: 700; margin: 6px 0; }
 .text-line { margin: 2px 0; }
 .data-table {
@@ -281,7 +299,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="top-header">
     <button class="btn" onclick="toggleSidebar()" id="sidebarBtn">☰</button>
     <h1>2026년 학습 모음</h1>
-    <span class="count">278개 섹션</span>
+    <span class="count">290개 섹션</span>
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="검색어 입력... (제목 + 본문)" oninput="handleSearch(this.value)">
     </div>
@@ -574,6 +592,18 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <li><a href="#section-275" class="toc-link" data-index="275"><span class="toc-num">276</span>투자는 원래 마음이 불편한 법</a></li>
 <li><a href="#section-276" class="toc-link" data-index="276"><span class="toc-num">277</span>260617 초심</a></li>
 <li><a href="#section-277" class="toc-link" data-index="277"><span class="toc-num">278</span>하용호_AI시대의전문성_인프런밋업_260611</a></li>
+<li><a href="#section-278" class="toc-link" data-index="278"><span class="toc-num">279</span>승도리~260626</a></li>
+<li><a href="#section-279" class="toc-link" data-index="279"><span class="toc-num">280</span>텔레그램~260626</a></li>
+<li><a href="#section-280" class="toc-link" data-index="280"><span class="toc-num">281</span>20260626_AI_네이티브</a></li>
+<li><a href="#section-281" class="toc-link" data-index="281"><span class="toc-num">282</span>아이팟과 아이폰의 아버지 토니 파델이 전하는 혁신적인 제품 빌딩과 스토리...</a></li>
+<li><a href="#section-282" class="toc-link" data-index="282"><span class="toc-num">283</span>운의 경영학</a></li>
+<li><a href="#section-283" class="toc-link" data-index="283"><span class="toc-num">284</span>What AI Is Doing to School</a></li>
+<li><a href="#section-284" class="toc-link" data-index="284"><span class="toc-num">285</span>틀린 문제에 빗금 치지 마세요 … 과보호는 왜 아이를 약하게 만드나</a></li>
+<li><a href="#section-285" class="toc-link" data-index="285"><span class="toc-num">286</span>나라가 못 살면 국민이 밖에서 사람 행세 못 해 경제사상가 이건희 탐구㉔</a></li>
+<li><a href="#section-286" class="toc-link" data-index="286"><span class="toc-num">287</span>젠슨황 팟캐스트 + 팀페리스 블로그</a></li>
+<li><a href="#section-287" class="toc-link" data-index="287"><span class="toc-num">288</span>Clippings/2026년/~260626/뇌 망치는 ‘4세 고시’… 빠...</a></li>
+<li><a href="#section-288" class="toc-link" data-index="288"><span class="toc-num">289</span>Clippings/2026년/~260626/우리가 알던 그 ‘마시멜로 이...</a></li>
+<li><a href="#section-289" class="toc-link" data-index="289"><span class="toc-num">290</span>Clippings/2026년/~260626/1초 뒤</a></li>
         </ul>
     </nav>
     <main class="main" id="mainContent">
@@ -1585,7 +1615,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="memo-item"><span class="memo-num">3.</span> 메모하고 생각하기.</div>
 <div class="memo-item"><span class="memo-num">4.</span> 생각한 걸 또 토해내기</div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260124093639.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260124093639.png" alt="Pasted image 20260124093639" loading="lazy"></figure>
 <br>
 <div class="memo-bullet">• 빌게이츠 메모법 : 아이디어 1~3사분면, 그에 따른 질문 4사분면</div>
 <br>
@@ -1636,7 +1666,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <br>
 <div class="text-line">투자의 핵심은 결국 산업 내 기업이 어느 위치를 차지하고 있는지, 그게 오래될 것인지가 가장 중요합니다.</div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260131094624.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260131094624.png" alt="Pasted image 20260131094624" loading="lazy"></figure>
 <br>
 <div class="text-line">---</div>
 <br>
@@ -2249,7 +2279,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="text-line">3) 콘텐츠 소비 보다 의도적 침묵이나 무자극 시간을 갖는 것이 생산성에 더 유리할 수 있다.</div>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260212173312.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260212173312.png" alt="Pasted image 20260212173312" loading="lazy"></figure>
 <br>
 <br>
 
@@ -2412,10 +2442,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="text-line">그러면 주식을 싸게 사서 비싸게 팔 수 있습니다.😀😀😀</div>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260216002203.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260216002203.png" alt="Pasted image 20260216002203" loading="lazy"></figure>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260216003251.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260216003251.png" alt="Pasted image 20260216003251" loading="lazy"></figure>
 <br>
 <blockquote class="source-quote">
 <div class="quote-line">2-&gt;3단계에서는 매출액 성장률이 중요함</div>
@@ -3291,7 +3321,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="text-line">1.잃을 때 적게 잃고</div>
 <div class="text-line">2.벌 때 확실하게 번다 입니다</div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260307122144.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260307122144.png" alt="Pasted image 20260307122144" loading="lazy"></figure>
 <br>
 <br>
 <h4>곰재주 방장 계명</h4>
@@ -3310,7 +3340,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="memo-item"><span class="memo-num">5.</span> 오전보다는 오후, 월요일보다는 목금, 월초보다는 월매 매도를 선호하며 직장인 봉급기간 (20~25일)에는 관망합나다 (일반장세일때)</div>
 <div class="memo-item"><span class="memo-num">6.</span> 내가 투자하는 종목의 기관, 외국인 매동을 따라가라 둘다 매도포지션일때는 나도 매도포지션을 택합니다.</div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260307122130.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260307122130.png" alt="Pasted image 20260307122130" loading="lazy"></figure>
 <br>
 <br>
 <br>
@@ -4100,7 +4130,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="quote-line">1. 호재여도 오르지 않는다는 것은 살 놈들은 이미 샀다는 것이며 이는 상승 동력이 파훼됐다는 뜻</div>
 </blockquote>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260328162504.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260328162504.png" alt="Pasted image 20260328162504" loading="lazy"></figure>
 <br>
 
             </div>
@@ -5569,7 +5599,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="text-line">현일렉이 전기공사(ess) 현마솔이 전체 개조공사 임</div>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260427095556.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260427095556.png" alt="Pasted image 20260427095556" loading="lazy"></figure>
 <br>
 <div class="text-line">작년까지 수주한 FPSO 반영은 다 했다고 생각해서 팔로업은 안했는데 지금 드릴 수 있는 코멘트만 드리면</div>
 <div class="memo-item"><span class="memo-num">1.</span> 주로 PBR CAPEX에 연동</div>
@@ -5580,7 +5610,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <br>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260426214019.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260426214019.png" alt="Pasted image 20260426214019" loading="lazy"></figure>
 <br>
 <br>
 
@@ -5601,11 +5631,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 </blockquote>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260502001840.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260502001840.png" alt="Pasted image 20260502001840" loading="lazy"></figure>
 <br>
 <div class="memo-item"><span class="memo-num">20.</span> 원금은 무조건 지킵니다. 내가 근로소득으로 넣은 것만이 원금이 아니라 실현해서 더한것은 모두 꼭 지켜야하는 원금입니다. 금융투자를 통해 얻은 소득이 근로소득보다 가볍지 않습니다. 원금에서 손실이 날경우 매매를 당분간 쉬면서 멘탈을 잡으십시오. 내가 매일 매매를 하지 않으면 큰일난다는 착각에서 깨어나십시오 내가 없어도 장은 돌아갑니다.</div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260430162536.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260430162536.png" alt="Pasted image 20260430162536" loading="lazy"></figure>
 <br>
 <br>
 
@@ -6425,7 +6455,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 </blockquote>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260506140104.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260506140104.png" alt="Pasted image 20260506140104" loading="lazy"></figure>
 <br>
 <br>
 
@@ -6883,11 +6913,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <br>
 <div class="text-line">요약하자면: 급등한 종목이 하락할 때 감각에 의존해 매수하는 것이 아니라, 피보나치 되돌림 비율(40%, 60%)과 주요 보조지표(60일선, 볼린저 하단)가 겹치는 강력한 지지선에서만 분할 매수하여 반등 수익을 챙기고, 핵심 지지선 이탈 시 미련 없이 분석을 폐기하는 원칙적인 트레이딩 방법입니다.</div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260523122603.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260523122603.png" alt="Pasted image 20260523122603" loading="lazy"></figure>
 <br>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260522165211.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260522165211.png" alt="Pasted image 20260522165211" loading="lazy"></figure>
 <br>
 <div class="text-line">[爱德华/财从八方来/25] [오후 4:52] 자 전고 갱신중인</div>
 <div class="text-line">[爱德华/财从八方来/25] [오후 4:52] 삼전기</div>
@@ -7297,7 +7327,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="memo-item"><span class="memo-num">8.</span> <mark>시장에서 사이클이 없는 성장산업으로 인식한다 = 증설 = 호재</mark></div>
 <br>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260529105928.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260529105928.png" alt="Pasted image 20260529105928" loading="lazy"></figure>
 <br>
 <br>
 
@@ -7420,7 +7450,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="quote-line"><strong>- 열 살 짜리 아이에게 네 문장으로 설명할 정도로 이해가 가능할 때만 투자해라</strong></div>
 </blockquote>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260525220031.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260525220031.png" alt="Pasted image 20260525220031" loading="lazy"></figure>
 <br>
 <br>
 
@@ -7715,7 +7745,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="quote-line"><strong>- 누구도 알아채지 못한 좋은 면을 말하면 내가 볼 수 있는 폭이 넓어진다</strong></div>
 </blockquote>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260603110027.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260603110027.png" alt="Pasted image 20260603110027" loading="lazy"></figure>
 <br>
 <br>
 <br>
@@ -8161,7 +8191,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="memo-bullet">• 드디어 한국이나 싱가포르에 드릴쉽 발주 러시가 이어진다? -&gt; 걍 묻지도 따지지도 말고 NOV 사시면 됩니다</div>
 <div class="memo-bullet">• 할리버튼은 미국 셰일에 특화된 회사입니다.  이 회사는 미국 베이커휴즈 리그카운트가 늘어나면 바로 매출이 늘어나는 구조입니다</div>
 <div class="memo-bullet">• 베이커휴즈는 몇번 말씀드렸지만 AI 사이클 수혜를 받는 전통 석유 서비스 장비회사입니다  소형 가스터빈을 제작하고 요즘 수주량이 미쳤기때문에 AI + 에너지에 가장 적합한 회사라고 보시면 됩니다.</div>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260607152603.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260607152603.png" alt="Pasted image 20260607152603" loading="lazy"></figure>
 <br>
 <h4>양파톡방</h4>
 <br>
@@ -8210,7 +8240,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="memo-bullet">• <mark>필요 시 자본 조달이 가능한가?</mark></div>
 <div class="memo-bullet">• <mark>경영진은 현재의 도전 과제를 냉철하게 인식하고 있는가?</mark></div>
 <br>
-<div class="text-line">!<span class="wiki-link">Pasted image 20260611100055.png</span></div>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260611100055.png" alt="Pasted image 20260611100055" loading="lazy"></figure>
 <br>
 <br>
 
@@ -8835,6 +8865,311 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="quote-line">3. <strong>책임</strong>: AI는 책임을 질 수 있는 주체가 아님 — &quot;도장을 찍을 수 있는 적격자&quot;가 필요</div>
 </blockquote>
 <br>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-278" data-index="278">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">279</span>
+                <h2 class="section-title">승도리~260626</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<div class="memo-bullet">• 현재로선 병목이 신규로 걸리는곳은 INTC / AMD입니다</div>
+<div class="memo-bullet">• 시장이 낸드로 봤을때 PURE한 INTC를 더 좋게봐줄 가능성이 크죠(인텔)</div>
+<div class="memo-bullet">• AI CAPEX 꺾이면 반도체는 걍 튀세요 ㅎ</div>
+<div class="memo-bullet">• 아무튼 확실한건 이제 필사적으로 중동 리스크를 줄여가는수밖에 없죠  이게 빅트렌드</div>
+<div class="memo-bullet">• 에너지는 당연히 지금 최악이니까  (사람들이 무관심하니까) 포트에 담고</div>
+<div class="memo-bullet">• 반대로 반도체는 올해 언제사도 돈 벌었으니  내버려두는거고...</div>
+<div class="memo-bullet">• 미국은 현재 재고가 최저수준입니다  어떡하던 퍼올려야 합니다 #시추 #해양시추  석유 장비 / 강관 / 해운정도가 직수혜고...</div>
+<br>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-279" data-index="279">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">280</span>
+                <h2 class="section-title">텔레그램~260626</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <figure class="note-image"><img src="assets/images/Pasted%20image%2020260624220823.png" alt="Pasted image 20260624220823" loading="lazy"></figure>
+<br>
+<br>
+<div class="memo-bullet">• 내일이 더 나아질 것이라는 믿음. 나는 해낼 수 있다는 믿음을 갖자.</div>
+<div class="memo-bullet">• 서울대를 꿈꿔야 고대라도 간다.</div>
+<div class="memo-bullet">• 100억 200억 어떻게 가냐, 재능을 선물받은 사람들만 하는거다 하지말자. 나도 충분히 거기까지 도달할 수 있고 갈 수 있는 실력을 갖추고 운을 잡을 준비하자.</div>
+<br>
+<div class="memo-item"><span class="memo-num">1.</span> 수익이 찐하게 났다면 투자 원금이라도 상승장에서 빼놓으세요</div>
+<div class="memo-item"><span class="memo-num">1.</span> 설사 거품이 빠지더라도 멘탈케어와 함께 여러분들의 수익이 남으며 거품이 끝나고 승자를 선택할 수 있는 자금이 생깁니다</div>
+<div class="memo-item"><span class="memo-num">2.</span> 변동성에서 절때 추격매매 하지 마세요 싸게 살수 있는 기회는 늘 옵니다</div>
+<div class="memo-item"><span class="memo-num">3.</span> 지금 변동성이 클때 최대한 싸게 사야합니다 오르는날 못샀는데 매수 X 버블이 터지는게 아니라는 미래에 베팅하시면 폭락장에 사세요</div>
+<br>
+<br>
+<figure class="note-image"><img src="assets/images/Pasted%20image%2020260626151238.png" alt="Pasted image 20260626151238" loading="lazy"></figure>
+<div class="memo-bullet">• 감정적으로 둔감 = 타인을 공황으로 몰아가는 감정적 일들을 무시할 능력이 있다.</div>
+<div class="memo-bullet">• 쓸데없이 예민하게 반응하지 말고, 장기적 관점을 갖자. 장기적으로 어디에 수렴할까? 등</div>
+<div class="memo-bullet">• 훈련으로 만들어낼 수 있는 능력.</div>
+<div class="memo-bullet">• 달성한 다음에는 그러지 못한 사람들을 얕잡아봐야 더 발전됨. 내가 주되게 훈련하는 능력 중 하나</div>
+<br>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-280" data-index="280">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">281</span>
+                <h2 class="section-title">20260626_AI_네이티브</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 일하는 중간중간에 ai를 넣는 게 아니라 기본 베이스가 ai인 세대가 ai 네이티브</div>
+<div class="quote-line">- 어디서부터 어디까지 ai에게 넘기고, 내가 어떻게 쓰면 좋을지 등 일의 과정 자체가 ai-oriented되어야 함</div>
+<div class="quote-line"><strong>- 일의 방향성, 목적, 품질 기준 등에 대한 최종 판단은 인간이 하되 나머지 모든 작업은 ai</strong></div>
+<div class="quote-line"><strong>- 다음 세대에게 대체되지 않으려면 더 훌륭한 의사결정과 판단력이 필요함.</strong></div>
+<div class="quote-line"><strong>- 그리고 본질을 고민하고 본질을 향하는 힘 (취향)</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-bullet">• <strong>AI 네이티브의 정의와 특징</strong></div>
+<div class="memo-bullet">• AI 네이티브는 단순히 기술을 능숙하게 쓰는 숙련자가 아니라, AI가 업무 프로세스의 기본 변수로 통합된 새로운 세대임.</div>
+<div class="memo-bullet">• 이들은 리서치부터 구현, 문서화까지 모든 업무 루프에 AI를 자연스럽게 활용하며 별도의 번역이나 전환 과정이 없음.</div>
+<div class="memo-bullet">• <strong>기존 세대와의 차이점</strong></div>
+<div class="memo-bullet">• 기성세대는 AI를 필요에 따라 꺼내 쓰는 &#x27;도구&#x27;로 보지만, 네이티브는 AI를 일하는 &#x27;환경&#x27;으로 간주함.</div>
+<div class="memo-bullet">• <mark>기존 세대는 업무 중간에 직접 개입하려는 경향이 강해 스스로 병목 현상을 초래할 위험이 있음.</mark></div>
+<div class="memo-bullet">• <strong>조직의 역할과 과제</strong></div>
+<div class="memo-bullet">• <mark>AI 네이티브가 오류나 얕은 결과물을 낼 수 있는 위험이 존재하므로, 판단, 검증, 최종 책임은 여전히 인간의 영역임.</mark></div>
+<div class="memo-bullet">• 성공적인 조직은 젊은 세대에게 명확한 제약과 목표를 제시하고, 판단 체계를 재설계하여 그들의 속도를 올바른 방향으로 이끌어야 함.</div>
+<br>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-281" data-index="281">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">282</span>
+                <h2 class="section-title">아이팟과 아이폰의 아버지 토니 파델이 전하는 혁신적인 제품 빌딩과 스토리텔링의 비밀</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 결국 중요한 것은 고객이 느끼는 고통과 그걸 극복하고자 하는 능력</strong></div>
+<div class="quote-line"><strong>- 데이터를 무시할 수 없지만, 데이터만으로 모든 것을 할 수 없다.</strong></div>
+<div class="quote-line">- 예를 들어 어떤 데이터는 너무나 결과적이라 왜를 설명할 수 없고 앞으로 더 나은 개선점을 제안할 수 없음</div>
+<div class="quote-line">- 절대적인 만듦새가 떨어지는 기능의 사용률이 떨어짐 -&gt; 그 기능은 무의미한가? 다름</div>
+<div class="quote-line"><strong>- 고객이 과연 왜? 왜 쓰는지 고민해보면 더 정수를 깨달을 수 있음</strong></div>
+<div class="quote-line"><strong>- 그 정수에 닿는 나만의 감각이 취향임</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-bullet">• <mark><strong>혁신의 본질과 시작점</strong>: 모든 혁신은 &#x27;인간의 고통&#x27;을 정확히 정의하는 것에서 시작합니다. 토니 파델은 아이팟과 아이폰의 성공이 기존 기술을 새로운 맥락에서 조합하고, 반복적인 테스트를 통해 시장의 영역을 재정의했기 때문에 가능했다고 설명합니다.</mark></div>
+<div class="memo-bullet">• <strong>리더십과 의사결정</strong>: 데이터만으로는 1.0 제품을 만들 수 없습니다. 리더는 &#x27;취향&#x27;을 바탕으로 과감한 의견 중심의 결정을 내리고 그 결과에 책임을 져야 합니다. 이는 마이크로매니징이 아닌, 핵심적인 디테일에 집착하고 팀의 방향성을 통일하는 과정입니다.</div>
+<div class="memo-bullet">• <mark><strong>마케팅과 스토리텔링의 역할</strong>: 제품 개발자가 기술 성능에만 몰입하는 것은 위험합니다. 마케팅은 고객의 언어로 제품의 &#x27;왜(why)&#x27;를 전달하고 삶에 스며들게 하는 도구입니다. 진정성 있는 스토리텔링은 고객과의 관계를 구축하는 핵심입니다.</mark></div>
+<div class="memo-bullet">• <strong>AI 시대의 빌더의 자세</strong>: AI는 생산성을 높이지만 제품 자체를 만들어주지는 않습니다. 소프트웨어와 물리적 하드웨어를 결합하는 &#x27;풀스택&#x27; 혁신이 중요하며, 빌더들은 디지털 세상에서도 사용자에게 영양 성분표 같은 안전한 가이드를 제공할 윤리적 책임을 가져야 합니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-282" data-index="282">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">283</span>
+                <h2 class="section-title">운의 경영학</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 어떻게 해야 행운을 최대화할까?</div>
+<div class="quote-line"><strong>- 패배할 일을 벌이지 말자 -&gt; 실수를 만드는 환경을 없애라 ex 감정적으로 안 좋은 날엔 매매 하지 말기</strong></div>
+<div class="quote-line"><strong>- 남을 질투하지 말자</strong></div>
+<div class="quote-line"><strong>- 사회가 변하는 흐름을 끊임없이 주시하자. 이 판이 어떻게 흘러가는지!</strong></div>
+<div class="quote-line"><strong>- 주위 사람을 이해하고 공감하기 위해 노력할 것. 장점을 바라볼 것</strong></div>
+<div class="quote-line"><strong>- 낙관적 자세를 유지할 것</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-bullet">• <strong>야스다 다카오와 돈키호테의 철학</strong></div>
+<div class="memo-bullet">• 유통업의 고정관념을 깬 심야 영업 등으로 돈키호테를 30년 넘게 성장시킨 창업자의 비결을 다룹니다.</div>
+<div class="memo-bullet">• 투자와 도박의 본질이 불확실성을 다루는 데 있다는 관점을 공유합니다.</div>
+<div class="memo-bullet">• <strong>운을 대하는 자세</strong></div>
+<div class="memo-bullet">• <mark>운은 실체가 없는 것이 아니라 &#x27;운 안테나&#x27;를 세우고 낙관적으로 믿는 힘에서 발생합니다.</mark></div>
+<div class="memo-bullet">• 운이 좋을 때는 공격하고, 나쁠 때는 웅크리는 &#x27;오소리 전법&#x27;이 필요합니다.</div>
+<div class="memo-bullet">• <strong>성공을 위한 행동 양식</strong></div>
+<div class="memo-bullet">• <mark><strong>대국관</strong>: 전체 판의 흐름을 읽고 사회적 변동을 관찰하는 능력을 기릅니다.</mark></div>
+<div class="memo-bullet">• <strong>손절매</strong>: 실패 시나리오를 사전에 설정하고 과감하게 철수하는 결단력이 필요합니다.</div>
+<div class="memo-bullet">• <strong>인격과 조직 경영</strong>: 권한 이양을 통해 직원과 고객 중심의 경영을 실천하며 주변을 존중하는 태도를 강조합니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-283" data-index="283">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">284</span>
+                <h2 class="section-title">What AI Is Doing to School</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 아무리 힘들어도 직접 읽고 직접 생각하고 직접 글쓰기</div>
+<div class="quote-line">- AI가 정말 편하지만, 편하게 하면 안 되는 분야는 내가 힘들게 해낼 것.</div>
+<div class="quote-line"><strong>- 회사 분석은 AI가 하더라도 투자 THEME와 거시적 흐름은 내가 봐야 한다</strong></div>
+</blockquote>
+<br>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-284" data-index="284">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">285</span>
+                <h2 class="section-title">틀린 문제에 빗금 치지 마세요 … 과보호는 왜 아이를 약하게 만드나</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 더 큰 좌절을 견디기 위해선 작은 좌절을 겪어봐야 함</strong></div>
+<div class="quote-line">- 아이의 회복력을 길러주기 위해서, 실패에서 배우고 다시 해보면서 해내는 효능감을 길러주기 위해선</div>
+<div class="quote-line"><strong>- 좌절 없는 무균실을 벗어나야 한다</strong></div>
+</blockquote>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-285" data-index="285">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">286</span>
+                <h2 class="section-title">나라가 못 살면 국민이 밖에서 사람 행세 못 해 경제사상가 이건희 탐구㉔</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 반도체 산업의 본질 = 타이밍과 선점 -&gt; 투자!</div>
+<div class="quote-line"><strong>- 주식도 타이밍과 선점 아닌가? 남들보다 앞서 생각해서 적절한 타이밍에 미리 들어가서 선점한다</strong></div>
+<div class="quote-line">- 너무 빨리가면 소외가 힘들고</div>
+<div class="quote-line">- 너무 늦게 가면 안됨</div>
+<div class="quote-line"><strong>- 남들보다 반발짝만 앞서서!</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• 이건희 회장은 반도체 산업의 핵심 본질을 &#x27;타이밍&#x27;과 &#x27;선점&#x27;으로 정의하며, 적기 투자의 중요성을 강조했습니다.</div>
+<div class="memo-bullet">• 오일쇼크 이후 국가 경제와 기업의 생존을 위해 첨단 기술 산업으로의 전환이 필수적임을 깨달았습니다.</div>
+<div class="memo-bullet">• 남보다 앞선 기술 개발과 시장 선점, 그리고 포화 상태에서의 과감한 철수 전략인 &#x27;히트 앤 런&#x27;을 경영 철학으로 삼았습니다.</div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-286" data-index="286">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">287</span>
+                <h2 class="section-title">젠슨황 팟캐스트 + 팀페리스 블로그</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 불편했던 과거는 최선을 다해 잊자. 과거에 발목 잡히지 말자. 감정이든 무엇이든.</strong></div>
+<div class="quote-line"><strong>- 지금은 무조건 앞으로 향하자. 미래에 집중하자.</strong></div>
+<div class="quote-line">- 앞만 보고 달려야 한다! 과거에 목매달지 말 것. 의미없다.</div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-bullet">• <strong>실행의 중요성</strong></div>
+<div class="memo-bullet">• 지식을 습득하는 것보다 실제로 삶에 적용하는 &#x27;긴 여정&#x27;을 따라가는 것이 진정한 변화를 만든다고 조언합니다.</div>
+<div class="memo-bullet">• <strong>젠슨 황의 인터뷰 (How I Build This)</strong></div>
+<div class="memo-bullet">• <mark>엔비디아의 수장 젠슨 황은 과거의 힘들었던 기억을 의식적으로 지우고 매일 매일 현재에 몰입한다고 고백합니다.</mark></div>
+<div class="memo-bullet">• <mark>고난은 주변의 도움으로 극복 가능하며, 앞만 보고 달리는 집념이 지금의 엔비디아를 만들었다고 설명합니다.</mark></div>
+<br>
+</div>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-287" data-index="287">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">288</span>
+                <h2 class="section-title">Clippings/2026년/~260626/뇌 망치는 ‘4세 고시’… 빠르게도 느리게도 아닌 ‘제때’ 키웁시다</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 자기 조절 능력이 가장 중요하다. 참고, 성취할 때가지 노력할 수 있는 힘</strong></div>
+<div class="quote-line">- “음. 창의적이고, 힘든 여건 속에서 문제 해결 능력을 보이고, 동료와 둥글둥글하게 어울릴 수 있는 사람.</div>
+<div class="quote-line">- AI가 아직 인간의 직관, 창의성 영역까지 침투하진 못했잖아요. 시간 문제라고도 하지만, 무언가에 영혼을 불어넣는 건 결국 인간이죠. 길게 봤을 때 진정한 성취를 할 수 있는 사람은 영유아기에 결정되는 것 같아요.</div>
+<div class="quote-line"><strong>- 조절 능력, 회복 탄력성, 자기 효능감이 다 그때 결정돼요.”</strong></div>
+</blockquote>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-288" data-index="288">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">289</span>
+                <h2 class="section-title">Clippings/2026년/~260626/우리가 알던 그 ‘마시멜로 이야기’는 틀렸습니다 김승섭의 공부</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line"><strong>- 환경이 안정적이면, 당장 눈 앞에 보이는 성과에 목매달지 않는다.</strong></div>
+<div class="quote-line">- 당장 초콜릿 못먹으면 안되는 가난한 가정 -&gt; 당장 먹게 됨</div>
+<div class="quote-line"><strong>- 당장 무언가를 취하지 않더라도, 장기적으로 성과가 온다는 믿음이 있는 안정적인 환경이 중요함</strong></div>
+<div class="quote-line"><strong>- 나 역시 믿어야 한다. 꾸준히 노력하면, 장기적으로 성과가 온다는 믿음을 내게 심어줘야 안정적으로 몰입할 수 있음</strong></div>
+</blockquote>
+<br>
+<br>
+
+            </div>
+        </div>
+
+        <div class="section-card" id="section-289" data-index="289">
+            <div class="section-header" onclick="toggleSection(this)">
+                <span class="section-num">290</span>
+                <h2 class="section-title">Clippings/2026년/~260626/1초 뒤</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-body">
+                <br>
+<blockquote class="source-quote">
+<div class="quote-line">- 옆 사람을 질투하지 말고 (내가 갖고 있는 것을 빼앗을까봐)</div>
+<div class="quote-line">- 남을 시기하지 말고 (내게 없는 것)</div>
+<div class="quote-line"><strong>- 타인의 행복을 진심으로 축하할 것</strong></div>
+</blockquote>
+<br>
+
+<div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-bullet">• 인간은 진화적으로 옆 사람을 비교하며 질투를 느끼도록 설계된 존재입니다.</div>
+<div class="memo-bullet">• 질투에 머물지 않고 타인의 성공을 축하하는 선택이 장기적인 행복과 인간관계를 결정합니다.</div>
+<div class="memo-bullet">• 타인을 시기하기보다 진심으로 기뻐해 주는 태도가 미래의 행복을 구축하는 가장 현명한 길입니다.</div>
+</div>
 
             </div>
         </div>
