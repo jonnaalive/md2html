@@ -639,6 +639,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <body>
 
 <div class="top-header">
+    <a href="/" class="btn" style="text-decoration:none;">🏠</a>
     <button class="btn" onclick="toggleSidebar()" id="sidebarBtn">☰</button>
     <h1>2026년 학습 모음</h1>
     <span class="count">{{COUNT}}개 섹션</span>
