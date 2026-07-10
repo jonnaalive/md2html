@@ -77,6 +77,15 @@
             outline: none;
         }
 
+        .menu a.span-2 {
+            grid-column: 1 / -1;
+            min-height: 0;
+        }
+
+        .menu a.span-2 .label {
+            margin-bottom: 12px;
+        }
+
         .label {
             display: inline-flex;
             align-items: center;
@@ -143,6 +152,11 @@
                 <span class="label">하반기</span>
                 <span class="title">2026 하반기 학습 모음</span>
                 <span class="desc">새로 만든 하반기 학습 노트 페이지로 이동합니다.</span>
+            </a>
+            <a class="span-2" href="https://weekly-input.vercel.app/">
+                <span class="label">아카이브</span>
+                <span class="title">주기적 인풋 정리</span>
+                <span class="desc">2023~2026년 주차별 인풋 아카이브로 이동합니다.</span>
             </a>
         </section>
     </main>
