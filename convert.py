@@ -37,6 +37,12 @@ def parse_sections(md_text: str) -> list[dict]:
         h2_match = re.match(r'^##\s+(.+)', line)
         h3_match = re.match(r'^###\s+(.+)', line)
 
+        # ### [[노트링크]]는 임베드된 독립 노트: 섹션으로 승격 (TOC 노출)
+        if h3_match:
+            t3 = h3_match.group(1).strip()
+            if re.fullmatch(r'\[\[[^\]]+\]\]', t3) and not is_sub_section(t3):
+                h2_match, h3_match = h3_match, None
+
         if h2_match:
             title = h2_match.group(1).strip()
             # 3-Line Summary나 요약은 부모에 병합
