@@ -103,8 +103,9 @@ def parse_sections(md_text: str) -> list[dict]:
 
 
 def is_sub_section(title: str) -> bool:
-    t = title.lower().strip().strip('*').strip()
-    return any(k in t for k in ['3-line summary', '3 line summary', '요약'])
+    # 제목 전체가 요약 헤딩일 때만 병합 (부분 포함 매칭은 '..._주간_요약' 같은 독립 노트를 삼킴)
+    t = clean_title(title).lower().strip('*: ').strip()
+    return t in ('3-line summary', '3 line summary', '요약')
 
 
 def clean_title(title: str) -> str:
