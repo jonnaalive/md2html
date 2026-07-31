@@ -1,7 +1,7 @@
 """
 Markdown 학습 노트 → HTML 대시보드 변환기
 - 사이드바 TOC + 검색 + 접이식 섹션 + 다크모드
-- 3-Line Summary / 요약은 상위 섹션에 종속
+- 3-Line Summary / 요약 / Implications는 상위 섹션에 종속
 """
 
 import re
@@ -111,7 +111,7 @@ def parse_sections(md_text: str) -> list[dict]:
 def is_sub_section(title: str) -> bool:
     # 제목 전체가 요약 헤딩일 때만 병합 (부분 포함 매칭은 '..._주간_요약' 같은 독립 노트를 삼킴)
     t = clean_title(title).lower().strip('*: ').strip()
-    return t in ('3-line summary', '3 line summary', '요약')
+    return t in ('3-line summary', '3 line summary', '요약', 'implications', '임플리케이션')
 
 
 def clean_title(title: str) -> str:
