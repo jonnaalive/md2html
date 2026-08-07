@@ -267,7 +267,12 @@ def prepare_images(md_text: str, src: Path, out_dir: Path) -> dict[str, str]:
     return urls
 
 
-def generate_html(sections: list[dict]) -> str:
+def make_title(src: Path) -> str:
+    """소스 파일명에서 페이지 제목 추출 ('~' 뒤 부연은 버림)"""
+    return src.stem.split('~')[0].strip()
+
+
+def generate_html(sections: list[dict], title: str) -> str:
     """섹션 리스트를 HTML 대시보드로 변환"""
 
     # TOC 생성
@@ -302,7 +307,10 @@ def generate_html(sections: list[dict]) -> str:
         </div>''')
     sections_html = '\n'.join(section_cards)
 
-    return HTML_TEMPLATE.replace('{{TOC}}', toc_html).replace('{{SECTIONS}}', sections_html).replace('{{COUNT}}', str(len(sections)))
+    return (HTML_TEMPLATE.replace('{{TOC}}', toc_html)
+            .replace('{{SECTIONS}}', sections_html)
+            .replace('{{COUNT}}', str(len(sections)))
+            .replace('{{TITLE}}', html.escape(title)))
 
 
 def wrap_quotes(body: str) -> str:
@@ -352,7 +360,7 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026년 학습 모음</title>
+<title>{{TITLE}}</title>
 <style>
 :root {
     --bg: #f5f5f0;
@@ -649,7 +657,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
     <a href="/" class="btn" style="text-decoration:none;">🏠</a>
     <a href="https://weekly-input.vercel.app/" class="btn" style="text-decoration:none;" title="주기적 인풋 정리">🗂️</a>
     <button class="btn" onclick="toggleSidebar()" id="sidebarBtn">☰</button>
-    <h1>2026년 학습 모음</h1>
+    <h1>{{TITLE}}</h1>
     <span class="count">{{COUNT}}개 섹션</span>
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="검색어 입력... (제목 + 본문)" oninput="handleSearch(this.value)">
@@ -817,7 +825,10 @@ def main():
     sections = parse_sections(md_text)
     print(f"  {len(sections)} sections parsed")
 
-    html_out = generate_html(sections)
+    title = make_title(src)
+    print(f"  title: {title}")
+
+    html_out = generate_html(sections, title)
     dst.write_text(html_out, encoding='utf-8')
     print(f"Output: {dst}")
     print(f"  {len(html_out):,} chars")
