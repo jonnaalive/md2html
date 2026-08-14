@@ -1,0 +1,33 @@
+/* Hallmark · design-system: design.md · portable token export */
+:root {
+    --color-paper: oklch(96.5% 0.012 90);
+    --color-paper-2: oklch(98.5% 0.006 90);
+    --color-paper-3: oklch(94% 0.014 88);
+    --color-ink: oklch(24% 0.012 60);
+    --color-ink-2: oklch(47% 0.014 60);
+    --color-rule: oklch(87% 0.012 85);
+    --color-accent: oklch(52% 0.15 35);
+    --color-accent-wash: oklch(93.5% 0.03 40);
+    --color-focus: oklch(52% 0.15 35);
+
+    --font-display: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Nanum Myeongjo', serif;
+    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-short: 160ms;
+    --dur-med: 250ms;
+
+    --shadow: 0 1px 3px oklch(20% 0.01 60 / 0.1);
+}
+[data-theme="dark"] {
+    --color-paper: oklch(22% 0.012 60);
+    --color-paper-2: oklch(25.5% 0.012 60);
+    --color-paper-3: oklch(19.5% 0.012 60);
+    --color-ink: oklch(90% 0.008 90);
+    --color-ink-2: oklch(66% 0.012 80);
+    --color-rule: oklch(33% 0.012 60);
+    --color-accent: oklch(71% 0.13 40);
+    --color-accent-wash: oklch(31% 0.045 40);
+    --color-focus: oklch(71% 0.13 40);
+    --shadow: 0 1px 3px oklch(0% 0 0 / 0.35);
+}

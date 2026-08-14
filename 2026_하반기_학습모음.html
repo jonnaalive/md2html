@@ -1,98 +1,146 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026년 하반기 학습 모음</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
+/* Hallmark · genre: editorial · macrostructure: Long Document · design-system: design.md · designed-as-app
+ * theme: custom (paper oklch(96.5% 0.012 90) · accent oklch(52% 0.15 35) vermilion · Noto Serif KR + Pretendard) */
 :root {
-    --bg: #f5f5f0;
-    --bg-card: #ffffff;
-    --bg-sidebar: #fafaf7;
-    --text: #1a1a1a;
-    --text-sub: #666;
-    --border: #e0ddd5;
-    --accent: #2563eb;
-    --accent-light: #dbeafe;
-    --quote-bg: #f8f7f4;
-    --quote-border: #c9c4b8;
-    --memo-bg: #fef9e7;
-    --memo-border: #f0c040;
-    --highlight: #fef08a;
-    --summary-bg: #f0fdf4;
-    --summary-border: #86efac;
-    --wiki-link: #7c3aed;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08);
-    --header-bg: #ffffff;
+    --color-paper: oklch(96.5% 0.012 90);
+    --color-paper-2: oklch(98.5% 0.006 90);
+    --color-paper-3: oklch(94% 0.014 88);
+    --color-ink: oklch(24% 0.012 60);
+    --color-ink-2: oklch(47% 0.014 60);
+    --color-rule: oklch(87% 0.012 85);
+    --color-accent: oklch(52% 0.15 35);
+    --color-accent-wash: oklch(93.5% 0.03 40);
+    --color-focus: oklch(52% 0.15 35);
+    --quote-bg: oklch(94.5% 0.012 88);
+    --quote-rule: oklch(80% 0.02 80);
+    --memo-bg: oklch(95% 0.035 95);
+    --memo-rule: oklch(76% 0.09 90);
+    --summary-bg: oklch(95% 0.025 150);
+    --summary-rule: oklch(72% 0.08 150);
+    --summary-head: oklch(44% 0.09 150);
+    --highlight-bg: oklch(90% 0.12 95);
+    --highlight-ink: oklch(26% 0.05 80);
+    --search-hl-bg: oklch(83% 0.14 85);
+    --search-hl-ink: oklch(22% 0.04 80);
+    --missing-bg: oklch(95% 0.02 25);
+    --missing-rule: oklch(85% 0.06 25);
+    --missing-ink: oklch(45% 0.14 25);
+    --wiki-link: oklch(52% 0.15 35);
+    --shadow: 0 1px 3px oklch(20% 0.01 60 / 0.1);
+    --font-display: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Nanum Myeongjo', serif;
+    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-short: 160ms;
+    --dur-med: 250ms;
 }
 [data-theme="dark"] {
-    --bg: #0f0f0f;
-    --bg-card: #1a1a1a;
-    --bg-sidebar: #141414;
-    --text: #e5e5e5;
-    --text-sub: #999;
-    --border: #2a2a2a;
-    --accent: #60a5fa;
-    --accent-light: #1e3a5f;
-    --quote-bg: #1e1e1a;
-    --quote-border: #555040;
-    --memo-bg: #2a2510;
-    --memo-border: #b8942e;
-    --highlight: #854d0e;
-    --summary-bg: #0a200f;
-    --summary-border: #22c55e;
-    --wiki-link: #a78bfa;
-    --shadow: 0 1px 3px rgba(0,0,0,0.3);
-    --header-bg: #1a1a1a;
+    --color-paper: oklch(22% 0.012 60);
+    --color-paper-2: oklch(25.5% 0.012 60);
+    --color-paper-3: oklch(19.5% 0.012 60);
+    --color-ink: oklch(90% 0.008 90);
+    --color-ink-2: oklch(66% 0.012 80);
+    --color-rule: oklch(33% 0.012 60);
+    --color-accent: oklch(71% 0.13 40);
+    --color-accent-wash: oklch(31% 0.045 40);
+    --color-focus: oklch(71% 0.13 40);
+    --quote-bg: oklch(25% 0.012 70);
+    --quote-rule: oklch(42% 0.02 75);
+    --memo-bg: oklch(27% 0.035 95);
+    --memo-rule: oklch(55% 0.08 90);
+    --summary-bg: oklch(25% 0.03 150);
+    --summary-rule: oklch(48% 0.07 150);
+    --summary-head: oklch(75% 0.1 150);
+    --highlight-bg: oklch(45% 0.09 90);
+    --highlight-ink: oklch(95% 0.02 95);
+    --search-hl-bg: oklch(55% 0.12 80);
+    --search-hl-ink: oklch(98% 0.005 90);
+    --missing-bg: oklch(26% 0.03 25);
+    --missing-rule: oklch(42% 0.08 25);
+    --missing-ink: oklch(75% 0.11 25);
+    --wiki-link: oklch(71% 0.13 40);
+    --shadow: 0 1px 3px oklch(0% 0 0 / 0.35);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: var(--font-body);
+    background: var(--color-paper);
+    color: var(--color-ink);
     line-height: 1.7;
     font-size: 15px;
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
 }
 
+.icon { width:15px; height:15px; display:block; flex-shrink:0; }
+.toggle-icon svg { width:14px; height:14px; display:block; }
+
+:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
 /* 헤더 */
 .top-header {
     position: fixed; top:0; left:0; right:0; z-index: 100;
-    background: var(--header-bg);
-    border-bottom: 1px solid var(--border);
+    background: var(--color-paper);
+    border-bottom: 1px solid var(--color-rule);
     padding: 10px 24px;
-    display: flex; align-items: center; gap: 16px;
-    backdrop-filter: blur(10px);
+    display: flex; align-items: center; gap: 12px;
 }
-.top-header h1 { font-size: 18px; font-weight: 700; white-space: nowrap; }
-.top-header .count { color: var(--text-sub); font-size: 13px; }
+.top-header h1 {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700;
+    white-space: nowrap; font-style: normal;
+}
+.top-header .count { color: var(--color-ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
 
 .search-box {
-    flex: 1; max-width: 400px;
+    flex: 1; max-width: 380px;
     position: relative;
 }
 .search-box input {
-    width: 100%; padding: 8px 12px 8px 36px;
-    border: 1px solid var(--border); border-radius: 8px;
-    background: var(--bg); color: var(--text);
+    width: 100%; padding: 7px 12px 7px 32px;
+    border: 1px solid var(--color-rule); border-radius: 4px;
+    background: var(--color-paper-2); color: var(--color-ink);
+    font-family: var(--font-body);
     font-size: 14px; outline: none;
 }
-.search-box input:focus { border-color: var(--accent); }
-.search-box::before {
-    content: '🔍'; position: absolute; left: 10px; top: 50%;
-    transform: translateY(-50%); font-size: 14px;
+.search-box input:focus { border-color: var(--color-accent); }
+.search-box input::placeholder { color: var(--color-ink-2); }
+.search-box .icon {
+    position: absolute; left: 9px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-ink-2);
+    pointer-events: none;
 }
 
-.header-actions { display: flex; gap: 8px; margin-left: auto; }
+.header-actions { display: flex; gap: 6px; margin-left: auto; }
 .btn {
-    padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--bg-card); color: var(--text); cursor: pointer;
+    padding: 6px 12px; border-radius: 4px; border: 1px solid var(--color-rule);
+    background: transparent; color: var(--color-ink); cursor: pointer;
+    font-family: var(--font-body);
     font-size: 13px; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 6px;
+    text-decoration: none;
+    transition: background-color var(--dur-short) var(--ease-out);
 }
-.btn:hover { border-color: var(--accent); }
+.btn:hover { background: var(--color-accent-wash); }
+
+.icon-sun { display: none; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
 
 /* 레이아웃 */
 .layout {
@@ -103,163 +151,164 @@ body {
 /* 사이드바 */
 .sidebar {
     position: fixed; top: var(--header-h, 52px); left: 0; bottom: 0;
-    width: 280px; background: var(--bg-sidebar);
-    border-right: 1px solid var(--border);
+    width: 280px; background: var(--color-paper-3);
+    border-right: 1px solid var(--color-rule);
     overflow-y: auto; padding: 12px 0;
-    transition: transform 0.3s;
+    transition: transform var(--dur-med) var(--ease-out);
     z-index: 50;
 }
 .sidebar.hidden { transform: translateX(-100%); }
 
 .sidebar ul { list-style: none; }
-.sidebar li { border-bottom: 1px solid var(--border); }
+.sidebar li { border-bottom: 1px solid var(--color-rule); }
 .toc-link {
     display: flex; align-items: baseline; gap: 8px;
-    padding: 8px 16px; color: var(--text); text-decoration: none;
+    padding: 8px 16px; color: var(--color-ink); text-decoration: none;
     font-size: 13px; line-height: 1.4;
-    transition: background 0.15s;
+    transition: background-color var(--dur-short) var(--ease-out);
 }
-.toc-link:hover { background: var(--accent-light); }
-.toc-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+.toc-link:hover { background: var(--color-accent-wash); }
+.toc-link.active { background: var(--color-accent-wash); color: var(--color-accent); font-weight: 600; }
 .toc-num {
-    color: var(--text-sub); font-size: 11px; min-width: 24px;
+    color: var(--color-accent); font-size: 11px; min-width: 24px;
+    font-weight: 600;
     font-variant-numeric: tabular-nums;
 }
 
 /* 메인 콘텐츠 */
 .main {
     margin-left: 280px; flex: 1;
-    padding: 20px 24px 60px; max-width: 860px;
+    padding: 20px 32px 80px; max-width: 880px;
 }
 .sidebar.hidden ~ .main { margin-left: 0; }
 
-/* 섹션 카드 */
+/* 섹션: Long Document 리듬 */
 .section-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    transition: box-shadow 0.2s;
+    border-top: 1px solid var(--color-rule);
+    background: transparent;
 }
-.section-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.section-card:last-child { border-bottom: 1px solid var(--color-rule); }
 .section-card.hidden { display: none; }
-.section-card.highlight { border-color: var(--accent); }
+.section-card.highlight .section-title { color: var(--color-accent); }
 
 .section-header {
-    display: flex; align-items: center; gap: 10px;
-    padding: 14px 18px; cursor: pointer;
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 15px 4px; cursor: pointer;
     user-select: none;
 }
-.section-header:hover { background: var(--accent-light); }
+.section-header:hover .section-title { color: var(--color-accent); }
+.section-header:focus-visible { outline-offset: -2px; }
 .section-num {
-    background: var(--accent); color: #fff;
-    font-size: 11px; font-weight: 700;
-    min-width: 28px; height: 22px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 4px;
+    color: var(--color-accent);
+    font-size: 12px; font-weight: 600;
+    min-width: 26px;
+    font-variant-numeric: tabular-nums;
 }
-.section-title { flex:1; font-size: 15px; font-weight: 600; }
+.section-title {
+    flex:1;
+    font-family: var(--font-display);
+    font-size: 16.5px; font-weight: 600; line-height: 1.5;
+    font-style: normal;
+    transition: color var(--dur-short) var(--ease-out);
+}
 .toggle-icon {
-    font-size: 12px; color: var(--text-sub);
-    transition: transform 0.2s;
+    color: var(--color-ink-2);
+    align-self: center;
+    transition: transform var(--dur-short) var(--ease-out);
 }
 .section-card.collapsed .toggle-icon { transform: rotate(-90deg); }
 .section-card.collapsed .section-body { display: none; }
 
-.section-body { padding: 0 18px 16px; }
+.section-body { padding: 0 4px 24px 40px; max-width: 740px; }
 
 /* 블록쿼트 */
 .source-quote {
-    border-left: 3px solid var(--quote-border);
+    border-left: 2px solid var(--quote-rule);
     background: var(--quote-bg);
     padding: 12px 16px;
     margin: 10px 0;
-    border-radius: 0 6px 6px 0;
     font-size: 14px;
-    color: var(--text);
+    color: var(--color-ink);
 }
 .quote-line { margin: 3px 0; }
 
 /* 메모 (내 생각) */
 .memo-item, .memo-bullet {
     padding: 4px 0 4px 8px;
-    border-left: 3px solid var(--memo-border);
+    border-left: 2px solid var(--memo-rule);
     margin: 4px 0 4px 4px;
     background: var(--memo-bg);
-    border-radius: 0 4px 4px 0;
     padding-left: 12px;
     font-size: 14px;
 }
 .memo-item.indent, .memo-bullet.indent {
     margin-left: 24px;
-    border-left-color: #ddd;
+    border-left-color: var(--color-rule);
     background: transparent;
 }
-.memo-num { font-weight: 700; color: var(--accent); }
+.memo-num { font-weight: 700; color: var(--color-accent); }
 
 /* 3-Line Summary / 요약 */
 .sub-summary {
     background: var(--summary-bg);
-    border: 1px solid var(--summary-border);
-    border-radius: 6px;
+    border: 1px solid var(--summary-rule);
     padding: 10px 14px;
     margin: 10px 0;
 }
 .sub-summary h4 {
-    font-size: 13px; color: var(--summary-border);
+    font-size: 12px; color: var(--summary-head);
     margin-bottom: 6px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.5px;
+    font-style: normal;
 }
 
 /* 기타 */
-mark { background: var(--highlight); padding: 0 2px; border-radius: 2px; }
+mark { background: var(--highlight-bg); color: var(--highlight-ink); padding: 0 2px; }
 .wiki-link { color: var(--wiki-link); font-weight: 500; }
 .note-image { margin: 14px 0; }
 .note-image img {
     display: block;
     max-width: 100%;
     height: auto;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--card-bg);
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper-2);
 }
 .missing-image {
     margin: 10px 0;
     padding: 10px 12px;
-    color: #991b1b;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    border-radius: 6px;
+    color: var(--missing-ink);
+    background: var(--missing-bg);
+    border: 1px solid var(--missing-rule);
     font-size: 13px;
 }
 .bold-line { font-weight: 700; margin: 6px 0; }
 .text-line { margin: 2px 0; }
 .data-table {
     width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px;
+    font-variant-numeric: tabular-nums;
 }
 .data-table td {
-    border: 1px solid var(--border); padding: 6px 10px;
+    border: 1px solid var(--color-rule); padding: 6px 10px;
 }
-.data-table tr:first-child td { font-weight: 700; background: var(--bg); }
+.data-table tr:first-child td { font-weight: 700; background: var(--color-paper-3); }
 
-h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
+h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style: normal; }
 
 /* 검색 하이라이트 */
-.search-highlight { background: #fbbf24; color: #000; padding: 0 1px; border-radius: 2px; }
+.search-highlight { background: var(--search-hl-bg); color: var(--search-hl-ink); padding: 0 1px; }
 
 /* 스크롤 투 탑 */
 .scroll-top {
     position: fixed; bottom: 24px; right: 24px;
-    width: 40px; height: 40px; border-radius: 50%;
-    background: var(--accent); color: #fff;
+    width: 38px; height: 38px; border-radius: 4px;
+    background: var(--color-paper-2); color: var(--color-ink);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 18px; border: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    opacity: 0; transition: opacity 0.3s;
+    cursor: pointer; border: 1px solid var(--color-rule);
+    box-shadow: var(--shadow);
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--dur-med) var(--ease-out);
 }
-.scroll-top.visible { opacity: 1; }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
 
 /* 모바일 */
 @media (max-width: 768px) {
@@ -268,47 +317,51 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
     .top-header .count { display: none; }
     .search-box { order: 10; flex: 1 1 100%; max-width: 100%; }
     .header-actions { gap: 4px; }
-    .header-actions .btn { padding: 4px 6px; font-size: 11px; }
+    .header-actions .btn { padding: 5px 7px; font-size: 11px; }
     .sidebar {
         width: min(280px, 85vw); transform: translateX(-100%);
-        box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+        box-shadow: 2px 0 12px oklch(0% 0 0 / 0.15);
     }
     .sidebar.visible { transform: translateX(0); }
     .main {
-        margin-left: 0 !important; padding: 10px 8px;
-        max-width: 100vw; width: 100%; overflow-x: hidden;
+        margin-left: 0 !important; padding: 10px 10px 60px;
+        max-width: 100%; width: 100%; overflow-x: hidden;
     }
-    .section-card { border-radius: 8px; }
-    .section-header { padding: 10px 12px; gap: 8px; }
-    .section-title { font-size: 14px; word-break: keep-all; overflow-wrap: break-word; }
-    .section-body { padding: 0 12px 12px; overflow-x: auto; word-break: keep-all; overflow-wrap: break-word; }
+    .section-header { padding: 12px 2px; gap: 8px; }
+    .section-title { font-size: 14.5px; word-break: keep-all; overflow-wrap: break-word; }
+    .section-body { padding: 0 2px 18px; overflow-x: auto; word-break: keep-all; overflow-wrap: break-word; }
     .source-quote { padding: 10px 12px; font-size: 13px; }
     .quote-line { word-break: keep-all; overflow-wrap: break-word; }
     .memo-item, .memo-bullet { font-size: 13px; }
     .data-table { font-size: 12px; display: block; overflow-x: auto; }
     .sidebar-overlay {
         display: none; position: fixed; inset: 0; top: var(--header-h, 52px);
-        background: rgba(0,0,0,0.4); z-index: 40;
+        background: oklch(0% 0 0 / 0.4); z-index: 40;
     }
     .sidebar-overlay.visible { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation: none !important; }
 }
 </style>
 </head>
 <body>
 
 <div class="top-header">
-    <a href="/" class="btn" style="text-decoration:none;">🏠</a>
-    <a href="https://weekly-input.vercel.app/" class="btn" style="text-decoration:none;" title="주기적 인풋 정리">🗂️</a>
-    <button class="btn" onclick="toggleSidebar()" id="sidebarBtn">☰</button>
+    <a href="/" class="btn" aria-label="홈"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.8 12 3.5l9 7.3"/><path d="M5.5 9.5V20a.8.8 0 0 0 .8.8h11.4a.8.8 0 0 0 .8-.8V9.5"/></svg></a>
+    <a href="https://weekly-input.vercel.app/" class="btn" title="주기적 인풋 정리" aria-label="주기적 인풋 정리"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 4h17v4h-17z"/><path d="M5 8v11.2a.8.8 0 0 0 .8.8h12.4a.8.8 0 0 0 .8-.8V8"/><path d="M10 12h4"/></svg></a>
+    <button class="btn" onclick="toggleSidebar()" id="sidebarBtn" aria-label="목차 열기/닫기"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <h1>2026년 하반기 학습 모음</h1>
     <span class="count">69개 섹션</span>
     <div class="search-box">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg>
         <input type="text" id="searchInput" placeholder="검색어 입력... (제목 + 본문)" oninput="handleSearch(this.value)">
     </div>
     <div class="header-actions">
         <button class="btn" onclick="expandAll()">전체 펼치기</button>
         <button class="btn" onclick="collapseAll()">전체 접기</button>
-        <button class="btn" onclick="toggleTheme()" id="themeBtn">🌙 다크</button>
+        <button class="btn" onclick="toggleTheme()" id="themeBtn" aria-label="테마 전환"><svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.2A8 8 0 1 1 10.8 4a6.5 6.5 0 0 0 9.2 9.2z"/></svg><svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8V5M12 19v2.2M2.8 12H5M19 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg></button>
     </div>
 </div>
 
@@ -316,15 +369,15 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
 <div class="layout">
     <nav class="sidebar" id="sidebar">
         <ul id="tocList">
-            <li><a href="#section-0" class="toc-link" data-index="0"><span class="toc-num">1</span>승도리~260703</a></li>
-<li><a href="#section-1" class="toc-link" data-index="1"><span class="toc-num">2</span>! A급 인재는 존재하는가</a></li>
-<li><a href="#section-2" class="toc-link" data-index="2"><span class="toc-num">3</span>! Today’s Top Founders All Have One Thin...</a></li>
-<li><a href="#section-3" class="toc-link" data-index="3"><span class="toc-num">4</span>! 굿 라이프</a></li>
-<li><a href="#section-4" class="toc-link" data-index="4"><span class="toc-num">5</span>! 머니콘서트 2026 윤지호 경제평론가 반도체 탑2에 50%…나머지는 ...</a></li>
-<li><a href="#section-5" class="toc-link" data-index="5"><span class="toc-num">6</span>! 어쩌다 보니 AI 시대를 맞아버린 빌더의 자세</a></li>
-<li><a href="#section-6" class="toc-link" data-index="6"><span class="toc-num">7</span>! 절판되지 않는 브랜딩 민음사 마케팅부 인터뷰</a></li>
-<li><a href="#section-7" class="toc-link" data-index="7"><span class="toc-num">8</span>! 🧢 큰 한 방이 아니라, 수년에 걸쳐 반복된 작은 결정들이 삶을 바꿉...</a></li>
-<li><a href="#section-8" class="toc-link" data-index="8"><span class="toc-num">9</span>! 2026-06-29_토스_광고_5원칙</a></li>
+            <li><a href="#section-0" class="toc-link" data-index="0"><span class="toc-num">01</span>승도리~260703</a></li>
+<li><a href="#section-1" class="toc-link" data-index="1"><span class="toc-num">02</span>! A급 인재는 존재하는가</a></li>
+<li><a href="#section-2" class="toc-link" data-index="2"><span class="toc-num">03</span>! Today’s Top Founders All Have One Thin...</a></li>
+<li><a href="#section-3" class="toc-link" data-index="3"><span class="toc-num">04</span>! 굿 라이프</a></li>
+<li><a href="#section-4" class="toc-link" data-index="4"><span class="toc-num">05</span>! 머니콘서트 2026 윤지호 경제평론가 반도체 탑2에 50%…나머지는 ...</a></li>
+<li><a href="#section-5" class="toc-link" data-index="5"><span class="toc-num">06</span>! 어쩌다 보니 AI 시대를 맞아버린 빌더의 자세</a></li>
+<li><a href="#section-6" class="toc-link" data-index="6"><span class="toc-num">07</span>! 절판되지 않는 브랜딩 민음사 마케팅부 인터뷰</a></li>
+<li><a href="#section-7" class="toc-link" data-index="7"><span class="toc-num">08</span>! 🧢 큰 한 방이 아니라, 수년에 걸쳐 반복된 작은 결정들이 삶을 바꿉...</a></li>
+<li><a href="#section-8" class="toc-link" data-index="8"><span class="toc-num">09</span>! 2026-06-29_토스_광고_5원칙</a></li>
 <li><a href="#section-9" class="toc-link" data-index="9"><span class="toc-num">10</span>양파~260710</a></li>
 <li><a href="#section-10" class="toc-link" data-index="10"><span class="toc-num">11</span>승도리~260710</a></li>
 <li><a href="#section-11" class="toc-link" data-index="11"><span class="toc-num">12</span>!!“이 정도면 직접 만들겠는데” 바이브 코딩으로 유료 앱 대체하기</a></li>
@@ -390,10 +443,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
     <main class="main" id="mainContent">
         
         <div class="section-card" id="section-0" data-index="0">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">1</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">01</span>
                 <h2 class="section-title">승도리~260703</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -432,10 +485,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-1" data-index="1">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">2</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">02</span>
                 <h2 class="section-title">! A급 인재는 존재하는가</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -459,10 +512,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-2" data-index="2">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">3</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">03</span>
                 <h2 class="section-title">! Today’s Top Founders All Have One Thing in Common</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -485,10 +538,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-3" data-index="3">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">4</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">04</span>
                 <h2 class="section-title">! 굿 라이프</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -508,10 +561,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-4" data-index="4">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">5</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">05</span>
                 <h2 class="section-title">! 머니콘서트 2026 윤지호 경제평론가 반도체 탑2에 50%…나머지는 현금으로 들고 가라</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -535,10 +588,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-5" data-index="5">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">6</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">06</span>
                 <h2 class="section-title">! 어쩌다 보니 AI 시대를 맞아버린 빌더의 자세</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -560,10 +613,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-6" data-index="6">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">7</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">07</span>
                 <h2 class="section-title">! 절판되지 않는 브랜딩 민음사 마케팅부 인터뷰</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -584,10 +637,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-7" data-index="7">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">8</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">08</span>
                 <h2 class="section-title">! 🧢 큰 한 방이 아니라, 수년에 걸쳐 반복된 작은 결정들이 삶을 바꿉니다</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -609,10 +662,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-8" data-index="8">
-            <div class="section-header" onclick="toggleSection(this)">
-                <span class="section-num">9</span>
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
+                <span class="section-num">09</span>
                 <h2 class="section-title">! 2026-06-29_토스_광고_5원칙</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -651,10 +704,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-9" data-index="9">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">10</span>
                 <h2 class="section-title">양파~260710</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 
@@ -670,10 +723,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-10" data-index="10">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">11</span>
                 <h2 class="section-title">승도리~260710</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -703,10 +756,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-11" data-index="11">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">12</span>
                 <h2 class="section-title">!!“이 정도면 직접 만들겠는데” 바이브 코딩으로 유료 앱 대체하기</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -729,10 +782,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-12" data-index="12">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">13</span>
                 <h2 class="section-title">!!2026-07-05_K뷰티_마케팅_비법</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -752,10 +805,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-13" data-index="13">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">14</span>
                 <h2 class="section-title">!!2026-07-06_오닐의_강력한_재매수</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -776,10 +829,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-14" data-index="14">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">15</span>
                 <h2 class="section-title">!!2026-07-08_좋은_시장_찾기의_법칙</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -800,10 +853,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-15" data-index="15">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">16</span>
                 <h2 class="section-title">!!2026-07-08_커뮤니티_기반_창업의_정석</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -825,10 +878,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-16" data-index="16">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">17</span>
                 <h2 class="section-title">!!나는 쓸모없어 정신과 의사도 이런 생각을 합니다</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -853,10 +906,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-17" data-index="17">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">18</span>
                 <h2 class="section-title">!!변동성 장세 매매 - 회의록 요약 및 실전 매매법 정리</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -886,10 +939,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-18" data-index="18">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">19</span>
                 <h2 class="section-title">!!작은 규율</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -910,10 +963,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-19" data-index="19">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">20</span>
                 <h2 class="section-title">!!Leaders need to communicate clearly. Here are 3 core principles that will help you do that</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -934,10 +987,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-20" data-index="20">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">21</span>
                 <h2 class="section-title">승도리~260717</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1001,10 +1054,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-21" data-index="21">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">22</span>
                 <h2 class="section-title">양파~260717</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1044,10 +1097,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-22" data-index="22">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">23</span>
                 <h2 class="section-title">!!‘6600만부 신화’ 웹소설계 레전드 김수지···‘상수리나무’ ‘잊혀진 들판’ 창작의 비밀</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1062,10 +1115,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-23" data-index="23">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">24</span>
                 <h2 class="section-title">!!가짜 창업가</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1086,10 +1139,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-24" data-index="24">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">25</span>
                 <h2 class="section-title">!!다이아몬드도 영원하지 않았다</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1110,10 +1163,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-25" data-index="25">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">26</span>
                 <h2 class="section-title">!!브랜드의 자기다움은 질문에서 시작된다  더워터멜론 공동대표 우승우</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1141,10 +1194,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-26" data-index="26">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">27</span>
                 <h2 class="section-title">!!승도리 투자 프레임워크 v3.0</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1174,10 +1227,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-27" data-index="27">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">28</span>
                 <h2 class="section-title">!!펀드 스미스 2026년 반기 서한</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1194,10 +1247,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-28" data-index="28">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">29</span>
                 <h2 class="section-title">!!The Most Human Technology Ever Made</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1222,10 +1275,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-29" data-index="29">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">30</span>
                 <h2 class="section-title">!!20260724_승도리_주간_요약</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1308,10 +1361,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-30" data-index="30">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">31</span>
                 <h2 class="section-title">!!10분이면 무너지는 생각 근육 · 제154호 · 오즈의 지식토킹</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <div class="memo-bullet">• 내 업무의 전부가 아니라 딱 10% 정도만 ai에 위임해볼 것</div>
@@ -1329,10 +1382,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-31" data-index="31">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">32</span>
                 <h2 class="section-title">!!2026-07-21_좁은_시장_집중_성장</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1355,10 +1408,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-32" data-index="32">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">33</span>
                 <h2 class="section-title">!!2026-07-21_텍스트_장인정신</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1374,10 +1427,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-33" data-index="33">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">34</span>
                 <h2 class="section-title">!!2026-07-21_편집자와_글쓰기_조언</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <div class="memo-bullet">• 많이 공유하고 피드백 받을 것</div>
@@ -1396,10 +1449,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-34" data-index="34">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">35</span>
                 <h2 class="section-title">!!20260724_체리형부_주간_요약</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1414,10 +1467,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-35" data-index="35">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">36</span>
                 <h2 class="section-title">!!가장 어려운 상대.</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1439,10 +1492,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-36" data-index="36">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">37</span>
                 <h2 class="section-title">!!명문대 교수 허문오는 왜 &#x27;진짜 어른&#x27;이 되지 못했을까</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1463,10 +1516,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-37" data-index="37">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">38</span>
                 <h2 class="section-title">!!양파 리마인드 세미나 쏠림장에서도 원칙을 잃지 않는 법</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1494,10 +1547,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-38" data-index="38">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">39</span>
                 <h2 class="section-title">!!카페 2030 ‘남 탓’하는 정일영 교수를 응원함</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1517,10 +1570,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-39" data-index="39">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">40</span>
                 <h2 class="section-title">!!흔들리지 않는 투자자</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1543,10 +1596,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-40" data-index="40">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">41</span>
                 <h2 class="section-title">!!Netflix The counterpositioning company</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1566,10 +1619,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-41" data-index="41">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">42</span>
                 <h2 class="section-title">!!Who’s Afraid of Chinese Models</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1585,10 +1638,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-42" data-index="42">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">43</span>
                 <h2 class="section-title">승도리~260731</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1682,10 +1735,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-43" data-index="43">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">44</span>
                 <h2 class="section-title">!!2026-07-28_윤지호_시장_&amp;_반도체</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1711,10 +1764,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-44" data-index="44">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">45</span>
                 <h2 class="section-title">Clippings/2026년/~260731/!!복잡주의자</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1736,10 +1789,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-45" data-index="45">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">46</span>
                 <h2 class="section-title">Clippings/2026년/~260731/!!AI 시대에 번영할 사람들</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1776,10 +1829,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-46" data-index="46">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">47</span>
                 <h2 class="section-title">!!We Went to the Boot Camp Where KPMG Teaches Auditors to Think Critically</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1801,10 +1854,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-47" data-index="47">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">48</span>
                 <h2 class="section-title">00김동현 - 최근에 Threads에서 본 글한 기획자가 Claude를 이용해 화면을 만들고, shadcn 기반으로</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1833,10 +1886,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-48" data-index="48">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">49</span>
                 <h2 class="section-title">00번역 언제 물타기를 할 것인가 (f.존 헴프턴)</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1872,10 +1925,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-49" data-index="49">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">50</span>
                 <h2 class="section-title">00한국_반도체_급락_회의록_상세_요약</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1908,10 +1961,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-50" data-index="50">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">51</span>
                 <h2 class="section-title">Clippings/2026년/~260731/00AI 도구 26개를 직접 만들며 알게 된 자동화 노하우 복사본</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -1930,10 +1983,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-51" data-index="51">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">52</span>
                 <h2 class="section-title">00Reveal_핵심_프레임워크_상세_구조화</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -1995,10 +2048,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-52" data-index="52">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">53</span>
                 <h2 class="section-title">승도리 ~260807</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -2053,10 +2106,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-53" data-index="53">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">54</span>
                 <h2 class="section-title">Clippings/2026년/~260807/00_🟡 Semafor Tech YouTube’s lesson</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2079,10 +2132,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-54" data-index="54">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">55</span>
                 <h2 class="section-title">00_90일 동안 2만명 이상의 구독자 증가를 만든 방법</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2124,10 +2177,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-55" data-index="55">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">56</span>
                 <h2 class="section-title">00_기업은 왜 자신도 모르게 제품-시장 적합성을 잃게 될까</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -2163,10 +2216,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-56" data-index="56">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">57</span>
                 <h2 class="section-title">00_내가 이 바닥만 20년이야</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2200,10 +2253,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-57" data-index="57">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">58</span>
                 <h2 class="section-title">00_매니저가 된다는 것의 진실</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2233,10 +2286,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-58" data-index="58">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">59</span>
                 <h2 class="section-title">Clippings/2026년/~260807/00_좋아한다는 것</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2275,10 +2328,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-59" data-index="59">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">60</span>
                 <h2 class="section-title">00_Founder&#x27;s Note</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2312,10 +2365,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-60" data-index="60">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">61</span>
                 <h2 class="section-title">00_From Plans to Bets Strategy in the Age of Prediction</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2353,10 +2406,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-61" data-index="61">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">62</span>
                 <h2 class="section-title">Clippings/2026년/~260807/00_Netflix가 AI 시대에 전문가보다 시스템 사고형 인재에 베팅하는 이유 (유튜브)</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2394,10 +2447,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-62" data-index="62">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">63</span>
                 <h2 class="section-title">윤지호 센터장</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <figure class="note-image"><img src="assets/images/Pasted%20image%2020260814232544.png" alt="Pasted image 20260814232544" loading="lazy"></figure>
@@ -2408,10 +2461,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-63" data-index="63">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">64</span>
                 <h2 class="section-title">00_20260807-0814_승도리_뉴스클리핑_요약</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -2448,10 +2501,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-64" data-index="64">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">65</span>
                 <h2 class="section-title">00_🎩 서비스 문구 전반의 오케스트레이터, UX라이터 글쓰는개미핥기</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2481,10 +2534,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-65" data-index="65">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">66</span>
                 <h2 class="section-title">00_30 Lessons at 30</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2516,10 +2569,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-66" data-index="66">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">67</span>
                 <h2 class="section-title">00_33. 투자에서의 유연함</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2550,10 +2603,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-67" data-index="67">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">68</span>
                 <h2 class="section-title">00_당신은 전략가입니까_요약</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <blockquote class="source-quote">
@@ -2590,10 +2643,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
         </div>
 
         <div class="section-card" id="section-68" data-index="68">
-            <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header" role="button" tabindex="0" onclick="toggleSection(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection(this);}">
                 <span class="section-num">69</span>
                 <h2 class="section-title">00_Why Netflix is betting on systems thinkers_요약</h2>
-                <span class="toggle-icon">▼</span>
+                <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
                 <br>
@@ -2655,7 +2708,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--accent); }
     </main>
 </div>
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5 12 5l6.5 6.5"/></svg></button>
 
 <script>
 // 테마
@@ -2663,16 +2716,12 @@ function toggleTheme() {
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.getElementById('themeBtn').textContent = isDark ? '🌙 다크' : '☀️ 라이트';
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
 }
 (function() {
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('themeBtn').textContent = '☀️ 라이트';
-        });
     }
 })();
 
