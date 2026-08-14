@@ -666,6 +666,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
     transition: opacity var(--dur-med) var(--ease-out);
 }
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-bottom { bottom: 70px; }
 
 /* 모바일 */
 @media (max-width: 768px) {
@@ -735,6 +736,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 </div>
 
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5 12 5l6.5 6.5"/></svg></button>
+<button class="scroll-top scroll-bottom" id="scrollBottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="맨 아래로"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5.5 12.5 12 19l6.5-6.5"/></svg></button>
 
 <script>
 // 테마
@@ -844,10 +846,15 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.section-card').forEach(c => observer.observe(c));
 
-// 스크롤 투 탑
-window.addEventListener('scroll', () => {
+// 스크롤 투 탑 / 바텀
+function updateScrollBtns() {
     document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
-});
+    const nearBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 400;
+    document.getElementById('scrollBottom').classList.toggle('visible', !nearBottom);
+}
+window.addEventListener('scroll', updateScrollBtns);
+window.addEventListener('resize', updateScrollBtns);
+updateScrollBtns();
 
 // 기본 접기
 document.addEventListener('DOMContentLoaded', () => {
