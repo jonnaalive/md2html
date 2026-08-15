@@ -297,6 +297,8 @@ def generate_html(sections: list[dict], title: str) -> str:
         body = sec['body']
         # 연속 quote-line을 blockquote로 래핑
         body = wrap_quotes(body)
+        # 연속 memo-item/memo-bullet을 하나의 memo-block으로 래핑
+        body = wrap_memos(body)
         # 테이블 래핑
         body = wrap_tables(body)
 
@@ -325,7 +327,7 @@ def wrap_quotes(body: str) -> str:
     result = []
     in_quote = False
     for line in lines:
-        if '<div class="quote-line">' in line:
+        if '<div class="quote-line' in line:
             if not in_quote:
                 result.append('<blockquote class="source-quote">')
                 in_quote = True
@@ -337,6 +339,27 @@ def wrap_quotes(body: str) -> str:
             result.append(line)
     if in_quote:
         result.append('</blockquote>')
+    return '\n'.join(result)
+
+
+def wrap_memos(body: str) -> str:
+    """연속된 memo-item/memo-bullet들을 memo-block 하나로 묶기 (줄마다 박스가 생기는 것 방지)"""
+    lines = body.split('\n')
+    result = []
+    in_memo = False
+    for line in lines:
+        if line.lstrip().startswith('<div class="memo-'):
+            if not in_memo:
+                result.append('<div class="memo-block">')
+                in_memo = True
+            result.append(line)
+        else:
+            if in_memo:
+                result.append('</div>')
+                in_memo = False
+            result.append(line)
+    if in_memo:
+        result.append('</div>')
     return '\n'.join(result)
 
 
@@ -597,19 +620,22 @@ body {
 .quote-line.indent { margin-left: 22px; font-size: 13px; }
 .text-line.indent, .bold-line.indent { margin-left: 24px; }
 
-/* 메모 (내 생각) */
-.memo-item, .memo-bullet {
-    padding: 4px 0 4px 8px;
+/* 메모 (내 생각): 연속 항목은 memo-block 하나로 묶여 배경·룰을 공유 */
+.memo-block {
     border-left: 2px solid var(--memo-rule);
-    margin: 4px 0 4px 4px;
     background: var(--memo-bg);
-    padding-left: 12px;
+    padding: 8px 14px;
+    margin: 10px 0 10px 4px;
     font-size: 14px;
 }
-.memo-item.indent, .memo-bullet.indent {
-    margin-left: 24px;
-    border-left-color: var(--color-rule);
+.memo-item, .memo-bullet { padding: 2px 0; }
+.memo-item.indent, .memo-bullet.indent { padding-left: 24px; }
+/* 요약 박스 안에서는 이중 박스 방지 */
+.sub-summary .memo-block {
+    border-left: none;
     background: transparent;
+    padding: 0;
+    margin: 4px 0;
 }
 .memo-num { font-weight: 700; color: var(--color-accent); }
 
@@ -698,7 +724,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
     .section-body { padding: 0 2px 18px; overflow-x: auto; word-break: keep-all; overflow-wrap: break-word; }
     .source-quote { padding: 10px 12px; font-size: 13px; }
     .quote-line { word-break: keep-all; overflow-wrap: break-word; }
-    .memo-item, .memo-bullet { font-size: 13px; }
+    .memo-block { font-size: 13px; }
     .data-table { font-size: 12px; display: block; overflow-x: auto; }
     .sidebar-overlay {
         display: none; position: fixed; inset: 0; top: var(--header-h, 52px);

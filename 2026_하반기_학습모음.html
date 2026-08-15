@@ -234,19 +234,22 @@ body {
 .quote-line.indent { margin-left: 22px; font-size: 13px; }
 .text-line.indent, .bold-line.indent { margin-left: 24px; }
 
-/* 메모 (내 생각) */
-.memo-item, .memo-bullet {
-    padding: 4px 0 4px 8px;
+/* 메모 (내 생각): 연속 항목은 memo-block 하나로 묶여 배경·룰을 공유 */
+.memo-block {
     border-left: 2px solid var(--memo-rule);
-    margin: 4px 0 4px 4px;
     background: var(--memo-bg);
-    padding-left: 12px;
+    padding: 8px 14px;
+    margin: 10px 0 10px 4px;
     font-size: 14px;
 }
-.memo-item.indent, .memo-bullet.indent {
-    margin-left: 24px;
-    border-left-color: var(--color-rule);
+.memo-item, .memo-bullet { padding: 2px 0; }
+.memo-item.indent, .memo-bullet.indent { padding-left: 24px; }
+/* 요약 박스 안에서는 이중 박스 방지 */
+.sub-summary .memo-block {
+    border-left: none;
     background: transparent;
+    padding: 0;
+    margin: 4px 0;
 }
 .memo-num { font-weight: 700; color: var(--color-accent); }
 
@@ -335,7 +338,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
     .section-body { padding: 0 2px 18px; overflow-x: auto; word-break: keep-all; overflow-wrap: break-word; }
     .source-quote { padding: 10px 12px; font-size: 13px; }
     .quote-line { word-break: keep-all; overflow-wrap: break-word; }
-    .memo-item, .memo-bullet { font-size: 13px; }
+    .memo-block { font-size: 13px; }
     .data-table { font-size: 12px; display: block; overflow-x: auto; }
     .sidebar-overlay {
         display: none; position: fixed; inset: 0; top: var(--header-h, 52px);
@@ -462,25 +465,31 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet indent">• 지정학 리스크로 원유 물류와 해운 흐름은 전쟁 전 수준으로 정상화되기 어렵고, 유가 자체보다 석유 장비·강관·해운·미드스트림에 집중하는 관점이다.</div>
 <div class="memo-bullet indent">• 반도체는 삼성전자·하이닉스 같은 IDM보다 CAPEX 수혜를 받는 장비·소부장이 더 유리하며, MS·구글은 CAPEX 부담으로 밸류에이션 하락 시 편입을 고민할 만하다.</div>
 <div class="memo-bullet indent">• 조선·에너지·반도체 모두 중장기적으로 좋게 보지만 변동성이 크므로 노 레버리지, 신용잔고 축소와 반대매매 이후 <mark>분할매수 전략을 선호한다.</mark></div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet indent">• 전체 투자 관점</div>
 <div class="memo-bullet indent">• 글쓴이는 현재 시장을 “업황은 나쁘지 않지만 변동성이 매우 큰 장”으로 본다.</div>
 <div class="memo-bullet indent">• 에너지, 해운, 조선, 반도체 장비·소부장에 긍정적이다.</div>
 <div class="memo-bullet indent">• 다만 고점 대비 -20~30% 조정은 충분히 가능하다고 보고, 레버리지 사용을 강하게 경계한다.</div>
 <div class="memo-bullet indent">• <mark>무리한 추격매수보다 시장이 흔들릴 때, 특히 반대매매와 신용잔고 축소가 나타날 때 천천히 매수하는 전략을 선호한다.</mark></div>
+</div>
 <br>
 <br>
 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 투자는 통제불가능함. 그렇기에 내가 통제 가능한 다른 것에 에너지를 쏟으면서 불안을 극복하라</strong></div>
 </blockquote>
+<div class="memo-block">
 <div class="memo-bullet indent">• 예를 들어 군것질 줄이기 등 -&gt; 성공한 나 자신 칭찬하기</div>
+</div>
 <figure class="note-image"><img src="assets/images/Pasted%20image%2020260701174117.png" alt="Pasted image 20260701174117" loading="lazy"></figure>
 </div>
 
@@ -499,15 +508,17 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line">- S급 인재가 조직의 전체 효율성을 높여줌. 그런데, 그들이 없다고 또 무너지진 않음.</div>
 <div class="quote-line"><strong>- 요지는 승률을 높이기 위해서 어떻게 조직을 운영하는지임.</strong></div>
 <div class="quote-line">- a급 선수를 어떻게 대할까보다 <strong>우리 전체의 승리를 위해서 무엇을 해야 하는지 봐야 함</strong></div>
-</blockquote>
 <div class="quote-line indent">- 우리 전체를 위해 s가 필요한가?</div>
 <div class="quote-line indent">- 근데 저 새끼가 우리 전체를 갉아먹나?</div>
+</blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>조직은 특정 인재 한 명의 이탈로 쉽게 무너지지 않지만, 장기적으로는 성장이 둔화될 수 있습니다.</mark></div>
 <div class="memo-bullet">• &#x27;팀보다 위대한 선수는 없다&#x27;는 논리로 A급 인재의 기여를 부정하거나 배척하는 조직은 경쟁력을 잃기 쉽습니다.</div>
 <div class="memo-bullet">• <mark>진정한 강한 팀은 인재의 가치를 인정하고 그들이 성과를 낼 수 있는 최적의 환경을 조성하는 리더십에서 나옵니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -532,8 +543,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 현대 스타트업의 핵심 역량은 제품력보다 창업자의 영향력과 커뮤니티 구축을 통한 배포(Distribution) 능력입니다.</div>
 <div class="memo-bullet">• 창업자가 인플루언서가 되어 직접 소통하는 것이 고객 신뢰를 얻고 마케팅 비용을 절감하는 강력한 해자가 되었습니다.</div>
+</div>
 <br>
 </div>
 
@@ -554,9 +567,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 서울대 최인철 교수의 저서 &#x27;굿 라이프&#x27;를 통해 행복한 삶을 위한 쾌락과 의미의 균형을 고찰합니다.</div>
 <div class="memo-bullet">• <mark>타인의 시선에서 벗어나 내면의 소리에 집중하고, 행복을 위한 최적의 환경을 스스로 구축해야 합니다.</mark></div>
 <div class="memo-bullet">• 불필요한 수식어를 줄이고 단순하고 담백한 삶을 사는 것이 진정한 굿 라이프의 핵심입니다.</div>
+</div>
 <br>
 </div>
 
@@ -574,18 +589,18 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 기업의 본질 = FCF 현금창출력.</strong></div>
 <div class="quote-line"><strong>- 주가 -&gt; 이익을 따라 간다.</strong></div>
-</blockquote>
 <div class="quote-line indent">- FCF가 나오는 기업에 돈을 넣어둬라.</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 대형주 중심으로 가고, 병목이 발생해서 가격 전가할 수 있는 회사, 구조적으로 좋아져서 주주 환원이 되는 회사에 투자할 것</strong></div>
 <div class="quote-line">- 예수금 비중 꼭!</div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 윤지호 평론가는 반도체 상위 2개 종목에 자산의 50%를 투자하고 나머지는 현금으로 보유할 것을 권고했습니다.</div>
 <div class="memo-bullet">• <mark>주식 투자의 본질은 기업의 현금창출력이며, 단기 변동성에 흔들리지 않는 장기적 관점의 중요성을 강조했습니다.</mark></div>
 <div class="memo-bullet">• 향후 10년은 고금리와 인플레이션이 지속될 가능성이 높으므로, 대형주 위주의 보수적인 포트폴리오를 유지해야 합니다.</div>
+</div>
 <br>
 </div>
 
@@ -607,9 +622,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• AI 시대에는 만드는 능력보다 무엇을, 왜 만들어야 할지 결정하는 &#x27;판단&#x27;과 &#x27;의도&#x27;가 핵심 경쟁력입니다.</div>
 <div class="memo-bullet">• <mark>도구를 쫓는 FOMO에서 벗어나 자신만의 문제의식과 관점을 세우는 것이 중요합니다.</mark></div>
 <div class="memo-bullet">• AI는 실행과 검증을 돕는 레버리지 도구로 활용하되, 방향성만큼은 인간이 주도적으로 쥐어야 합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -632,9 +649,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 60년 전통의 민음사가 유튜브 채널 ‘민음사TV’를 통해 1020세대의 팬덤을 확보하며 브랜드 영향력을 확장했습니다.</div>
 <div class="memo-bullet">• 제품 판매보다 사람과 콘텐츠를 먼저 앞세워 고객과의 관계를 구축하고, 이를 통해 신간과 구간의 선순환 구조를 만들었습니다.</div>
 <div class="memo-bullet">• 변화하는 시장 환경 속에서도 상품에 대한 확신을 바탕으로 새로운 포맷에 끊임없이 도전하며 지속 가능한 브랜딩을 실천하고 있습니다.</div>
+</div>
 <br>
 </div>
 
@@ -655,10 +674,12 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>터크먼의 책에서 얻는 가장 근본적인 결론은, ‘최적의 전략을 기다리는 대신 합리적인 전략을 채택하고 이를 고수하면 대개는 성공한다’는 것이다.</mark></div>
 <div class="memo-bullet">• (즉, 전쟁에서) <mark>끈기는 탁월함만큼이나 중요하다.</mark> 독일군과 프랑스군 모두 뛰어난 참모진이 있었지만, 어느 쪽도 전쟁 전의 계획을 고수하는 끈기를 발휘하지 못했다. 그 결과, 전쟁은 발발 후 90일이 지나고부터 4년간의 유혈 사태로 빠져들었다.</div>
 <div class="memo-bullet">• (이후) 나는 사업을 하면서 겪는 문제들에 대해 늘 최적의 해결책이 아니라, <mark>그저 합리적인 해결책을 찾으면 된다는 결론을 내렸다.</mark></div>
 <div class="memo-bullet">• <mark>(좀 더 심하게 말하면) 사업을 하면서 최적의 해결책을 찾으려고 하는 것은 시간 낭비다. 방정식은 늘 변하기 때문이다.</mark></div>
+</div>
 <br>
 <br>
 </div>
@@ -676,37 +697,35 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 모든 장점을 나열하기보다 딱 하나의 메시지를 자랑하자</strong></div>
-</blockquote>
 <div class="quote-line indent">- 주절주절 -&gt; 현학적. 개싸요! -&gt; 직관적</div>
-<blockquote class="source-quote">
 <div class="quote-line">- 최대치의 보상이 아니라 <strong>가장 확실한 보상을 주자.</strong></div>
-</blockquote>
 <div class="quote-line indent">- 무조건 xx원 할인, 무조건 뽑기 등</div>
-<blockquote class="source-quote">
 <div class="quote-line">- <strong>심리적 부담을 줄여주는 cta 문구를 쓰자 : 뽑기, 준비하기 등</strong></div>
 <div class="quote-line">- <strong>조건과 행동을 유도할 때는 최대한 구체적으로 하기 : 부담을 줄여주자</strong></div>
-</blockquote>
 <div class="quote-line indent">- 금융 미션 풀기 -&gt; 퀴즈 4개 풀기 등</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 평상시에 쓰는 말로 풀어쓰기</strong></div>
-</blockquote>
 <div class="quote-line indent">- 복잡한 문장은 <strong>쪼개서 다시 만들고</strong></div>
 <div class="quote-line indent">- 막연한 문구는 <strong>더 구체적으로 -&gt; 보자마자 이해하게끔 수정하고</strong></div>
 <div class="quote-line indent">- 어색한 문구는 읽어보면서 수정하자</div>
+</blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <div class="bold-line">광고 소재 5원칙 (필승 문구 특징)</div>
+<div class="memo-block">
 <div class="memo-bullet indent">• <mark>단 하나의 핵심만 전달하기: 서비스의 모든 장점 나열보다 단일 핵심 메시지 전달이 효과적입니다. 예시로, &#x27;소비 궁합&#x27;과 &#x27;신혼부부 지원금&#x27; 두 핵심이 섞인 경우보다 단일 컨셉에 집중했을 때 CTR이 10배 높았습니다.</mark></div>
 <div class="memo-bullet indent">• 확실한 보상 약속하기: &#x27;최대 100만 원&#x27;보다 &#x27;최소 100원 뽑기&#x27;처럼 확실한 보상이 클릭을 유도합니다. 불확실한 큰 금액보다 작은 금액이라도 무조건 받을 수 있다는 확신을 줍니다.</div>
 <div class="memo-bullet indent">• 행동을 가볍게 표현하기: &#x27;가입하기&#x27; 대신 &#x27;준비하기&#x27;, &#x27;결제수단 바꾸고&#x27; 대신 &#x27;고르고&#x27;처럼 심리적 부담을 줄이는 가벼운 동사 사용이 CTR을 최대 3배 높일 수 있습니다.</div>
 <div class="memo-bullet indent">• 조건, 행동 구체적으로 쓰기: &#x27;금융 미션&#x27;보다 &#x27;금융 미션 4개&#x27;, &#x27;빈칸 채우기&#x27;보다 &#x27;8칸 채우기&#x27;처럼 구체적인 숫자 제시가 불확실성을 제거하고 클릭으로 이어집니다.</div>
 <div class="memo-bullet indent">• <mark>자주 쓰는 말로 풀어쓰기: 외래어나 한자어 대신 &#x27;타임어택&#x27;을 &#x27;시간 제한 고스톱&#x27;으로, &#x27;최저가&#x27;를 &#x27;제일 싼&#x27;으로 바꾸는 등 쉽고 친근한 단어 사용이 클릭률을 높입니다.</mark></div>
+</div>
 <br>
 <div class="bold-line">저효율 소재 개선 3단계 프로세스</div>
+<div class="memo-block">
 <div class="memo-bullet indent">• 복잡한 문장: 의미 단위로 쪼개 핵심 단어 2~3개로 다시 조합합니다.</div>
 <div class="memo-bullet indent">• 막연한 문구: 랜딩 페이지에서 사용자가 실제로 하는 구체적인 행동(예: &#x27;내 지역 선택하고 보조금 확인하기&#x27;)을 문구에 담습니다.</div>
 <div class="memo-bullet indent">• 어색한 문구: 소리 내어 읽어보고 더 친근하고 쉬운 단어로 바꿉니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -724,9 +743,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>AI CAPEX는 높은 레벨로 유지될 가능성이 크고 그렇다면 업황은 장기화되므로, 트레이딩을 가미할 게 아니라면 7~8월 노이즈로 AI주가 빠질 때 꾸준히 좋은 것을 모아두는 게 장기적으로 이기는 전략이다.</mark></div>
 <div class="memo-bullet">• 엔비디아는 AI 효율의 기준이 칩 → 랙 → Token/$ → Task/$ 이동하면서, 블랙웰→GB→루빈→VR로 Task/$가 실제로 좋아진다는 게 증명되지 않으면 장기 횡보할 수 있다. 반면 TSMC는 병목을 전부 쥐고 있어 뭐로 보나 좋을 수밖에 없다.</div>
 <div class="memo-bullet">• 결론은 인텔·TSMC·전닉·광에 포트 50%를 담고 30% 먹는 것 — 어설픈 걸 10% 찔끔 담지 말고 지금 있는 거에 충실하자.</div>
+</div>
 <br>
 </div>
 
@@ -748,11 +769,14 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>사이클 산업은 &quot;돈 벌면 발주 난다 / 높은 가격 → 공급 증가&quot;라는 단순 법칙으로 굴러가고, 지금 석유는 유가는 내려가는데 장비 발주는 이어지는 희한한 구간이라 유가 연동주가 아닌 Q에 연동되는 해운·강관이 수혜다.</mark></div>
 <div class="memo-bullet">• PER은 싸고 비싼 지표가 아니라 시장의 확신도를 나타내는 지표다 — 조선이 20배를 받는 건 2030년까지 이익이 확정됐다는 공감대 때문이고, 하이닉스가 낮은 건 시장이 의심하기 때문이다. 그러니 PBR로 밸류되는 걸 사려고 노력해야 한다.</div>
 <div class="memo-bullet">• 조선은 한·중이 LNGC·컨테이너·탱커를 쓸어가면서 벌커를 지을 곳이 일본·중국 신규 조선소밖에 안 남았고, 그중에서도 엔진(JAPAN ENGINE)이 가장 깔끔하다.</div>
+</div>
 <br>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• 조선: 선종 서열이 만드는 벌커의 빈틈</div>
 <div class="memo-bullet indent">• 선가 서열은 LNGC &gt; 컨테이너 &gt; 탱커(VLCC) &gt; 벌커(케이프사이즈)</div>
 <div class="memo-bullet indent">• 한국·중국이 상위 3개 선종을 쓸어가니 벌커를 지어줄 곳은 일본과 중국 신규 조선소뿐</div>
@@ -760,6 +784,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <mark>국내 대형사는 삼성중공업·현대중공업, 중형사는 HJ중공업 (7/9에도 현대중공업·삼성중공업 재언급)</mark></div>
 <div class="memo-bullet">• 일본 밸류체인도 가격이 많이 저렴해진 상태: 나무라조선소, 미츠이 E&amp;S(7003), JAPAN ENGINE(6016)</div>
 <div class="memo-bullet">• 핸디사이즈·울트라맥스 벌커 엔진의 주력이 JAPAN ENGINE → 그냥 엔진 쪽이 가장 깔끔</div>
+</div>
 <br>
 </div>
 
@@ -782,9 +807,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 기존 루틴 앱의 아쉬움을 해결하고자 Obsidian과 Claude Code를 활용해 개인 맞춤형 루틴 관리 도구를 직접 개발함.</div>
 <div class="memo-bullet">• 스크린샷과 AI를 결합한 반정형 데이터 마이그레이션 방식을 통해 기존 데이터를 손실 없이 성공적으로 이전함.</div>
 <div class="memo-bullet">• 개발 진입장벽이 낮아진 시대에 기술 구현보다는 &#x27;무엇을, 왜 만드는가&#x27;라는 문제 정의와 실사용 가치가 더 중요해짐.</div>
+</div>
 <br>
 <br>
 </div>
@@ -806,9 +833,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>Implications</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 마케팅 전략 수립 시 잠재 고객층과 플랫폼별 특성을 면밀히 분석하고 차별화된 접근이 필요합니다.</div>
 <div class="memo-bullet">• &#x27;오가닉&#x27;으로 보이는 바이럴 콘텐츠는 사실 의도된 기획과 시딩의 결과이며, 이를 위한 전략적인 노력이 중요합니다.</div>
 <div class="memo-bullet">• 기존 고객이나 커뮤니티의 신뢰와 추천을 활용하는 것은 가장 강력하고 효율적인 마케팅 수단이 될 수 있습니다..</div>
+</div>
 <br>
 </div>
 
@@ -829,9 +858,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 2005년 애플 주가 급락 시 윌리엄 오닐은 매매 원칙에 따라 포지션 일부를 매도했다.</div>
 <div class="memo-bullet">• 다음 날 50일 이동평균선 상에서 반등하는 포켓피봇 신호 발생 시 즉시 재매수했다.</div>
 <div class="memo-bullet">• 최고의 주식은 하락 후 강력한 회복 시 매도 물량 이상으로 비중을 늘려야 한다는 원칙을 적용했다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -854,9 +885,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 사업 성공은 엄청난 노력보다 &#x27;좋은 시장 선택&#x27;이 더 중요하다</div>
 <div class="memo-bullet">• 게으른 사람도 경쟁이 적은 틈새시장을 발굴하면 충분히 성공 가능</div>
 <div class="memo-bullet">• 자신의 생활에서 문제를 찾거나 검증된 사업을 약간 다르게 운영하는 것이 핵심</div>
+</div>
 <br>
 </div>
 
@@ -878,9 +911,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 사업 성공의 출발점은 제품이 아닌 커뮤니티와 신뢰 구축</div>
 <div class="memo-bullet">• 외주와 피드백을 통한 점진적 개선이 완성도 높은 제품을 만듦</div>
 <div class="memo-bullet">• 자신의 행복을 우선하면서도 이타적 커뮤니티를 함께 구축해야 함</div>
+</div>
 <br>
 <br>
 </div>
@@ -898,9 +933,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 나라는 캐릭터를 이룩하는 기둥을 여러 개 만들어야, 하나의 기둥이 무너져도 다른 기둥이 날 지탱해준다.</strong></div>
-</blockquote>
 <div class="quote-line indent">회사에서 병신이라도 집에서 좋은 캐릭터면 내가 안 무너짐</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 일에만 매몰되지 말 것. 간결하게 살되, 나를 지탱하는 기둥을 단일 종목으로만 이루지 말 것</strong></div>
 <div class="quote-line">- 내 삶도 포트폴리오다!</div>
 <div class="quote-line">- 앞으로의 미실현된 미래를 너무 확정적으로 받아들이지 말 것.</div>
@@ -909,9 +942,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 영화 &#x27;토이 스토리 5&#x27;의 제시가 느끼는 불안을 통해 현대인의 &#x27;쓸모없어짐에 대한 공포(FOBO)&#x27;를 분석합니다.</div>
 <div class="memo-bullet">• 자신의 정체성이 일과 성과에만 매몰될 때 겪는 심리적 위기를 다룹니다.</div>
 <div class="memo-bullet">• 불안을 극복하기 위해 자기 가치의 근거를 다변화하고 미래의 예측과 현재의 사실을 분리할 것을 제안합니다.</div>
+</div>
 <br>
 </div>
 
@@ -932,6 +967,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line"><strong>2. &quot;10% 이상 크게 빠질 때만 분할 매수&quot;처럼 매수 규칙이라도 기계화하라는 조언.</strong></div>
 <div class="quote-line"><strong>2. 10% 위로 뻥 튀면 그만큼 현금화하고 10% 아래로 뻥 떨어지면 그때 매수해라</strong></div>
 </blockquote>
+<div class="memo-block">
 <div class="memo-item"><span class="memo-num">1.</span> 차트는 이렇게 봐봐라</div>
 <div class="memo-bullet indent">• <strong>20일선</strong>: 단기 추세가 유지되는지 보는 기준. 깨지면 단기 조정 신호로 해석</div>
 <div class="memo-bullet indent">• <strong>60일선</strong>: 더 깊은 조정에서 매수 또는 지지 여부를 보는 기준 -&gt; 여기서 지지 받아야 함</div>
@@ -946,6 +982,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet indent">• <mark>핵심 포지션이 무섭다는 이유로 아무 스토리 없는 종목으로 이동하는 행동</mark></div>
 <div class="memo-bullet indent">• 고점 변동성 구간에서 주변 사람에게 주식을 권하는 행동 (관계가 상할 수 있다고 경고)</div>
 <div class="memo-bullet indent">• 현물에서도 힘든데 레버리지·인버스·선옵션으로 더 큰 변동성을 타는 행동</div>
+</div>
 <br>
 
             </div>
@@ -965,9 +1002,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>작은 습관을 올바르게 수행하는 &#x27;작은 규율(micro discipline)&#x27;이 곧 인생 전체의 태도를 결정합니다.</mark></div>
 <div class="memo-bullet">• 아무도 보지 않을 때 어려운 길을 선택하는 실천이 쌓여 엘리트 수준의 업적을 만듭니다.</div>
 <div class="memo-bullet">• 일상 속 작은 정리와 습관에서부터 규율을 내재화하여 큰 변화를 만들어야 합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -989,9 +1028,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>리더의 핵심 책무는 명확한 의사소통을 통해 조직의 집단 행동을 이끄는 것입니다.</mark></div>
 <div class="memo-bullet">• 오컴의 면도날 원리를 활용하여 청중의 &#x27;인지 예산&#x27;을 고려한 간결한 메시지 전달이 필수적입니다.</div>
 <div class="memo-bullet">• 불필요한 전문 용어나 장황한 설명을 배제하고 의도적인 정보만을 제공해야 소통의 효율을 높일 수 있습니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -1009,9 +1050,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 반도체는 증설 사이클 진입으로 시클리컬 리스크가 커지고 있으며, 수요 지속성에 대한 시장의 의심이 깊어지는 구간이다.</div>
 <div class="memo-bullet">• 에너지/정유/해운은 공급이 구조적으로 막혀 있어 장기 호황 가능성이 높고, 탈중동·수입 다변화가 핵심 투자 테마다.</div>
 <div class="memo-bullet">• 투자의 본질은 수요·공급 분석과 헤게모니 보유 여부이며, &quot;모두가 확실하다고 느낄 때는 이미 벌 게 없다.&quot;</div>
+</div>
 <br>
 </div>
 <br>
@@ -1019,23 +1062,29 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
 <div class="bold-line">시클리컬과 밸류에이션 기본 원칙</div>
+<div class="memo-block">
 <div class="memo-bullet">• 꾸준히 돈 버는 회사(음식료 등)는 PER, 경기 따라 이익이 흔들리는 시클리컬(반도체/조선/화학/건설)은 PBR로 밸류에이션</div>
 <div class="memo-bullet">• 밸류에이션은 &quot;이 회사에 어떤 형태로 돈을 빌려줄 것인가&quot;의 관점</div>
 <div class="memo-bullet">• 시세의 순서: 무관심 → 소외 회복 → 상승 → 환호·과열 → 증설 → 가격하락 → 이익하락 → 주가 선행 하락</div>
+</div>
 <br>
 <div class="bold-line">반도체: 증설 사이클 진입</div>
+<div class="memo-block">
 <div class="memo-bullet">• AI HW 수요 지속성에 대한 시장의 의심이 지속되고 있음</div>
 <div class="memo-bullet">• 빅테크도 대출을 받아 AI 투자 중이며, 현금 고갈 우려 존재</div>
 <div class="memo-bullet">• 메모리 반도체는 증설 사이클 시작 → 수요자 &quot;앞으로 싸게 살 수 있겠군&quot; → 판가 하락 기대 → 주가 조정 = 전형적 시클리컬 패턴</div>
 <div class="memo-bullet">• 레버리지 ETF로 삼전·하이닉스 수급 왜곡 중이나, 2~3년 수요 지속·내년까지 공급 절벽·밸류에이션 낮음 → 패닉셀 금지</div>
 <div class="memo-bullet">• 이익 증가율 순서: 소부장(반도체 장비) → 파운드리(TSMC) → CPU</div>
 <div class="memo-bullet">• 소부장 주도주 키워드: 브이엠(식각), 유진테크·주성·원익IPS(ALD), 케이씨텍(CMP), 동진쎄미캠(소재), 테크윙(Test), 에프에스티(EUV 펠리클) 등</div>
+</div>
 <br>
 <div class="bold-line">헤게모니 4국면 이론 (동부 리서치)</div>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>1국면(수요회복)</strong>: 매출액 증가율이 핵심 시그널. 저가수주 진행, 수익성은 아직 저하. 인내심 필요한 구간</div>
 <div class="memo-bullet">• <strong>2국면(초과이익)</strong>: 헤게모니 확보 후 영업레버리지 발생. 영업이익증가율이 매출증가율 상회. 가장 큰 수익 구간 (태웅: PER 5X→30X, 65배)</div>
 <div class="memo-bullet">• <strong>3국면(변화 감지)</strong>: 사상 최대 실적이지만 주가는 안 오름. 경쟁 진입·증설로 헤게모니 변화. 투자자가 가장 조심해야 할 시기. Valuation Trap 주의</div>
 <div class="memo-bullet">• 핵심: &quot;꿈이 있는 주식 = 헤게모니를 가진 주도주를 찾아 보유 기간 동안 투자&quot;</div>
+</div>
 <br>
 <figure class="note-image"><img src="assets/images/Pasted%20image%2020260715083621.png" alt="Pasted image 20260715083621" loading="lazy"></figure>
 <figure class="note-image"><img src="assets/images/Pasted%20image%2020260715083634.png" alt="Pasted image 20260715083634" loading="lazy"></figure>
@@ -1076,31 +1125,41 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 메모리 업황 자체는 좋게 볼 여지가 많지만, 주가는 이미 선반영해서 과하게 달렸다는 입장을 올해 초부터 일관되게 유지해왔다.</div>
 <div class="memo-bullet">• 코스피 변동성 확대·미국-이란전쟁 등 불확실성 구간에서 레버리지 자제를 지속 권고했으며, 하락장에서도 팩트 체크와 반대 의견 검증이 스터디의 본질이라고 강조한다.</div>
 <div class="memo-bullet">• 국내 소부장보다 해외 반도체 장비 4사(ASML·램리서치·AMAT 등)가 낫다는 관점을 일관되게 유지하고 있다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
 <div class="bold-line">메모리 업황 vs 주가 괴리</div>
+<div class="memo-block">
 <div class="memo-bullet">• 메모리 업황이 좋다는 사실 자체는 부정하지 않음</div>
 <div class="memo-bullet">• 그러나 주가가 이를 <strong>선반영해서 과하게 달렸다</strong>는 판단을 올해 초부터 지금까지 일관되게 유지</div>
 <div class="memo-bullet">• &quot;큰 틀에서 메모리가 좋은 건 인정하지만, 어디까지 반영하고 있는지는 모르겠다&quot;</div>
+</div>
 <br>
 <div class="bold-line">리스크 관리 강조</div>
+<div class="memo-block">
 <div class="memo-bullet">• 코스피 변동성 확대 구간, 미국-이란전쟁 발발 등 매크로 불확실성에서 <strong>레버리지 자제</strong>를 꾸준히 권고</div>
 <div class="memo-bullet">• 본인도 2분기에 몹시 힘들었고 스트레스를 많이 받았다고 솔직히 인정</div>
 <div class="memo-bullet">• 하락장에서 감정적으로 힘든 것에 공감하면서도, <strong>팩트 체크와 반대 의견 반박 훈련</strong>이 스터디의 본질이라는 입장</div>
+</div>
 <br>
 <div class="bold-line">국내 소부장 vs 해외 장비</div>
+<div class="memo-block">
 <div class="memo-bullet">• 일관적으로 <strong>국내 소부장보다 해외 장비 회사 4개</strong>(ASML, 램리서치, AMAT 등)가 낫다는 입장</div>
 <div class="memo-bullet">• 국내 소부장을 좋게 보는 시각과는 작년 말~올해 초에 충분히 의견을 교환했으며, 정답이 없으니 자유로운 의견 교환으로 마무리</div>
+</div>
 <br>
 <div class="bold-line">투자 태도론</div>
+<div class="memo-block">
 <div class="memo-bullet">• 오를 때와 내릴 때 의견이 달라지면 안 된다는 원칙 → 본인은 작년에도 올해 초에도 같은 소리를 했다고 자부</div>
 <div class="memo-bullet">• 하락장에서 부정적 의견을 말하는 것이 나쁜 게 아니라, 일관성 없는 의견 변경이 문제</div>
+</div>
 <br>
 <br>
 <br>
@@ -1142,9 +1201,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• AI의 발전으로 창업의 진입장벽이 낮아지면서, 본질적인 문제 해결보다 투자나 이력을 위한 &#x27;가짜 창업가(fauxtrepreneur)&#x27;가 급증하고 있습니다.</div>
 <div class="memo-bullet">• 겉만 번지르르한 &#x27;깡통 제품&#x27;을 만드는 창업가들이 늘어남에 따라, 투자자와 시장이 이들을 구별하기가 과거보다 훨씬 어려워졌습니다.</div>
 <div class="memo-bullet">• <mark>유행을 쫓는 화려한 재킷(AI) 안에 본질이 있는지 파악하는 인내심과 의지가 그 어느 때보다 중요한 시대입니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -1167,8 +1228,10 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>드비어스의 다이아몬드 사례를 통해, 영원할 것 같던 자산도 공급과 시장 환경 변화 앞에서는 가치가 하락할 수 있음을 경고합니다.</mark></div>
 <div class="memo-bullet">• 상반기 증시를 주도했던 특정 종목들에 대한 쏠림 현상이 완화되며, 메모리 반도체 외 다른 종목으로의 로테이션 기회가 커지고 있습니다.</div>
+</div>
 <br>
 </div>
 
@@ -1190,6 +1253,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark><strong>브랜딩의 본질</strong></mark></div>
 <div class="memo-bullet indent">• <mark>브랜딩은 겉을 꾸미는 것이 아니라, 사업적 가치를 창출하고 고객에게 자기다움을 전달하는 일입니다.</mark></div>
 <div class="memo-bullet indent">• <mark>창업 후 브랜드를 직접 운영해보며 브랜드 전략이 곧 사업 전략임을 체감했습니다.</mark></div>
@@ -1199,6 +1263,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <mark><strong>성공적인 브랜드 구축</strong></mark></div>
 <div class="memo-bullet indent">• <mark>좋은 브랜드는 규모와 관계없이 자기만의 방식으로 꾸준히 성장하는 곳입니다.</mark></div>
 <div class="memo-bullet indent">• <mark>브랜드 실무자는 폭넓은 시야와 전문성을 갖춘 T자형 인재가 되어야 하며, 공감 능력과 집중력이 요구됩니다</mark></div>
+</div>
 <br>
 <br>
 </div>
@@ -1216,29 +1281,25 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line">- 생존이 수익보다 먼저다.</div>
-</blockquote>
 <div class="quote-line indent"><strong>- 생존이 수익보다 우선: 틀려도 안 다치는 곳에서만 투자하며, 레버리지 절대 금지</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 이길 승산이 많은 주식을 사라 = 더이상 싸질 수 없는 주식을 사라</strong></div>
-</blockquote>
 <div class="quote-line indent">- PBR 하단 + 더 싸질 이유 없음 = 매수 시그널</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 동시에 가격 전가력이 있는 주식을 사라. 그 시기에 갑질할 수 있는 회사가 최고의 주식이다.</strong></div>
-</blockquote>
 <div class="quote-line indent">- 가격 전가력 + 수요 보존: 가격을 못 올리는 기업은 무조건 REJECT</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 수요는 예측 불가능하지만 공급은 예측 가능함 = 공급을 늘리기 어려운 환경이면 필연적으로 쇼티지가 발생함</strong></div>
 <div class="quote-line">- 남들이 하찮게 보는 섹터에서 수익을 크게 낼 수 있는 기법이 있다</div>
-</blockquote>
 <div class="quote-line indent"><strong>- 역발상 + Buy &amp; Hold: 대중이 외면할 때 매수, 2~3년 사이클을 지루하게 기다림</strong></div>
+</blockquote>
 <br>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>승도리는 &#x27;생존 &gt; 수익&#x27;을 최우선으로, 노레버리지·현금 확보·역발상 매수를 핵심 철학으로 삼는 매크로 기반 가치투자자다</mark></div>
 <div class="memo-bullet">• <mark>가격 전가력 → 수요 파괴 → 지정학 수혜의 3-Layer 소거법으로 30개 후보를 5~6개로 압축하며, 조선/방산/원전/구리/금을 핵심 포지션으로 유지한다</mark></div>
 <div class="memo-bullet">• 70년대 스태그플레이션 재림, 원화 장기 약세, 중국 경쟁 섹터 회피라는 매크로 뷰를 3년간 일관되게 견지하고 있다</div>
+</div>
 <br>
 </div>
 
@@ -1254,16 +1315,12 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
             <div class="section-body">
                 <blockquote class="source-quote">
 <div class="quote-line">- 좋은 기업의 주식을</div>
-</blockquote>
 <div class="quote-line indent"><strong>- 시장 평균보다 더 높은 가치 복리를 만들어낼 수 있는 기업을</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line">- 너무 비싼 가격에 사지 않고</div>
-</blockquote>
 <div class="quote-line indent"><strong>- 적정 가격에 매수하고</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line">- 별 다른 행동을 하지 않는다.</div>
-</blockquote>
 <div class="quote-line indent"><strong>- 홀딩한다</strong></div>
+</blockquote>
 <br>
 
             </div>
@@ -1279,21 +1336,19 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line">- 인간의 본능 = 만드는 것</div>
-</blockquote>
 <div class="quote-line indent"><strong>- 코딩 = 만들고 싶고 능력도 있는 사람에게 할당됨</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line">- ai = 만들고자 하는 의지만 있으면 뭐라도 됨</div>
-</blockquote>
 <div class="quote-line indent"><strong>- = 모두가 자신의 아이디어를 구현할 수 있는 좋은 세상이어야만 하는데</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 그러기 위해선 토큰이 더 싸져야 하고, 그러기 위해선 더 싼 전력이 필요하다</strong></div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 인류는 단순한 시간 절약을 넘어, 창작을 통해 시간을 보내는 데서 더 큰 행복을 느낍니다.</div>
 <div class="memo-bullet">• AI는 과거의 생산성 도구와 달리 인간의 표현력을 확장하는 &#x27;붓&#x27;과 같은 창의적 도구 역할을 합니다.</div>
 <div class="memo-bullet">• <mark>이제 진입 장벽이 낮아짐에 따라, 누구나 자신의 아이디어를 실현하는 창작자가 될 수 있는 시대가 도래했습니다.</mark></div>
+</div>
 <br>
 <br>
 </div>
@@ -1317,67 +1372,83 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line">- 한국 기업은 정책과 주주환원 문제 때문에 장기적으로 비중을 낮추겠다는 개인적 견해도 밝혔다. 이는 데이터로 확정된 사실이 아니라 채널 운영자의 자산배분 선호다.</div>
 <div class="quote-line">- 중동 분쟁과 호르무즈·홍해 운송 차질이 장기화되면 원유보다 정제유·가스·비료·물류의 병목이 심해지고, 인플레이션과 금리 상방 압력이 지속될 가능성이 높다는 관점이다.</div>
 <div class="quote-line"><strong>- 공급을 늘리기 어려운 미국 정유·해양시추·OSV는 높은 마진과 주주환원의 수혜를, 신규 유전 개발에 필요한 강관·장비와 우회항로 확대에 필요한 LPG선·LNG선은 투자 확대의 낙수를 받을 수 있다고 보았다.</strong></div>
-</blockquote>
 <div class="quote-line indent">- tdw nov</div>
-<blockquote class="source-quote">
 <div class="quote-line">- 국내 증시 급락은 높은 신용잔고와 레버리지 청산의 영향이 크며, 반도체는 과매도됐지만 풀신용을 피하고 메모리 공급 확대·CXMT·AI CAPEX를 확인하며 장기 분할 접근해야 한다는 결론이다.</div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>탈중동과 강관 수요</strong></div>
 <div class="memo-bullet indent">• <mark>석유 개발은 셰일도 약 1~2년, 전통 유전·가스전은 10~15년이 필요하므로 중동 의존도를 낮추려는 국가들은 북미·남미·아프리카 공급원에 투자할 가능성이 높다.</mark></div>
 <div class="memo-bullet indent">• 가장 빠른 증산 후보는 북미 셰일과 아르헨티나이며, 시추와 수송에 필요한 OCTG·송유관용 강관 수요가 함께 증가할 수 있다.</div>
 <div class="memo-bullet indent">• 7월 17일 기준 미국 원유 리그는 452개로 7개 증가했고, 북미 5.5인치 OCTG 현물가격은 숏톤당 2,325달러로 제시됐다.</div>
 <div class="memo-bullet indent">• <mark>한국은 북미 강관의 주요 수입국 중 하나라는 점에서 넥스틸·휴스틸이, 글로벌 종목으로는 Tenaris가 연결 후보로 언급됐다.</mark></div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>공급을 늘릴 수 있는 산업과 없는 산업</strong></div>
 <div class="memo-bullet indent">• <mark>투자의 핵심 질문을 ‘높은 이익을 보고 공급을 늘릴 수 있는가’로 설정했다.</mark></div>
 <div class="memo-bullet indent">• 반도체는 높은 마진이 증설로 이어지므로 장비·소재·부품 업체로 이익이 확산될 수 있다.</div>
 <div class="memo-bullet indent">• 정유·에너지는 전기차 확산에 따른 장기 수요 감소 우려 때문에 높은 마진에도 신규 설비를 공격적으로 늘리기 어렵다. 남는 현금은 배당과 자사주 매입으로 이어져 리레이팅을 만들 수 있다는 논리다.</div>
 <div class="memo-bullet indent">• <mark>같은 에너지 밸류체인에서도 탱커는 발주 증가로 공급 정점을 앞둔 반면, 해양시추 장비와 OSV는 오더북이 매우 낮아 투자 시계가 다르다고 보았다.</mark></div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>정제유 병목과 미국 정유사</strong></div>
 <div class="memo-bullet indent">• 원유 가격이 내려가도 디젤·가솔린 가격이 오르고, 원유가 올라도 제품 가격이 함께 오르는 현상을 정제능력 부족의 신호로 해석했다.</div>
 <div class="memo-bullet indent">• 미국 정유공장 가동률은 95~96%에 달해 추가 공급 여력이 작고, 전쟁과 정유시설 파괴로 하루 약 500만 배럴의 정제능력이 사라졌다는 추정이 공유됐다.</div>
 <div class="memo-bullet indent">• 채널의 미국 정유사 최선호 후보는 Valero Energy와 Marathon Petroleum이다. 미국 원유기업 중에는 Exxon Mobil과 Petrobras를 선호했고, Petrobras는 지정학적 안전성과 고배당 가능성을 근거로 들었다.</div>
 <div class="memo-bullet indent">• 아시아 정유사는 원유 조달경로가 호르무즈·홍해에 노출돼 있어 보수적으로 평가했다. 특히 S-OIL은 사우디산 원료 조달 위험을 지적했다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>비료·식량 인플레이션의 연쇄</strong></div>
 <div class="memo-bullet indent">• 카타르산 가스가 호르무즈 해협에 묶이면 요소 공급과 질소비료 생산에 차질이 생길 수 있다.</div>
 <div class="memo-bullet indent">• 비료 가격 상승으로 농민이 구매를 미루거나 사용량을 줄이면 수확량이 감소하고, 농산물·사료·육류 가격을 거쳐 식탁물가를 자극할 수 있다.</div>
 <div class="memo-bullet indent">• Yara의 2분기 핵심 이익은 예상보다 약 20% 낮았지만 질소 가격 상승으로 마진은 개선됐다. 구매 지연으로 영업현금흐름은 전년 동기 8억7,800만 달러에서 6억8,200만 달러로 감소한 것으로 소개됐다.</div>
 <div class="memo-bullet indent">• 복잡한 원재료 투자 대신 가격전가가 가능한 수출 음식료 기업을 대안으로 볼 수 있다는 의견도 제시됐다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>금리·AI CAPEX·소비재</strong></div>
 <div class="memo-bullet indent">• 에너지와 식품 인플레이션, 전쟁비용을 충당하기 위한 채권 발행은 금리 하락을 어렵게 만드는 요인으로 보았다.</div>
 <div class="memo-bullet indent">• 금리 상승은 고밸류 성장주뿐 아니라 차입을 통해 투자하는 AI 데이터센터의 CAPEX에도 부담이 될 수 있다.</div>
 <div class="memo-bullet indent">• 따라서 하반기 금리 인하를 전제로 풀신용을 사용하거나 고밸류 바이오에 집중하는 전략을 경계했다.</div>
 <div class="memo-bullet indent">• 원자재 가격과 전쟁 문제가 해결되기 전에는 소비재 랠리보다 에너지·금융·반도체의 상대적 방어력이 높을 수 있다고 보았다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>레버리지 청산과 반도체 과매도</strong></div>
 <div class="memo-bullet indent">• 높은 신용잔고는 조정 가능성을 높이며, 반대매매가 시작되면 담보로 잡힌 중소형주와 대형 반도체·소부장까지 수급 충격을 받을 수 있다고 설명했다.</div>
 <div class="memo-bullet indent">• 반대매매와 마진콜이 충분히 진행된 뒤에는 실적이 유지되면서 과도하게 하락한 기업을 살 기회가 생길 수 있다.</div>
 <div class="memo-bullet indent">• 반도체는 PER·PBR 기준 과매도 구간으로 평가했지만, TSMC와 달리 메모리는 커머디티 성격이 강하고 CXMT라는 신규 경쟁자가 있어 공급 증가 위험을 무시할 수 없다고 보았다.</div>
 <div class="memo-bullet indent">• LTA가 공급과잉 국면에서도 유지될지 확인해야 하며, AI CAPEX가 꺾이지 않는다면 메모리 롱 관점은 유지할 수 있다는 조건부 판단이다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>탱커에서 OSV·LPG선으로 이동</strong></div>
 <div class="memo-bullet indent">• 중동·아시아 TD3C 운임은 10만 달러 이상이면 슈퍼사이클로 보는데 38만2,000달러, 수에즈막스 운임은 15만2,000달러로 소개됐다.</div>
 <div class="memo-bullet indent">• 현재 탱커 운임은 강하지만 발주 증가로 미래 공급이 늘고 있어 출구전략을 고민해야 한다고 보았다.</div>
 <div class="memo-bullet indent">• <mark>반면 OSV 오더북은 약 4%로 매우 낮고 계약기간이 해양시추선보다 짧아 업황 개선이 이익에 더 빠르게 반영될 수 있다.</mark></div>
 <div class="memo-bullet indent">• <mark>OSV 관찰 종목으로 Tidewater, Sable Offshore 계열이 아닌 SMHI, Sea1 Offshore, Solstad Offshore가 제시됐고, 서비스 유형은 PSV·AHTS·Subsea로 구분됐다.</mark></div>
 <div class="memo-bullet indent">• 인도가 미국산 LPG 조달을 늘리면 톤마일과 VLGC 운임이 상승한다. 미국 LNG 수출터미널과 가스선 부족은 LNG선·보냉재 기업의 수주 기회로 연결될 수 있다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>한국 조선·에너지 기업에 대한 선별</strong></div>
 <div class="memo-bullet indent">• 미국 내 조선소 증설은 높은 인건비와 기자재 생태계 부족 때문에 투자 대비 수익성이 낮을 수 있어, 미국 현지 생산을 확대하는 조선사를 보수적으로 평가했다.</div>
 <div class="memo-bullet indent">• 한국 조선과 LNG선·보냉재 기업은 글로벌 가스 운송거리 증가의 수혜가 가능하지만 현지 미국 생산의 손익과는 분리해서 봐야 한다.</div>
 <div class="memo-bullet indent">• 한국 발전사는 SMP 상승이 이익에 유리할 수 있지만 요금·가격 상한제와 정책 개입 위험이 있어 투자 매력이 낮다고 판단했다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>M&amp;A 이벤트와 안전마진</strong></div>
 <div class="memo-bullet indent">• 롯데렌탈·롯데손해보험처럼 인수가격과 일정이 구체화되는 종목은 하락장에서도 시장 방향과 다른 수익기회를 줄 수 있다.</div>
 <div class="memo-bullet indent">• 인수가격과 현재가의 차이로 기대수익률을 계산할 수 있고, 일정이 정해져 있다는 점을 M&amp;A 이벤트 투자의 장점으로 제시했다.</div>
 <div class="memo-bullet indent">• 롯데렌탈은 3만4,000~3만5,000원대에 안전마진이 있었다고 평가했고, 매각가격 발표가 단기 이벤트 투자자의 출구가 될 수 있다고 보았다.</div>
 <div class="memo-bullet indent">• 우리금융은 비은행 이익을 키워야 하며, 자체 증권사 육성이 기대에 미치지 못하면 리테일 기반을 갖춘 중소형 증권사 인수 가능성이 생길 수 있다는 관찰 아이디어를 제시했다.</div>
+</div>
 <br>
 <br>
 <br>
@@ -1396,13 +1467,17 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
-                <div class="memo-bullet">• 내 업무의 전부가 아니라 딱 10% 정도만 ai에 위임해볼 것</div>
+                <div class="memo-block">
+<div class="memo-bullet">• 내 업무의 전부가 아니라 딱 10% 정도만 ai에 위임해볼 것</div>
+</div>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• AI 활용은 업무 밀도를 높여 &#x27;AI 브레인 프라이&#x27;를 유발하고 인지적 사고력을 퇴화시킵니다.</div>
 <div class="memo-bullet">• 단 10분의 AI 의존만으로도 독립적 문제 해결 능력과 의지가 급격히 저하되는 &#x27;인지 근육 붕괴&#x27;가 확인되었습니다.</div>
 <div class="memo-bullet">• AI에 답을 구하기보다 힌트와 배경 정보를 얻는 방식으로 능동적인 사고 체력을 길러야 합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -1419,19 +1494,19 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
             <div class="section-body">
                 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 너무 큰 시장 + 많은 사용자 + 모든 문제를 해결하려고 하기보다</strong></div>
-</blockquote>
 <div class="quote-line indent">- 작더라도 확장 가능한 시장에서</div>
 <div class="quote-line indent">- 특정 사용자들의</div>
 <div class="quote-line indent"><strong>- 몇몇 문제를 확실하게 해결해주는 비엠이 좋다.</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line">- 이렇게 하다보면 가장 결정적인 순간을 찾을 수 있고, 확장도 용이함</div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 강남언니는 4번의 피봇을 거쳐 6천억 기업으로 성장했으며, 그 과정에서 시장을 좁히고 핵심 기능에 집중하는 전략의 중요성을 깨달았습니다.</div>
 <div class="memo-bullet">• 초기 &#x27;암 시장&#x27; 등 큰 영역에서 실패한 후, &#x27;사진 3장으로 성형 견적 비교&#x27;라는 단 하나의 뾰족한 가치에 집중하여 성공적인 시장을 개척했습니다.</div>
 <div class="memo-bullet">• <mark>성장 정체 시 확장이 아닌, 문제 영역을 더욱 좁혀 깊게 파고드는 마인드셋이 역설적으로 성장을 이끌었음을 강조합니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -1449,9 +1524,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <blockquote class="source-quote">
 <div class="quote-line">- 모든 콘텐츠는 목적이 있다.</div>
 <div class="quote-line"><strong>- 내가 쓰는 글, 혹은 읽는 글의 목적은 무엇인가</strong></div>
-</blockquote>
 <div class="quote-line indent">- 설득? 감정 끌어오기?</div>
-<blockquote class="source-quote">
 <div class="quote-line">- 그 목적에 부합하게 설계되어 있나? -&gt; 평론</div>
 </blockquote>
 <br>
@@ -1466,15 +1539,19 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <span class="toggle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
             </div>
             <div class="section-body">
-                <div class="memo-bullet">• 많이 공유하고 피드백 받을 것</div>
+                <div class="memo-block">
+<div class="memo-bullet">• 많이 공유하고 피드백 받을 것</div>
 <div class="memo-bullet">• 피드백은 구체적인 개선점과 방향을 담을 것</div>
+</div>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 편집자는 작가의 글을 객관화하고 개선 방향을 제시하며, 작가의 멘탈까지 관리하는 핵심적인 역할을 수행한다.</div>
 <div class="memo-bullet">• 콘텐츠의 질은 타인의 비판(까임)을 통해 향상되며, 저자는 기자 및 편집자로서 겪은 경험을 통해 이를 강조한다.</div>
 <div class="memo-bullet">• 경험이 적거나 글쓰기 능력이 부족한 사람의 비판이라도 글의 질을 향상시키는 데 기여한다는 다른 글쟁이의 경험을 인용한다.</div>
 <div class="memo-bullet">• 심지어 아무것도 모르는 초보자의 피드백조차 의외로 정확한 개선점을 짚어줄 수 있으며, 기자들은 이러한 비판 수용의 중요성을 몸에 새기게 된다.</div>
+</div>
 <br>
 </div>
 
@@ -1514,9 +1591,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 시장은 늘 어렵고 예측 불가능하며, 개인의 감정은 시장 상황과 분리되어야 합니다.</div>
 <div class="memo-bullet">• <mark>투자 시 숫자에 매몰되지 말고 처음 매수했던 근거인 &#x27;Back to basics&#x27; 원칙을 지켜야 합니다.</mark></div>
 <div class="memo-bullet">• <mark>시장의 흔들림보다 중요한 것은 자신의 평정심을 유지하고 심리적 흔들림을 막아내는 것입니다.</mark></div>
+</div>
 <br>
 <br>
 </div>
@@ -1539,9 +1618,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 넷플릭스 드라마 &#x27;맨 끝줄 소년&#x27;의 허문오 교수를 통해 타인과의 비교와 열등감으로 고통받는 현대인의 심리를 분석함.</div>
 <div class="memo-bullet">• <mark>우월감을 위해 타인을 이용하는 병리적 자기애는 결국 성숙한 어른이 되지 못하는 원인이 됨.</mark></div>
 <div class="memo-bullet">• <mark>타인의 시선에서 벗어나 내면의 괜찮은 나를 신뢰하는 것이 &#x27;진짜 어른&#x27;이 되는 핵심 과업임.</mark></div>
+</div>
 <br>
 </div>
 
@@ -1557,28 +1638,24 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
             <div class="section-body">
                 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 원하는 비중이 있다면 한 번에 다 태우지 말아라. 조금씩... 원하는 가격대로 매수할 것.</strong></div>
-</blockquote>
 <div class="quote-line indent"><strong>- -30%쳐먹더라도 버틸 수 있는 비중대로만 살 것 -&gt; 한 종목 기준 최대 30%</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 처음 살 때부터 하기 조건의 값 등을 기록해둘 것</strong> -&gt; 투자 아이디어 및 기록 시트 만들기</div>
-</blockquote>
 <div class="quote-line indent">- 1차 매수</div>
 <div class="quote-line indent">- 매도</div>
 <div class="quote-line indent">- 추가 매수 등</div>
 <div class="quote-line indent">- 아이디어 무효화 조건</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 투자 아이디어 및 히스토리를 기록할 때는</strong></div>
-</blockquote>
 <div class="quote-line indent"><strong>- 판단 근거, 감정, 계획, 행동 리뷰를 한꺼번에 적을 것.</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line">- 밸류에이션을 할 때 여러 아이디어의 실현 조건에 따른 결과값을 적을 것</div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>시장의 쏠림과 변동성 속에서 감정에 휘둘리지 않기 위해서는 명확한 투자 원칙과 기록하는 습관이 필수적이다.</mark></div>
 <div class="memo-bullet">• 단순히 정보를 수집하는 것에 그치지 말고, 매수·매도 조건을 포함한 투자 시나리오를 구조화하여 대응해야 한다.</div>
 <div class="memo-bullet">• 실수를 제한하고 지속 가능한 투자를 하기 위해 끊임없이 복기하고 자신만의 판단 기준을 세워야 한다.</div>
+</div>
 <br>
 </div>
 
@@ -1599,9 +1676,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 30년 동안 시간강사로 근무해온 정일영 씨가 65세의 나이에 초빙교수로 임용되는 감동적인 사연이 소개되었습니다.</div>
 <div class="memo-bullet">• 그는 어려운 상황 속에서도 &#x27;남 탓&#x27;을 통해 오히려 자신의 처지를 객관화하며 버티는 생존 전략을 택했습니다.</div>
 <div class="memo-bullet">• 이를 통해 젊은 세대에게도 포기하지 않고 묵묵히 버티면 기회가 올 수 있다는 희망을 전하고 있습니다.</div>
+</div>
 <br>
 </div>
 
@@ -1624,9 +1703,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 인베스팅과 모멘텀 전략의 본질을 이해하고, 자신의 철학에 맞는 원칙을 세워 흔들리지 않는 투자를 해야 합니다.</div>
 <div class="memo-bullet">• 투자는 예측이 아닌 하방 리스크를 관리하며 생존하는 과정이며, 좋은 기회를 기다릴 줄 아는 여유와 통찰이 필요합니다.</div>
 <div class="memo-bullet">• 철저한 기업 분석과 메타인지를 통해 타인의 소음에 휘둘리지 않는 독립적인 판단력을 기르는 것이 중요합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -1647,9 +1728,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>넷플릭스는 고객의 페인 포인트를 해결하는 &#x27;대립적 포지셔닝(Counter-positioning)&#x27; 전략으로 성장해 왔습니다.</mark></div>
 <div class="memo-bullet">• <mark>막대한 콘텐츠 투자를 방대한 가입자 기반으로 분산하여 압도적인 &#x27;시간당 비용&#x27; 효율성 경쟁력을 구축했습니다.</mark></div>
 <div class="memo-bullet">• 경영진에 대한 강한 신뢰를 바탕으로, 단순한 가격 인상이 아닌 가치 중심의 성장을 지속하고 있습니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -1692,6 +1775,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 <h4>4. 에너지: 채널장이 실제로 확신을 둔 영역</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <mark><strong>공급 삭제가 실시간으로 진행 중</strong>이라는 게 핵심 프레임이다. 후티가 사우디 유조선과 홍해 항만 석유시설을 공격하고 동서송유관까지 드론 타격하면서 얀부항 선적량이 7/19 대비 40% 감소한 309만b/d로 떨어졌다.</mark></div>
 <div class="memo-bullet">• 런던 로이즈 전쟁보험사들이 &#x27;사우디&#x27; 문구가 들어간 모든 선박에 대해 홍해 전쟁보험 인수를 중단했다. 기존 계약 해지 준비까지 나왔다.</div>
 <div class="memo-bullet">• 우회로는 불완전하다. SUMED 송유관은 역사적 최고 처리량이 177만b/d에 불과하고, 수에즈는 VLCC를 절반만 싣거나 수에즈막스만 통과 가능하다. 얀부에서 일본까지 정상 26일 항로가 지브롤터·희망봉 우회 시 약 55일로 두 배 이상 늘어난다. 수에즈막스 2척을 지중해에서 VLCC 1척으로 STS 환적하는 비효율이 실제로 벌어지는 중.</div>
@@ -1709,17 +1793,21 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>BKR 2Q</strong>: 조정 EBITDA 12.3억 달러, 마진 18.3% 사상 최고. IET 신규 수주 71억 달러(YoY 2배), 수주잔고 371억 달러. 데이터센터·유틸리티 전력 수주 2.7GW($2.6B). Chart Industries 인수 완료. 반면 Noble은 브라질 ANP 감사에 따른 시추선 2대 정지로 연간 EBITDA 가이던스를 하향했다.</div>
 <div class="memo-bullet">• <mark><strong>유가 자체에는 절대 베팅하지 말 것</strong>. 선물시장이 현물의 20~30배라 시세 조작이 가능하고, 레인지는 $70~90으로 본다. 다만 공급이 막히면 하방이 계속 올라간다는 게 구조적 관점.</mark></div>
 <div class="memo-bullet">• 전쟁 종결 전망은 비관적이다. 폭격만으로는 끝나지 않고 육상전·점령·항복이 있어야 하는데 이란은 상륙이 어려운 국가다. 트럼프는 패트리엇 등 방공 요격미사일 재고 고갈 우려로 대규모 공세를 보류했다가, 7/29 요르단 미군기지 피격 후 다시 강타를 예고했다.</div>
+</div>
 <br>
 <h4>5. 석탄과 벌커: LNG 쇼티지의 파생 트레이드</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• 카타르에너지가 LNG 불가항력 조치를 10월 중순까지 연장했다. 전 세계 LNG 공급의 20%가 겨울 조달 기간 전체에 걸쳐 제한된다.</div>
 <div class="memo-bullet">• 대체재는 석탄뿐이다. 7월 아시아 발전용 석탄 수입 7,316만톤(6월 7,031만톤), 중국 2,814만톤으로 연중 최고, 일본 1,046만톤으로 1월 이후 최고, 한국 854만톤으로 작년 8월 이후 최고. 뉴캐슬 6,000kcal 가격은 톤당 132.76달러로 4주 만에 최고.</div>
 <div class="memo-bullet">• 2Q 전 세계 해상 석탄 수송량 3억 5,310만톤(+6%), 상위 4대 수출국 모두 증가하고 호주가 최대 증가폭.</div>
 <div class="memo-bullet">• 장마철이라 케이프사이즈 비수기인데도 운임이 평년보다 높다. 하반기 겨울 수요까지 감안하면 강세 지속.</div>
 <div class="memo-bullet">• <mark>채널장 판단은 &#x27;벌커 &gt; 석탄회사&#x27;다. 석탄회사는 제강용 비중이 높지만, 벌커는 제강용이든 발전용이든 구매 수요가 늘면 톤마일이 늘기 때문.</mark></div>
+</div>
 <br>
 <h4>6. 조선·해운 실적 시즌</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>한화오션 2Q 서프라이즈</strong>: 매출 5.44조(컨센 +33%), 영업익 7,361억(+37%), 순이익 6,926억(+49%). 상선 OPM 22.7%로 HD현대삼호 등 경쟁사를 모두 상회. 에너지플랜트는 P79 FPSO 인도기준 매출 일시 인식으로 매출 +880%. 다음 분기부터는 EPU 매출이 줄어드는 걸 확인해야 한다.</div>
 <div class="memo-bullet">• <strong>환헤지가 명암을 갈랐다</strong>: 삼성중공업 100% 헤지, HD현대 50%, 한화오션은 한 자릿수 오픈. 삼성중공업 2Q는 매출 3.23조(컨센 -1%), 영업익 3,250억(-13%)에 PI 퇴직급여 충당 관련 일회성 250억이 반영됐다. 2분기 매출 반영 선물환율이 1,300원 미만이라 고환율 수주 물량이 반영되는 시점부터 이익률 개선이 가시화된다.</div>
 <div class="memo-bullet">• <strong>기타 실적</strong>: HD한국조선해양 영업익 1.65조(+11%), HD현대중공업 1.04조(+4%), 한화에어로스페이스 1.37조(+36%), 한화시스템 1,037억(+78%), 대한조선 952억(-1%), 효성중공업 2,643억(-10%), 한화엔진 -32.1%, HD현대마린엔진 -12%.</div>
@@ -1727,9 +1815,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>exit 시그널</strong>: 신조선가와 이익 성장률 최고치를 보라. 성장률이 4% 수준으로 낮아지면 피크. 조선 이익 성장률 18.8%가 정점을 찍으면 exit 준비. 실적 발표했는데 주가 반응이 없으면 그것도 exit 신호.</div>
 <div class="memo-bullet">• <strong>해운 실적 플레이 팁</strong>: 상장사 실적 발표일을 취합해 먼저 나온 회사 실적으로 뒤에 나올 회사를 추정하라. 팬오션(먼저) → HSHP 8/11, SBLK 8/5 / 탱커는 OET·ECO 8/4, FRO 8/30. 채널장은 주주환원 문제로 한국 해운사는 사지 않는다는 입장이며, 선택지를 &#x27;비싸도 주주환원 좋은 HSHP·SBLK&#x27; 대 &#x27;싸고 주주환원 나쁜 PBR 밴드 하단 팬오션&#x27;으로 정리했다.</div>
 <div class="memo-bullet">• 클락슨 신조선가지수는 185.39pt로 사실상 보합, 전 선종 선가 보합. 1997년산 아프라막스가 톤당 522달러 프리미엄 고철가로 팔릴 만큼 폐선이 안 나오고 있어 공급 삭제 속도는 생각보다 느리다.</div>
+</div>
 <br>
 <h4>7. 반복된 투자 원칙(채널장 코멘트 종합)</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• 레버리지는 쓰지 마라. 이번 주 가장 많이 반복된 문장이다.</div>
 <div class="memo-bullet">• 모르겠으면 가만히 있어라. 급하게 회복하려다 엇박을 타면 더 망가진다.</div>
 <div class="memo-bullet">• <mark>한 섹터 몰빵 금지. 확신이 있어도 하지 마라. 본인 포지션은 &#x27;에너지 / 반도체 / 현금&#x27; 바벨이었고 현금은 이번 하락에 다 썼다고 반성했다.</mark></div>
@@ -1741,13 +1831,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• &#x27;CEO 말은 가려들어라&#x27;. GM 메리 바라의 전기차 낙관론이 반례로 제시됐다.</div>
 <div class="memo-bullet">• 국내 바이오는 하지 말고 미국 상장 바이오를 하라. 국내 자동차·내구재는 현 사이클에서 볼 필요 없다(제네시스 1,000만원 할인). 항공·크루즈는 소비 수요 지표로만 보고 투자 대상은 아니다.</div>
 <div class="memo-bullet">• 한화오션의 표준 FPSO 인증에는 회의적이다. 유전마다 생산량·가스함량·서브시 인터페이스가 달라 표준화가 안 되는 게 업계 현실이며, 2010년대 조선소들이 망한 원인도 여기 있다는 실무 경험 기반 판단.</div>
+</div>
 <br>
 
 <div class="sub-section sub-summary"><h4>Implications</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <mark><strong>밸류에이션 방법론 자체가 이번 사이클의 승부처다</strong>. LTA로 메모리를 PER로 볼 것이냐 PBR로 볼 것이냐는 취향 문제가 아니라 목표주가가 2~3배 갈리는 문제이며, 이 논쟁은 다운사이클을 한 번 통과하기 전까지 결론이 나지 않는다. 따라서 지금은 어느 한쪽에 몰빵하기보다 PBR 하단이라는 안전마진에만 기대는 편이 합리적이다.</mark></div>
 <div class="memo-bullet">• <strong>AI 인플레이션이 금리를 밀어 올리면 AI CAPEX 자체가 자기 발목을 잡는 순환 구조에 들어간다</strong>. Meta 회사채 7.5%가 그 첫 증거다. 빅테크가 빚으로 투자하는 순간 반도체 수요는 금리 종속 변수가 되므로, 반도체 롱을 유지하려면 금리 인상 헤지(은행·보험·에너지)를 반드시 함께 들고 가야 한다.</div>
 <div class="memo-bullet">• <mark><strong>전쟁이 만든 공급 삭제는 되돌릴 수 없고, 그 수혜는 유가가 아니라 밸류체인에 있다</strong>. 항로가 꼬여 톤마일이 늘고 오더북이 역대 최저인 OSV·시추·정유는 유가가 $70으로 빠져도 배당과 자사주로 방어되는 구조다. 유가 방향에 베팅하지 말고 &#x27;공급이 막힌 구간&#x27;에 베팅하라는 것이 이번 주 클리핑 전체를 관통하는 논리다.</mark></div>
+</div>
 <br>
 <br>
 <div class="text-line">곧 실적에 반영될 예정</div>
@@ -1788,14 +1881,18 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 반도체 산업은 AI 성장의 핵심이며 장기적 펀더멘탈이 견고하여, 현 시장 하락은 저가 매수 기회입니다.</div>
 <div class="memo-bullet">• 고금리와 하이퍼스케일러의 자금 유동성 악화가 주가 하락의 주된 원인이며, 중국 리스크보다 영향이 큽니다.</div>
 <div class="memo-bullet">• 투자의 본질은 좋은 기업을 좋은 가격에 사는 것이며, 단기 등락보다 기업의 비즈니스 구조에 집중해야 합니다.</div>
+</div>
 <br>
 <div class="bold-line">투자 철학 및 전략</div>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>주가는 예측하기 어려우나, 투자는 좋은 기업을 좋은 가격에 사는 것이 본질이며, 지금과 같은 시기는 매수를 고려할 만한 좋은 시점일 수 있습니다.</mark></div>
 <div class="memo-bullet">• 개인의 과도한 레버리지 투자는 시장 고점 형성 후 하락의 원인이 되었으며, 단기적인 일희일비 투자를 경계해야 합니다.</div>
 <div class="memo-bullet">• 언론 기사나 단기 호재에 현혹되지 말고 기업의 본질적 가치(현금 창출 능력)와 비즈니스 구조에 집중해야 합니다.</div>
+</div>
 <br>
 </div>
 
@@ -1817,9 +1914,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>단순함을 추구하는 사람은 업무와 삶에서 에너지를 효율적으로 사용하며 더 나은 결과를 얻는다.</mark></div>
 <div class="memo-bullet">• &#x27;복잡주의자&#x27;는 불필요한 장황함과 복잡한 구조로 사업을 취약하게 만들어 실패할 가능성이 높다.</div>
 <div class="memo-bullet">• <mark>단순함은 그 자체로 강력한 경쟁력이므로, 모든 영역에서 &#x27;단순화&#x27;를 우선순위에 두어야 한다.</mark></div>
+</div>
 <br>
 <br>
 </div>
@@ -1843,13 +1942,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• AI 시대에는 지능보다 스스로 사고하고 성장하려는 &#x27;의지(volition)&#x27;가 경쟁력의 핵심 기준이 됩니다.</div>
 <div class="memo-bullet">• AI에 대한 과도한 의존은 인지 능력과 내재적 동기를 저하시키는 &#x27;인지적 양극화&#x27;를 초래할 위험이 있습니다.</div>
 <div class="memo-bullet">• 인간은 AI를 단순 도구가 아닌 정신적 근육을 단련하는 튜터로 활용하여 능동적인 성장을 추구해야 합니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>AI 시대의 새로운 능력 기준</strong></div>
 <div class="memo-bullet indent">• 지능이 흔해진 시대에는 어려운 사고를 즐기는 &#x27;인지욕구&#x27;와 스스로 성장하려는 &#x27;의지&#x27;가 가장 귀한 자산입니다.</div>
 <div class="memo-bullet">• <strong>AI 의존으로 인한 부작용</strong></div>
@@ -1861,6 +1963,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>미래의 교육과 환경</strong></div>
 <div class="memo-bullet indent">• 교육은 단순 지식 전달에서 벗어나 고난을 견디고 학습하는 의지를 길러주는 방향으로 전환되어야 합니다.</div>
 <div class="memo-bullet indent">• <mark>AI는 인간이 가질 수 없는 &#x27;욕망&#x27;과 &#x27;추진력&#x27;을 대체할 수 없으며, 이를 보존하는 것이 인간 존엄의 핵심입니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -1883,9 +1986,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• KPMG는 인공지능(AI)의 발달로 단순 반복 업무가 자동화됨에 따라, 인턴들에게 기술적 지식보다는 비판적 사고와 판단력을 교육하는 데 집중하고 있습니다.</div>
 <div class="memo-bullet">• 올랜도의 &#x27;레이크하우스&#x27; 연수원에서 인턴들은 스캐빈저 헌트와 모의 사기 조사 등 게임화된 훈련을 통해 복잡한 문제 해결 역량을 키우고 있습니다.</div>
 <div class="memo-bullet">• <mark>향후 회계 업계는 AI를 활용해 업무 효율을 높이는 한편, 신입 사원에게는 기술 숙련도와 더불어 유연한 소통 능력과 비즈니스 통찰력을 요구하는 방향으로 변모하고 있습니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -1907,17 +2012,21 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• AI 도구로 직무 경계가 흐려짐에 따라 직무를 산출물로 나누던 기존 방식의 변화가 요구되고 있습니다.</div>
 <div class="memo-bullet">• 문제의 핵심은 도구 사용 여부가 아니라, 결과물의 책임 소재와 의사결정 방식이 불명확한 전달 방식에 있습니다.</div>
 <div class="memo-bullet">• 에이전틱 조직에서는 누가 초안을 만들었느냐보다 의사결정 및 책임 구조를 명확히 하는 새로운 협업 원칙이 중요합니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>직무 경계의 붕괴</strong>: AI의 보편화로 기획자, 디자이너, 개발자 간의 도구 사용이 자유로워지면서 과거와 같은 엄격한 핸드오프가 불필요해졌습니다.</div>
 <div class="memo-bullet">• <mark><strong>협업의 충돌과 책임</strong>: 단순히 AI 결과물을 넘기는 행위는 상대 직군에게 재작업 부담을 주며, AI가 생성한 결정에 누가 의미를 부여하고 책임질지가 불분명할 때 문제가 발생합니다.</mark></div>
 <div class="memo-bullet">• <mark><strong>새로운 책임 구조</strong>: 향후 조직은 누가 초안을 만들었는지보다, 무엇이 가설이고 무엇이 확정인지, 실패 시 비용을 누가 부담할지에 대한 명확한 규칙이 필요합니다.</mark></div>
 <div class="memo-bullet">• <mark><strong>전문성의 재정의</strong>: 누구나 화면을 만들 수 있는 시대일수록 경험 판단의 기준을 세우고 품질을 끝까지 책임지는 디자이너와 가설을 선명하게 설계하는 PM의 역할은 더욱 중요해집니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -1939,14 +2048,17 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 물타기는 많은 투자자의 몰락을 초래하는 위험한 전략이며, 특히 부채비율이 높은 기업이나 기술적 진부화가 진행되는 기업에는 절대 금물입니다.</div>
 <div class="memo-bullet">• 워런 버핏과 같은 성공적인 물타기는 기업의 펀더멘털에 대한 확신과 파산 가능성이 극히 낮은 비즈니스 모델일 때만 제한적으로 허용됩니다.</div>
 <div class="memo-bullet">• 투자 전 &#x27;어떤 상황에서 틀린 판단임을 알 수 있는지&#x27;에 대한 사전 기준을 세우고, 감정적인 물타기를 배제하는 리스크 관리 원칙이 반드시 필요합니다.</div>
+</div>
 <br>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>물타기의 위험성</strong></div>
 <div class="memo-bullet indent">• 가치 투자자들에게 물타기는 스스로와 고객을 파멸로 이끄는 대표적인 방법입니다.</div>
 <div class="memo-bullet indent">• <mark>폴 튜더 존스의 &#x27;패자는 패자 주식을 물타기 한다&#x27;는 격언처럼, 잘못된 판단을 반복하는 것은 치명적입니다.</mark></div>
@@ -1956,6 +2068,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>브론테 캐피털의 투자 원칙</strong></div>
 <div class="memo-bullet indent">• &#x27;디폴트&#x27; 비중 제한(보통 9%)을 통해 특정 종목에 대한 노출도를 관리합니다.</div>
 <div class="memo-bullet indent">• 투자 결정 후 최소 6~9개월의 시간을 두고 상황을 지켜보며 추가 투자를 결정하는 시스템적 접근을 강조합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -1973,28 +2086,28 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line">- <strong>피해야 할 행동</strong></div>
-</blockquote>
 <div class="quote-line indent"><strong>- 반도체가 급락했다는 이유로 실적 근거가 약하거나 이미 비싼 로봇·이차전지·조선·고평가 성장주를 추격하는 행동을 가장 나쁜 선택으로 꼽는다.</strong></div>
 <div class="quote-line indent"><strong>- 하락 공포에 전량 매도한 뒤 반등을 보고 더 높은 가격에 다시 사는 행동을 피해야 한다.</strong></div>
 <div class="quote-line indent">- 과거 최고 수익을 현재 돈으로 여기며 <strong>그 수준을 회복할 때까지 매도를 거부하지 않는다 -&gt; 괜찮을 때 그냥 팔아라</strong></div>
 <div class="quote-line indent">- 낮은 PER만으로 바닥을 확정하거나, 시장 전체가 약하다는 이유로 보유 종목의 실적·산업 논리를 점검하지 않는 태도를 경계한다.</div>
 <div class="quote-line indent">- 레버리지를 사용하지 않는다. 현금 투자 손실과 차입 투자 손실은 강제청산 위험 때문에 전혀 다른 문제다.</div>
-<blockquote class="source-quote">
 <div class="quote-line">- <strong>매매 원칙: 시장 예측보다 조건 대응</strong></div>
-</blockquote>
 <div class="quote-line indent">- <strong>기본 원칙은 가격이 충분히 싸면 분할매수하고, 반등해 비싸지면 일부 매도하며, 한 번에 전부 사지 않고 현금을 남기는 것이다. -&gt; 쌀 때 사라</strong></div>
 <div class="quote-line indent">- <strong>고점의 평가이익은 실현 전까지 확정된 돈이 아니다. 과거 최고점에 집착하면 반등 때 매도하지 못하고 원금 회수 기회를 놓친다.</strong></div>
 <div class="quote-line indent">- 계좌 전체가 마이너스여도 <strong>특정 종목이나 일부 매수분이 반등해 수익이 나면 그 물량을 매도해 원금을 확보할 수 있다. 반드시 전체 계좌가 플러스가 될 때까지 기다릴 필요는 없다.</strong></div>
 <div class="quote-line indent">- 매수 가격, 반등 시 매도 비중, 지지·저항선에 따른 재진입, 상승 추세 확인 후 확인 매수를 사전에 정해야 한다.</div>
 <div class="quote-line indent">- 현재처럼 기술적 지지선이 무너지는 장에서는 일봉보다 주봉 단위로 판단 시간을 늘릴 필요가 있다.</div>
 <div class="quote-line indent">- 시장 방향을 맞히려 하기보다 조건이 오면 행동하고, 판단이 틀렸으면 손실을 감당한 뒤 기준이 훼손됐는지 확인해 포지션을 변경해야 한다.</div>
+</blockquote>
 <br>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 이번 급락은 글로벌 금융시장의 시스템성 붕괴보다는 메모리 반도체에 집중된 한국 증시의 구조와 투자심리 붕괴가 결합한 조정으로 진단한다.</div>
 <div class="memo-bullet">• 삼성전자와 SK하이닉스의 장기 실적 기반은 남아 있지만 낮은 PER만으로 단기 반등을 기대할 수 없으며, 미국 하이퍼스케일러 실적과 국내외 매수 주체의 복귀가 핵심 조건이다.</div>
 <div class="memo-bullet">• <mark>대응은 평균단가, 현금, 레버리지, 손실 감내력에 따라 달라져야 하며, 물타기나 테마 갈아타기보다 분할매수·반등 시 원금 회수·현금 확보를 기계적으로 실행해야 한다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -2014,9 +2127,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 비개발자로서 AI 도구를 활용해 업무 자동화를 실현하며 얻은 실무적 경험과 노하우를 공유합니다.</div>
 <div class="memo-bullet">• 문제 정의의 중요성을 강조하며, 적합한 도구 선택과 MVP 중심의 기획 프로세스를 제안합니다.</div>
 <div class="memo-bullet">• 팀 전체의 생산성을 높이기 위해 리더가 먼저 AI를 도입하고 전파하는 문화를 강조합니다.</div>
+</div>
 <br>
 </div>
 
@@ -2033,19 +2148,15 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 결과는 의도와 방법의 곱</strong></div>
-</blockquote>
 <div class="quote-line indent">- 메커니즘을 아무리 조져도, 인텐션이 구리면 안됨.</div>
 <div class="quote-line indent">- 결국 행동을 바꾸려면, 인텐션을 고양시켜야 함.</div>
-<blockquote class="source-quote">
 <div class="quote-line">- 근데 인텐션은 2가지 차원이 있음</div>
-</blockquote>
 <div class="quote-line indent">- 하나는 표면</div>
 <div class="quote-line indent"><strong>- 다른 하나는 숨은 의도</strong></div>
 <div class="quote-line indent"><strong>- 내가 옳았어</strong></div>
 <div class="quote-line indent"><strong>- 편할래</strong></div>
 <div class="quote-line indent"><strong>- 쪽팔리고 싶지 않아</strong></div>
 <div class="quote-line indent"><strong>- 그냥 현상 유지 = 통제</strong></div>
-<blockquote class="source-quote">
 <div class="quote-line">- 이 숨겨진 인텐션이 노답이면 개선이 안됨</div>
 <div class="quote-line"><strong>- 내 숨겨진 목적을 찾아서 그 목적에 가장 적합한 목표와 방법 구축 -&gt; 숨은 의도를 찾아 제거하면 행동 변화 가능</strong></div>
 <div class="quote-line">- 어제의 나를 죽여라</div>
@@ -2067,10 +2178,12 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 <div class="text-line"><strong>영역</strong>: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ (사업, 관계, 건강, 재정 등)</div>
 <br>
+<div class="memo-block">
 <div class="memo-item"><span class="memo-num">1.</span> <mark><strong>1단계 — 결과 직시</strong> 지금 실제 결과는 무엇인가? →</mark></div>
 <div class="memo-item"><span class="memo-num">2.</span> <mark><strong>2단계 — 표면 의도</strong> 나는 무엇을 원한다고 말하는가? →</mark></div>
 <div class="memo-item"><span class="memo-num">3.</span> <mark><strong>3단계 — 간극 확인</strong> 표면 의도와 실제 결과 사이의 간극은? →</mark></div>
 <div class="memo-item"><span class="memo-num">4.</span> <mark><strong>4단계 — 숨은 의도 탐색</strong> 구체적으로 숨은 의도는: →</mark></div>
+</div>
 <br>
 <table class="data-table">
 <tr><td>드라이버</td><td>&quot;혹시 나는...&quot;</td><td>해당 여부</td></tr>
@@ -2082,10 +2195,12 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <tr><td>Control</td><td>...결과를 통제하려 하는 건 아닌가?</td><td>□</td></tr>
 <tr><td>Looking Good</td><td>...이미지를 보호하려 하는 건 아닌가?</td><td>□</td></tr>
 </table>
+<div class="memo-block">
 <div class="memo-item"><span class="memo-num">5.</span> <mark><strong>5단계 — 대가 계산</strong> 이 숨은 의도를 유지하는 대가는? →</mark></div>
 <div class="memo-item"><span class="memo-num">6.</span> <mark><strong>6단계 — 비전 재설정</strong> 이 모든 의도 중, 내가 진짜로 가장 원하는 것은? →</mark></div>
 <div class="memo-item"><span class="memo-num">7.</span> <mark><strong>7단계 — 스탠드</strong> &quot;나는 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 위에 선다. 결과와 상관없이.&quot;</mark></div>
 <div class="memo-item"><span class="memo-num">8.</span> <mark><strong>8단계 — 첫 번째 시도</strong> 방법은 상관없다. 지금 할 수 있는 가장 작은 시도는? →</mark></div>
+</div>
 <br>
 <br>
 
@@ -2108,28 +2223,35 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• 호르무즈 차단과 러시아 정유설비 피격으로 약 600만 b/d의 정제능력이 시장에서 이탈했고, 이 단일 사건이 탱커 운임, 정제마진, 미국 리그 수, 강관 가격으로 순차 전이되며 ECO·STNG·XOM·S-OIL·Tenaris 등 서로 다른 회사의 실적으로 동시에 확인됐다.</div>
 <div class="memo-bullet">• 메모리는 AI 수요로 2029~2030년까지 공급 부족이 이어질 것이라는 딜로이트·SemiAnalysis 전망과, CXMT의 캐파 2배 확장 및 빅테크 CapEx 지속성 의문이 같은 주에 맞부딪혔다.</div>
 <div class="memo-bullet">• Kioxia가 최대 8,000억엔 자사주 매입으로 주가 +10.2%를 기록한 뒤 주주환원 격차가 밸류에이션 격차와 같은 순서로 배열됐고, SK하이닉스는 시가배당률 0.02%의 분기배당만 내놓은 채 본안을 3분기로 미뤘다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>중동 공급 차질: 해소가 아니라 조건 협상 단계</strong></div>
 <div class="memo-bullet indent">• 엑손모빌 CEO는 이탈 정제능력을 호르무즈 300만 b/d, 중국 수출 중단 200만 b/d, 러시아 피격 100만 b/d로 나눠 합산 약 600만 b/d로 제시했고 &quot;코로나를 제외하면 수요 대비 가용 정제능력이 이렇게 낮은 것은 처음&quot;이라 했다.</div>
 <div class="memo-bullet indent">• 러시아는 7월 기준 정제 케파 약 40%가 타격받아 가동률 약 36% 차질이 발생했고, 항공유 수출금지는 11월까지, 휘발유·경유는 내년 1월까지 연장됐다. 8월 2일 사라토프 정유시설(설계 연 700만톤, 러시아 전체의 약 2.2%)이 드론 공격을 받았다.</div>
 <div class="memo-bullet indent">• <mark><strong>아람코 CEO 아민 나세르는 호르무즈가 오늘 재개돼도 일 210만 배럴 속도로 고갈 재고를 채우는 데 최대 18개월이 걸릴 수 있다고 밝혔다.</strong></mark></div>
 <div class="memo-bullet indent">• 통항 합의 구조는 한시적 북측 진입·남측 출항 분리 후 중앙항로 단일화이며, 이란 의회 초안에는 미국·이스라엘 선박 통항 전면 금지와 위반 시 화물가치 최대 20% 벌금 조항이 담겼다. 미 중부사령부의 남쪽 항로 개방 발표와 이란의 합의 부인이 같은 주에 공존했다.</div>
 <div class="memo-bullet indent">• 후티는 7월 22일 봉쇄 개시 이후 사우디 유조선 8척을 타격하고 29척을 차단·회항시켰다. 7월 23일 이후 바브엘만데브를 통과한 17척 중 9척이 폭발했다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>해운: 지정학 프리미엄이 실적으로 확정된 분기</strong></div>
 <div class="memo-bullet indent">• Okeanis Eco Tankers는 선대 평균 TCE 약 $181,000/일(VLCC 스팟 $214,000, Suezmax $175,000), 조정 EPS $5.91, 배당 $5.25/주로 창사 이래 최대 실적을 냈다. 피어 대비 VLCC 약 +50%, Suezmax 약 +60% 아웃퍼폼했고 3분기에도 VLCC 스팟일수 48%를 $207,000/일에 확정했다.</div>
 <div class="memo-bullet indent">• Scorpio Tankers는 조정 EPS $4.68로 컨센 $4.56은 상회했으나 자체 추정 $4.75는 하회했다. 제품선 운임이 봉쇄 이후 전분기 대비 약 40% 급등했고, LR2는 목표를 웃돈 반면 MR·Handymax는 하회해 3분기 평균 TCE 목표가 2% 하향 조정됐다.</div>
 <div class="memo-bullet indent">• Tidewater는 선도 일당 임대료 QoQ +7.5%, 북해 AHTS 스팟 일당 16만 파운드 이상으로 역대 최고를 기록했으나 GAAP EPS $0.43으로 소폭 미스였고 Wilsons 인수 클로징이 약 2개월 지연됐다.</div>
 <div class="memo-bullet indent">• Frontline은 VLCC 2척을 $2억 7천만에 매각하며 주당 $0.80 특별배당을, Dorian LPG는 사상 최고 수익과 함께 주당 $1 배당을 발표했다.</div>
 <div class="memo-bullet indent">• 실물 운임 관측치로 중동에서 아시아 향 장금상선 559k, S-OIL 지불 318k가 확인됐고 BDI는 3,063pt(+4.33%)로 3,000pt를 돌파했다. 클락슨 신조선가지수는 185.49pt로 사실상 횡보였고 Feeder만 $33.00M에서 $33.50M로 올랐다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>정유·석유화학: 대서양권과 아시아의 차별화</strong></div>
 <div class="memo-bullet indent">• 미국 오일 메이저 2사 합산 이익이 $265억을 넘겨 전년 대비 300% 이상 급증했으나 주가는 CVX +2.4%, XOM -1.0%로 갈렸다. 엑손모빌은 조정이익 $14.7B(전분기 $8.8B), FCF $17.2B, 주주환원 $9.4B를 기록했다.</div>
 <div class="memo-bullet indent">• S-OIL은 영업이익 9,650억원으로 컨센 9,551억원에 부합했으나 순이익 5,146억원은 예상 대비 -29%였다. 부문별로 정유 5,324억(-49%), 화학 -488억(적전), 윤활유 4,774억(+187%)으로 윤활유가 실적을 지탱했다.</div>
@@ -2137,11 +2259,14 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet indent">• <mark>국내 정유사의 제약은 원료 조달이다. 중동 의존도가 높아 OSP 프리미엄, 운임·전쟁보험료 상승, 원가 래깅이 마진 실현 폭을 제한한다. OSP는 5월 배럴당 +17불(역대 최고 인상)에서 8월 선적분 -11불(역사상 최대 인하)로 변동성이 극심하다.</mark></div>
 <div class="memo-bullet indent">• 석유화학은 방향이 반대다. 엑손모빌 화학 스프레드가 북미 에탄 원가 우위로 전분기 대비 약 180% 급등한 반면 아시아·태평양은 약세다. <mark>Westlake와 LyondellBasell이 나란히 어닝 서프라이즈를 냈고 금호석유화학도 영업익 3,390억원으로 컨센 대비 +132%를 기록했다.</mark></div>
 <div class="memo-bullet indent">• 포르투갈이 7월 30일 석유 채굴·정제 기업 대상 33% 한시 횡재세를 승인하며 EU 첫 사례가 됐고, 국내에도 유사 법안이 계류 중이다.</div>
+</div>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>전력기기·자동화·유정용 강관</strong></div>
 <div class="memo-bullet indent">• Powell Industries는 수주잔고 $24억을 확보했으나 <mark>12개월 내 매출 전환분이 약 $13억(54%)으로 지난 분기 60%대에서 낮아졌다. 이는 부진이 아니라 $9억이 넘는 초대형 장기 프로젝트가 유입된 결과라고 회사가 설명했다. $4억 데이터센터 메가 프로젝트는 2~2.5년에 걸쳐 인식된다.</mark></div>
 <div class="memo-bullet indent">• FANUC은 FY2026 1분기 수주 2,819억엔(+36.9%)으로 매출 성장률 +17.7%를 크게 앞섰고, 로보머신 수주는 +98.3%, 중국 수주는 +50.9%였다. 연간 가이던스를 매출 9,481억엔, 영업익 2,180억엔으로 상향했다.</div>
 <div class="memo-bullet indent">• Tenaris는 GAAP EPADS $0.95로 예상을 $0.16 상회했고, Pipe Logix가 연초 이후 약 9% 올라 연말까지 5% 추가 상승을 전망했다. 분쟁 이후 미국 리그가 약 10%(약 50기) 늘었고 연말까지 10~15기 추가를 예상하며, 4분기 출하가 100만 톤을 상회할 것으로 봤다.</div>
+</div>
 <br>
 <br>
 <br>
@@ -2166,9 +2291,11 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 유튜브는 AI를 통한 정보 요약보다 창작자의 진정성을 중시하는 이용자들의 반응을 확인했습니다.</div>
 <div class="memo-bullet">• 미국은 자국 내 로봇 혁신을 위해 중국산 로봇 하드웨어 사용을 금지하며 공급망 문제에 직면했습니다.</div>
 <div class="memo-bullet">• AI는 일자리 불안을 야기하지만 대중은 자신의 직업만큼은 안전하다고 믿는 경향이 있습니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -2193,27 +2320,35 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 뉴스레터 성장은 알고리즘이 아닌 독자와 연결되는 글쓰기 실력, 전면 무료 배포, 그리고 꾸준한 데이터 축적의 산물입니다.</div>
 <div class="memo-bullet">• Substack 생태계를 활용하여 에세이, Notes, 댓글을 하나의 유입 경로로 묶고 고티켓 백엔드 수익 모델을 구축해야 합니다.</div>
 <div class="memo-bullet">• 성장 해킹 기술보다 중요한 것은 독자에게 가치를 주는 문장 예절과 지속 가능한 콘텐츠 생산 체계입니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
 <div class="bold-line">1. 뉴스레터 성장 핵심 전략</div>
+<div class="memo-block">
 <div class="memo-bullet">• <mark><strong>글쓰기 역량:</strong> 짧고 간결한 문장, 능동태 사용, 구체적 묘사를 통해 독자 유지율을 높여야 합니다.</mark></div>
 <div class="memo-bullet">• <strong>무료 배포의 중요성:</strong> 초기 유료화는 확산을 막으므로, <mark>전면 무료 공개로 트래픽을 확보하고 강연, 컨설팅 등 고티켓 서비스로 수익을 창출합니다.</mark></div>
 <div class="memo-bullet">• <strong>플랫폼 활용법:</strong> Substack의 뉴스레터, Notes, 댓글 기능을 연결해 유입 경로를 다각화하고 상호작용을 통해 아이디어를 발굴합니다.</div>
+</div>
 <br>
 <div class="bold-line">2. 콘텐츠 설계 및 운영</div>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>광범위한 니치(Broad Niche):</strong> <mark>지나치게 좁은 주제는 소재를 고갈시키므로, 넓은 주제 안에서 자신만의 뚜렷한 관점을 유지합니다.</mark></div>
 <div class="memo-bullet">• <strong>스토리텔링과 구조:</strong> &#x27;작은 영웅의 여정&#x27; 구조를 도입하여 독자의 지적 밀도를 충족시키고 마지막에는 더 높은 지점으로 이끕니다.</div>
 <div class="memo-bullet">• <strong>지속 가능성:</strong> 10편 발행 규칙 등을 통해 즉각적인 결과에 일희일비하지 않고 꾸준한 산출물을 만들어야 합니다.</div>
+</div>
 <br>
 <div class="bold-line">3. 하지 말아야 할 것</div>
+<div class="memo-block">
 <div class="memo-bullet">• 리스택 교환, 링크 투척, 과잉 편집 등은 성장을 방해하며 오히려 신뢰도를 떨어뜨립니다.</div>
 <div class="memo-bullet">• 트렌드를 쫓기보다 자신의 목소리를 내고 &#x27;손님맞이 규칙&#x27;에 따라 정돈된 브랜드 이미지를 유지해야 합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -2237,13 +2372,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• PMF(제품-시장 적합성)는 고정된 상태가 아니며, 고객 정의와 시장 변화에 따라 조용히 침식될 수 있습니다.</div>
 <div class="memo-bullet">• 영업 주기 연장, 전환율 저하, 메시지 분산 등 PMF 침식의 징후를 실행 문제로 오인하지 않는 것이 중요합니다.</div>
 <div class="memo-bullet">• 현재 시장의 고갈 여부를 진단하고, 표류 대응을 위한 재집중이나 구조적 재조정을 명확히 선택해야 합니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>PMF 침식의 징후</strong>: 제품 가치 적합성은 유지되어도 신규 고객 획득이 어려워지면 PMF가 침식됩니다. 이를 영업팀의 실행력 부족으로 착각하기 쉽습니다.</div>
 <div class="memo-bullet">• <strong>침식의 3가지 영역</strong>:</div>
 <div class="memo-bullet indent">• <strong>이상적 고객 프로필(ICP) 표류</strong>: 무분별한 타겟 확장으로 고객 정의가 분산됨.</div>
@@ -2253,6 +2391,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>대응 전략</strong>:</div>
 <div class="memo-bullet indent">• <strong>재집중</strong>: 의도치 않은 표류라면 핵심 고객과 JTBD(수행할 작업)에 다시 집중.</div>
 <div class="memo-bullet indent">• <strong>재조정</strong>: 시장 구조적 변화가 발생했다면 명확한 목표 시장을 새로 설정하여 재조정.</div>
+</div>
 <br>
 <br>
 </div>
@@ -2276,13 +2415,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 투자 경력이 길다고 반드시 실력이 비례하는 것은 아니며, 성찰 없는 시간은 단순한 경험의 보관일 뿐입니다.</div>
 <div class="memo-bullet">• 실력을 쌓기 위해서는 매매일지 작성, 반대 의견 검토, 냉철한 비교, 원칙 준수라는 능동적인 학습 과정이 필요합니다.</div>
 <div class="memo-bullet">• 투자는 벽돌을 쌓는 일과 같기에, 경력의 길이를 묻기보다 매년 얼마나 본질적인 성장을 이뤘는지 스스로 질문해야 합니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>경력과 실력의 괴리</strong>: 단순히 오랜 시간 시장에 머물렀다고 해서 실력이 자동으로 늘지 않습니다. 경험을 바탕으로 스스로 판단하고 고민한 횟수가 실력을 결정합니다.</div>
 <div class="memo-bullet">• <strong>보관된 경험 vs 실전 경험</strong>: 실질적인 투자 가설 수립과 검증 없이 시간만 흘려보내는 것을 &#x27;보관된 경험&#x27;이라 정의하며, 이는 성장과 거리가 멉니다.</div>
 <div class="memo-bullet">• <strong>실력 향상을 위한 네 가지 원칙</strong>:</div>
@@ -2291,6 +2433,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet indent">• <mark><strong>냉철한 종목 관리</strong>: &#x27;언제 오를까&#x27; 대신 &#x27;지금 가격에 다시 살 것인가&#x27;를 스스로 물어봐야 합니다.</mark> <strong>-&gt; 이 가격에 다시 살 만한 주식이면 홀딩해야 함. 너무 비싸다? 싶으면 팔아야 함</strong></div>
 <div class="memo-bullet indent">• <strong>원칙 준수</strong>: 이해 범위를 벗어나지 않고, 투자 실력을 반복을 통해 쌓아가야 합니다.</div>
 <div class="memo-bullet">• <strong>투자 성장의 본질</strong>: 투자는 평생 집을 짓는 과정과 같으므로, 경력이라는 숫자보다 매년 쌓아 올린 지식과 경험의 깊이가 중요합니다.</div>
+</div>
 <br>
 </div>
 
@@ -2312,17 +2455,21 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 매니저는 기술적 업무를 넘어 조직의 갈등, 보안, 불안을 관리하는 고립되고 책임이 막중한 역할입니다.</div>
 <div class="memo-bullet">• 개인적 의견이 지시로 오해받을 수 있기에 세심한 언행과 감정 관리가 필수적이며, 끊임없는 자기 학습이 요구됩니다.</div>
 <div class="memo-bullet">• 성과 추적이 어려운 환경에서도 팀의 성장을 견인하며 자신만의 중심을 지키는 노력이 중요합니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <mark><strong>매니저의 고독과 역할의 변화</strong>: 팀원들과의 관계 역학이 변하며, 고립감을 느끼기 쉽습니다. 공유할 수 없는 기밀을 홀로 감당해야 하며 심리적 중심을 지키는 훈련이 필요합니다.</mark></div>
 <div class="memo-bullet">• <strong>언어와 감정의 책임</strong>: 매니저의 무심한 발언도 지시로 해석되므로 언행에 신중해야 합니다. 상사의 부당한 결정조차 외교적으로 전달해야 하는 &#x27;방 안의 어른&#x27;으로서의 책임이 따릅니다.</div>
 <div class="memo-bullet">• <strong>성과 관리와 역량 강화</strong>: 기술적 실무와 달리 관리 업무는 성과가 수주에 걸쳐 나타납니다. 명확한 목표 설정과 추적이 필요하며, 부족한 교육 체계를 스스로 보완하기 위해 멘토링과 학습을 적극 활용해야 합니다.</div>
 <div class="memo-bullet">• <strong>상향 관리와 조직적 시야</strong>: 직속 팀원 관리뿐만 아니라 상사와의 원활한 소통, 타 부서와의 협력, 조직 전체의 구조적 문제 파악이 성패를 결정합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -2342,30 +2489,38 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line"><strong>- 진심으로 좋아하면 진심으로 열심하게 됨.</strong></div>
 <div class="quote-line">- 결과에만 집중하지 말고, <strong>과정 자체에서 희열을 느끼도록 공부해봐야 함</strong></div>
 <div class="quote-line">- 결국 내가 이걸로 얼마 벌었냐? 보다 <strong>어떤 가설 설정으로 홈런을 기록했는가가 중요함.</strong></div>
-</blockquote>
 <div class="quote-line indent">- 문제 설정, 검증, 문제 수정.</div>
+</blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 투자를 잘하려면 단순히 수익을 내고 싶어 하는 마음을 넘어, 투자라는 행위 자체를 진심으로 좋아해야 한다.</div>
 <div class="memo-bullet">• <mark>진정으로 좋아하는 사람은 시키지 않아도 끊임없이 공부하고 탐구하며, 그 몰입의 시간이 실력을 만든다.</mark></div>
 <div class="memo-bullet">• 결과만 쫓고 과정의 노력을 소홀히 하면, 시장에서 오랜 시간을 보내도 실력은 제자리걸음에 머물게 된다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
 <div class="bold-line">1. 투자를 향한 태도의 중요성</div>
+<div class="memo-block">
 <div class="memo-bullet">• 저자는 과거 조언을 구하던 가까운 후배에게 &quot;너는 투자를 좋아하지 않아서 잘하기 어렵다&quot;고 일침을 가함.</div>
 <div class="memo-bullet">• <mark>단순히 돈을 벌고 싶은 목적만 가지고는 공부와 고민이 부족할 수밖에 없음을 지적.</mark></div>
+</div>
 <br>
 <div class="bold-line">2. 투자를 좋아하는 사람의 특징</div>
+<div class="memo-block">
 <div class="memo-bullet">• <mark>누가 시키지 않아도 자발적으로 투자 서적을 찾아 읽고, 시장 흐름을 고민하며 자신의 생각을 정리함.</mark></div>
 <div class="memo-bullet">• <mark>투자 자체를 하나의 즐거운 과정으로 받아들이며, 시행착오 속에서도 배움을 멈추지 않음.</mark></div>
+</div>
 <br>
 <div class="bold-line">3. 지속 가능한 성장의 조건</div>
+<div class="memo-block">
 <div class="memo-bullet">• 좋아하는 일에 몰입하여 1만 시간의 법칙을 실천할 때 비로소 평범함을 초월한 실력을 갖추게 됨.</div>
 <div class="memo-bullet">• 투자는 조급함을 버리고, 자신이 이 게임을 진정으로 사랑하고 있는지 스스로를 되돌아봐야 할 영역임.</div>
+</div>
 <br>
 </div>
 
@@ -2387,13 +2542,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 조직의 좋은 제도가 사라지는 원인은 악용보다 &#x27;제도를 둘러싼 논쟁&#x27;으로 인한 관리 피로감 때문이다.</div>
 <div class="memo-bullet">• 개인의 합리적 선택이 조직 전체의 맥락과 충돌할 때, 제도는 자율성을 잃고 복잡한 규칙으로 변질된다.</div>
 <div class="memo-bullet">• 건강한 조직 문화는 규칙을 늘리는 대신, 구성원 간의 소통과 자정 작용을 통해 유지되어야 한다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>좋은 제도가 사라지는 진짜 이유</strong></div>
 <div class="memo-bullet indent">• 규칙이 생기고 예외가 정의되며 관리가 시작되면, 문화는 상식이 아닌 정책이 된다.</div>
 <div class="memo-bullet indent">• 결국 관리 피로가 쌓여 제도를 폐기하게 되는 악순환이 발생한다.</div>
@@ -2403,6 +2561,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>자정 작용의 중요성</strong></div>
 <div class="memo-bullet indent">• 정기적인 소통 채널을 활용해 서로의 기준을 맞춰가는 과정이 필요하다.</div>
 <div class="memo-bullet indent">• &#x27;Find the balance&#x27;를 실천하며 규칙을 늘리지 않는 문화를 만드는 것이 핵심이다.</div>
+</div>
 <br>
 </div>
 
@@ -2424,13 +2583,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>현대 전략은 확신 수준에 따른 &#x27;베팅&#x27;이며, 불확실한 환경에서 빠르게 변화하는 신호를 포착하고 적응하는 것이 핵심입니다.</strong></div>
 <div class="memo-bullet">• 리더는 전략적 의사결정을 &#x27;오늘로부터(today-forward)&#x27;와 &#x27;미래로부터(future-back)&#x27;의 두 시간대로 나누어 지속적인 테스트 과정을 거쳐야 합니다.</div>
 <div class="memo-bullet">• 성공적인 기업은 자신의 전략적 베팅을 명확히 하고, 내·외부 데이터를 활용해 의사결정 주기를 단축하며, 조직의 회복탄력성을 강화해야 합니다.</div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>새로운 전략의 본질</strong></div>
 <div class="memo-bullet indent">• <strong>전략은 단순한 계획이 아니라 불확실한 미래에 대한 &#x27;베팅&#x27;입니다</strong>. 기업은 자신의 노출(exposure)을 이해하고 신호 변화에 따라 즉각 대응할 수 있는 능력을 갖춰야 합니다.</div>
 <div class="memo-bullet indent">• ai라는 불확실성에 대응하는 전략 = 관점을 기반으로 베팅</div>
@@ -2444,6 +2606,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet indent">• 전략을 시작할 때 경영진의 &#x27;확신&#x27; 수준을 테스트하십시오.</div>
 <div class="memo-bullet indent">• <mark>모든 주요 선택을 롱(long), 숏(short), 헤지(hedge) 관점에서 베팅으로 정의하십시오.</mark></div>
 <div class="memo-bullet indent">• <mark>높은 확신은 속도와 몰입을, 낮은 확신은 실험과 신호 모니터링을 통해 대응하십시오.</mark> <strong>-&gt; 확실하다 치면 세고 빠르게 들어가고, 애매하다 싶으면 간봐라</strong></div>
+</div>
 <br>
 </div>
 
@@ -2466,25 +2629,33 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 넷플릭스는 AI 도입을 직무 소멸이 아닌 역<mark>할 재편을 위한 &#x27;storming&#x27; 단계로 규정하고, 기술보다 전체 시스템을 개선할 &#x27;시스템 사고형 인재&#x27;를 중시함.</mark></div>
 <div class="memo-bullet">• 직무 경계가 유동적이어도 엔지니어링, 디자인 등 핵심 전문성은 여전히 희소하며, 모든 직무에 AI 유창성과 결과에 대한 인간의 책임을 요구함.</div>
 <div class="memo-bullet">• 개별 기능 중심의 전문화에서 벗어나 변화에 적응하고 <mark>조직 전체의 효율성을 최적화하는 일반형 인재 및 시스템 사고 역량을 강화하고 있음.</mark></div>
+</div>
 <br>
 </div>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
 <div class="bold-line">AI 시대의 직무 변화와 전문성</div>
+<div class="memo-block">
 <div class="memo-bullet">• AI로 인해 PM, 디자이너, 개발자 간 경계가 흐려졌으나, 각 분야의 본질적 전문성(데이터 해석, 문제 정의, 확장성 판단 등)은 여전히 필수적임.</div>
 <div class="memo-bullet">• 누구나 AI로 코드를 생성할 수 있지만, 결과물의 품질과 책임은 인간의 장인정신과 판단력에 달려 있음.</div>
+</div>
 <br>
 <div class="bold-line">시스템 사고의 중요성</div>
+<div class="memo-block">
 <div class="memo-bullet">• 개별 팀이 파편화된 기술을 쓰는 대신, <mark>공통 인프라와 가드레일을 구축하여 전체 시스템을 최적화할 &#x27;시스템 사고자&#x27;가 필요함.</mark>(구조)</div>
 <div class="memo-bullet">• Netflix는 이를 위해 모든 구성원에게 자신의 업무 범위를 한 단계 넓혀 생각하고 전사적 맥락을 고려할 것을 요구함.</div>
+</div>
 <br>
 <div class="bold-line">탁월함을 위한 운영체제</div>
+<div class="memo-block">
 <div class="memo-bullet">• Netflix는 높은 인재 밀도와 자율성, 책임감을 유지하며, 무분별한 프로세스 추가보다 &#x27;비난 없는 회고&#x27;와 학습을 통해 조직을 성장시킴.</div>
 <div class="memo-bullet">• 채용 시 직급별 기준 대신 &#x27;AI 유창성&#x27;을 공통 기대치로 적용하여, 기술을 적절히 판단하고 활용할 능력을 평가함.</div>
+</div>
 <br>
 </div>
 
@@ -2515,7 +2686,6 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <blockquote class="source-quote">
 <div class="quote-line">- 장비주보다 더 병목이 심한 곳을 보자</div>
 <div class="quote-line">- <strong>공급이 없는 곳, 공급자가 공급을 더 늘릴 이유가 없는 곳을 보자</strong></div>
-</blockquote>
 <div class="quote-line indent">- 정유: 국장 S-Oil, 미국 VLO·MPC·PSX</div>
 <div class="quote-line indent">- 오일메이저: PBR(페트로브라스), XOM 선호</div>
 <div class="quote-line indent"><mark>- <strong>해양시추: TDW가 톱픽, RIG·SDRL이 2픽. VAL은 인수합병 예정이라 스킵, NE는 안정성 선호 투자자용. OII도 나쁘지 않음</strong></mark></div>
@@ -2524,9 +2694,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line indent">- 비료: CF Industries 외 노터치. YARA는 유럽 원가 불리, MOSAIC은 질소비료 없음</div>
 <div class="quote-line indent"><mark>- 사이클 위치는 &quot;무릎 정도, 특히 장비 쪽&quot;. 피크 판단 지표는 장비사 발주 증가 여부이며 지금은 아니라고 판단</mark></div>
 <div class="quote-line indent">- 8/12에는 CMBT·FRO 선박 매각과 특별배당(0.8달러) 사례를 들며 탱커는 EXIT 각을 잡으라고 조정. 신규 진입 우선순위는 OSV &gt; 해양시추선 &gt; 벌커</div>
-<blockquote class="source-quote">
 <div class="quote-line">- <strong>더 후퇴할 곳이 없을 때 사야 한다</strong></div>
-</blockquote>
 <div class="quote-line indent"><mark>- 같은 업종에서 PER 4배와 8배가 공존하면 4배가 아니라 8배를 사라. 밸류에이션 차이는 주주환원 차이일 가능성이 높다</mark> -&gt; 더 좋은 회사다 ㅇㅇ ㅋㅋ</div>
 <div class="quote-line indent">- 시장이 가능성 낮다고 보는 것은 싸게, 높다고 보는 것은 비싸게 거래된다. 안 좋다고 할 때 BUY, 좋다고 할 때 SELL</div>
 <div class="quote-line indent"><mark>- 나쁜 뉴스가 다 반영되면 악재에도 주가가 안 움직인다. 호재는 반대</mark></div>
@@ -2534,13 +2702,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line indent">- 본인은 현재 레버리지를 사용 중이나 절대 권유가 아니며 목표 수익률 달성 시 해제하겠다고 명시</div>
 <div class="quote-line indent">- 정부는 이용의 대상이지 신봉의 대상이 아니다(ELW 사례)</div>
 <div class="quote-line indent">- 8/11 코스피 폭락 관련 유언비어 확산 기사에는 &quot;투자의 0순위는 내 가족과 내 삶을 지키는 것&quot;이라는 메시지를 남김</div>
+</blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• 호르무즈 봉쇄 5개월째로 원유보다 &#x27;정제설비 파괴&#x27;가 핵심 변수가 되면서, 디젤 크랙 97달러·미국 휘발유 갤런당 4달러 돌파 등 정제마진 구조적 강세가 채널의 최대 화두였다.</div>
 <div class="memo-bullet">• 채널 운영자는 8/10에 에너지 포지셔닝 정본을 공개했고(신규 진입 우선순위 OSV &gt; 해양시추 &gt; 벌커, 탱커는 EXIT 준비), 국장은 &#x27;손익비 좋은 자리&#x27;로 보되 조선·반도체·고금리 수혜 금융에만 관심을 두는 스탠스를 반복했다.</div>
 <div class="memo-bullet">• SK하이닉스의 주주환원 지연과 ADR·IPO 이슈를 강하게 비판하며 &#x27;마이크론 &gt; 삼성전자 &gt; 하이닉스&#x27; 선호를 못박았고, 소부장 랠리는 코스닥 빈집 수급 현상으로 해석했다.</div>
+</div>
 <br>
 </div>
 
@@ -2557,7 +2728,6 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line">- 시스템형 인재가 필요한 이유 UX 라이팅 VER</div>
-</blockquote>
 <div class="quote-line indent">- 페르소나가 누구인지 세팅한다</div>
 <div class="quote-line indent">- 우리 브랜드의 보이스를 세팅한다</div>
 <div class="quote-line indent">- 이 모든 걸 잊지 않고 룰로 만든다</div>
@@ -2566,15 +2736,16 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line indent">- 팀원 뿐만 아니라 다른 팀과 조직원에게도 알린다</div>
 <div class="quote-line indent">- 온톨로지 (DB)를 관리한다</div>
 <div class="quote-line indent">- 이 시스템을 또 유지보수한다</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 직무의 전문성도 당연히 중요한데, 내 직무를 하나의 시스템으로 만들 수 있는 리더적 관점</strong></div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>3-Line Summary</h4>
+<div class="memo-block">
 <div class="memo-bullet">• 6년 차 UX 라이터 ‘글쓰는개미핥기’ 메이커가 AI 시대 변화된 직무의 역할과 &#x27;텍스트 엔지니어링&#x27;으로의 성장 과정을 공유합니다.</div>
 <div class="memo-bullet">• 데이터와 온톨로지 시스템을 활용해 AI에게 맥락을 학습시키고, 서비스 일관성을 유지하며 업무 효율을 극대화하는 실무 노하우를 소개합니다.</div>
 <div class="memo-bullet">• AI와 상호작용하는 책임자로서의 포지셔닝과 인간 중심의 스토리텔링 역량이 미래 UX 라이터에게 필수적임을 강조합니다.</div>
+</div>
 <br>
 <br>
 </div>
@@ -2595,16 +2766,15 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="quote-line">- 그동안 난 어떤 투자를 해왔는가? 그리고 앞으로 어떤 투자를 희망하는가?</div>
 <div class="quote-line">- 그 원칙에 교조주의적으로 접근할 필요 없으나, 과한 융통성을 발휘해서도 안된다.</div>
 <div class="quote-line"><strong>- 내가 장기 지속할 수 있는 프레임으로 투자 가치관을 만들자</strong></div>
-</blockquote>
 <div class="quote-line indent">- 처음에는 규칙</div>
 <div class="quote-line indent">- 그게 쌓이면 가치관이 보인다</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 환경에 유연하게 대응하되, 나만의 규칙을 만들어야 나만의 방식으로 생존할 수 있다. 레밍이 되지 말 것</strong></div>
-</blockquote>
 <div class="quote-line indent">- 남들은 이렇게 보는데, 그거 진짜 맞아? 되새겨볼 것</div>
+</blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>삶과 투자의 4대 원칙</strong></div>
 <div class="memo-bullet indent">• 사람 중심(Founder Mindset): 모든 관계와 조직 운영의 핵심은 사람이며, 창업가 정신을 가진 이들과 협력해야 합니다.</div>
 <div class="memo-bullet indent">• 장기적 안목(Reinvestment Opportunity): 작은 결정이 복리로 쌓여 거대한 성과를 만드는 장기적 재투자 기회를 찾아야 합니다.</div>
@@ -2613,6 +2783,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• **투자 전략으로서의 &#x27;자기다움&#x27;</div>
 <div class="memo-bullet indent">• <mark>투자는 단순한 수익 창출이 아닌, 자기 자신의 가치관을 시장에 표현하는 과정입니다.</mark></div>
 <div class="memo-bullet indent">• 업계의 관습적인 템플릿을 따르기보다, <mark>자신의 성향과 장단점을 이해하고 설계한 전략만이 지속 가능한 성과를 냅니다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -2638,6 +2809,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>투자와 유연함의 의미</strong></div>
 <div class="memo-bullet indent">• 많은 이들이 생각하는 투자에서의 유연함은 단기적인 대응을 합리화하는 핑계로 전락하기 쉽습니다.</div>
 <div class="memo-bullet indent">• 저자는 투자 판단 전에는 퇴로가 없다는 마음으로 철저히 스터디해야 한다고 강조합니다.</div>
@@ -2647,6 +2819,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet">• <strong>자기신뢰와 일관성</strong></div>
 <div class="memo-bullet indent">• 시장의 비관을 견디는 과정은 필수이며, 유연함은 자신의 불편함을 회피하기 위한 도구가 되어서는 안 됩니다.</div>
 <div class="memo-bullet indent">• 투자자가 차이를 만드는 핵심은 &#x27;일관성&#x27;이며, 실패가 명확하지 않다면 자신의 원칙을 충분히 기다려주는 태도가 필요합니다.</div>
+</div>
 <br>
 </div>
 
@@ -2663,15 +2836,14 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <blockquote class="source-quote">
 <div class="quote-line">- 순수하고 강력한 목적에 따라 전략을 짜고 진행해라</div>
 <div class="quote-line">- 돈만 벌자! 라는 목적도 좋긴 한데, 그러기 위해선 전략이 성기게 되기도 한다.</div>
-</blockquote>
 <div class="quote-line indent">- 돈 많이 벌자! 범죄 저질러? 등</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 목적 -&gt; 그 기업의 존재 가치 + 애매할 때 바라볼 수 있는 북극성 지표임</strong></div>
 <div class="quote-line"><strong>- 전략 선언의 핵심 : 목적, 타깃, 전술의 우선 순위</strong></div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>Why에서 목적과 미션으로</strong></div>
 <div class="memo-bullet indent">• <mark>기업이 왜 존재하는지, 세상에 어떤 독특한 가치를 제공하는지, 그것이 왜 누구에게 중요한지를 정의하는 것이 목적이다.</mark></div>
 <div class="memo-bullet indent">• <mark>목적이 명료하면 무엇을 해야 할지에 대한 판단 기준이 생기고, 미션은 구체적인 행동 지침으로 전환된다.</mark></div>
@@ -2689,6 +2861,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet indent">• 무엇을 다르게 하거나 더 잘하는가.</div>
 <div class="memo-bullet indent">• 그렇게 할 수 있게 해주는 것은 무엇인가.</div>
 <div class="memo-bullet indent">• <mark>좋은 선언서는 짧고 구체적이며, 모호한 최상급 표현을 피하고, 선언서만 읽어도 조직의 정체성과 중요성을 파악할 수 있게 한다.</mark></div>
+</div>
 <br>
 </div>
 
@@ -2705,18 +2878,17 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
                 <br>
 <blockquote class="source-quote">
 <div class="quote-line"><strong>- 직무 구분 없이 전체 시스템을 리페어하고 제안할 수 있는 인재만 뽑는다.</strong></div>
-</blockquote>
 <div class="quote-line indent">- 마케터도 제품 기획, 디자인 볼 줄 알아야 하고</div>
 <div class="quote-line indent">- 제품 기획부터 출시까지 프로세스도 개선해야 하고</div>
 <div class="quote-line indent">- 무슨 광고 만들까?가 아니라 광고 템플릿 만들기</div>
 <div class="quote-line indent">- 회원가입 버튼 개선이 아니라 과정 전체 개선</div>
-<blockquote class="source-quote">
 <div class="quote-line"><strong>- 내가 담당하는 문제 해결의 폭을 넓힐 것</strong></div>
 </blockquote>
 <br>
 
 <div class="sub-section sub-summary"><h4>요약</h4>
 <br>
+<div class="memo-block">
 <div class="memo-bullet">• <strong>모두가 빌더가 되면 직군이 필요 없어지는가</strong></div>
 <div class="memo-bullet indent">• Stone의 답은 아니다이다. <mark>기능 경계가 흐려져도 직군별 craft excellence는 당분간 사라지지 않는다고 본다.</mark></div>
 <div class="memo-bullet indent">• 근거는 희소성이다. <mark>훌륭한 엔지니어링, 훌륭한 데이터 사이언스, 훌륭한 창의성은 여전히 드물다고 반복해 말한다.</mark> -&gt; 대체 불가한 인재는 사실 소수다</div>
@@ -2738,6 +2910,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <div class="memo-bullet indent">• <mark>과제는 발견과 몰입을 지금보다 훨씬 쉽게 만드는 것이다.</mark> 콘텐츠가 많고 파편화돼 있다는 문제를 인정한다.</div>
 <div class="memo-bullet indent">• AI 콘텐츠에 대한 Netflix의 입장은 창작자 지원이다. 절대 안 쓰겠다는 창작자와도 일하고, 새로운 방식으로 이야기할 수 있는지 탐색하려는 창작자도 지원하며, 그 사이의 모든 사람도 지원한다.</div>
 <div class="memo-bullet indent">• 전면 AI 제작 콘텐츠가 사랑받을 수 있는지에 대해서는 인간이 중심에 없는 엔터테인먼트를 그리기 어렵다고 답한다. 스토리텔링은 인간성과 하나이며, 인간성이 없는 캐릭터를 보는 것은 덜 매력적이라는 견해다.</div>
+</div>
 <br>
 <br>
 <br>
