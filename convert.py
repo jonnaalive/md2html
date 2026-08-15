@@ -94,9 +94,9 @@ def parse_sections(md_text: str) -> list[dict]:
             i += 1
             continue
 
-        # 본문 처리
+        # 본문 처리 (들여쓰기 보존을 위해 rstrip만 한 원본 줄을 넘긴다)
         if current:
-            current['body'] += process_line(stripped) + '\n'
+            current['body'] += process_line(line.rstrip()) + '\n'
 
         i += 1
 
@@ -123,11 +123,12 @@ def clean_title(title: str) -> str:
 
 
 def process_line(line: str) -> str:
-    """한 줄을 HTML로 변환"""
-    if not line:
+    """한 줄을 HTML로 변환. line은 rstrip만 된 상태 (좌측 들여쓰기 유지)"""
+    stripped = line.strip()
+    if not stripped:
         return '<br>'
 
-    image_match = re.match(r'^!\[\[([^|\]]+)(?:\|([^\]]+))?\]\]$', line)
+    image_match = re.match(r'^!\[\[([^|\]]+)(?:\|([^\]]+))?\]\]$', stripped)
     if image_match:
         name = image_match.group(1).strip()
         alt = Path(name).stem
@@ -136,33 +137,24 @@ def process_line(line: str) -> str:
             return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
         return f'<div class="missing-image">이미지를 찾을 수 없음: {html.escape(name)}</div>'
 
-    md_image_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)$', line)
+    md_image_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)$', stripped)
     if md_image_match:
         alt = md_image_match.group(1).strip()
         name = md_image_match.group(2).strip()
         src = IMAGE_URLS.get(name) or name
         return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
 
-    # 블록쿼트
-    if line.startswith('>'):
-        content = line.lstrip('>').strip()
-        # 중첩 블록쿼트 제거 후 처리
-        content = inline_format(html.escape(content))
-        return f'<div class="quote-line">{content}</div>'
+    # 블록쿼트 (내부 들여쓰기: '> \t- ...' 형태는 indent 클래스)
+    if stripped.startswith('>'):
+        inner = stripped.lstrip('>')
+        if inner.startswith(' '):
+            inner = inner[1:]
+        is_indent = inner.startswith(('\t', '  '))
+        content = inline_format(html.escape(inner.strip()))
+        cls = 'quote-line indent' if is_indent else 'quote-line'
+        return f'<div class="{cls}">{content}</div>'
 
-    # 순서 리스트
-    ol_match = re.match(r'^(\d+)\.\s+(.+)', line)
-    if ol_match:
-        content = inline_format(html.escape(ol_match.group(2)))
-        return f'<div class="memo-item"><span class="memo-num">{ol_match.group(1)}.</span> {content}</div>'
-
-    # 비순서 리스트
-    ul_match = re.match(r'^[-*]\s+(.+)', line)
-    if ul_match:
-        content = inline_format(html.escape(ul_match.group(1)))
-        return f'<div class="memo-bullet">• {content}</div>'
-
-    # 들여쓴 리스트
+    # 들여쓴 리스트 (원본 줄의 좌측 공백으로 판정: 비들여쓰기보다 먼저 검사)
     indent_match = re.match(r'^(\t+|\s{2,})(\d+)\.\s+(.+)', line)
     if indent_match:
         content = inline_format(html.escape(indent_match.group(3)))
@@ -173,22 +165,36 @@ def process_line(line: str) -> str:
         content = inline_format(html.escape(indent_ul_match.group(2)))
         return f'<div class="memo-bullet indent">• {content}</div>'
 
+    # 순서 리스트
+    ol_match = re.match(r'^(\d+)\.\s+(.+)', stripped)
+    if ol_match:
+        content = inline_format(html.escape(ol_match.group(2)))
+        return f'<div class="memo-item"><span class="memo-num">{ol_match.group(1)}.</span> {content}</div>'
+
+    # 비순서 리스트
+    ul_match = re.match(r'^[-*]\s+(.+)', stripped)
+    if ul_match:
+        content = inline_format(html.escape(ul_match.group(1)))
+        return f'<div class="memo-bullet">• {content}</div>'
+
     # 테이블 (간단 처리)
-    if '|' in line and line.startswith('|'):
-        cells = [c.strip() for c in line.split('|')[1:-1]]
+    if '|' in stripped and stripped.startswith('|'):
+        cells = [c.strip() for c in stripped.split('|')[1:-1]]
         if all(re.match(r'^[-:]+$', c) for c in cells):
             return ''  # 구분선 스킵
         row = ''.join(f'<td>{inline_format(html.escape(c))}</td>' for c in cells)
         return f'<tr>{row}</tr>'
 
     # 볼드 텍스트 라인
-    if line.startswith('**') and line.endswith('**'):
-        content = inline_format(html.escape(line.strip('*').strip()))
-        return f'<div class="bold-line">{content}</div>'
+    if stripped.startswith('**') and stripped.endswith('**'):
+        content = inline_format(html.escape(stripped.strip('*').strip()))
+        cls = 'bold-line indent' if line[:1] in (' ', '\t') else 'bold-line'
+        return f'<div class="{cls}">{content}</div>'
 
-    # 일반 텍스트
-    content = inline_format(html.escape(line))
-    return f'<div class="text-line">{content}</div>'
+    # 일반 텍스트 (들여쓴 일반 줄도 indent 유지)
+    content = inline_format(html.escape(stripped))
+    cls = 'text-line indent' if line[:1] in (' ', '\t') else 'text-line'
+    return f'<div class="{cls}">{content}</div>'
 
 
 def inline_format(text: str) -> str:
@@ -588,6 +594,8 @@ body {
     color: var(--color-ink);
 }
 .quote-line { margin: 3px 0; }
+.quote-line.indent { margin-left: 22px; font-size: 13px; }
+.text-line.indent, .bold-line.indent { margin-left: 24px; }
 
 /* 메모 (내 생각) */
 .memo-item, .memo-bullet {
