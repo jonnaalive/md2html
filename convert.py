@@ -149,8 +149,26 @@ def process_line(line: str) -> str:
         inner = stripped.lstrip('>')
         if inner.startswith(' '):
             inner = inner[1:]
+        inner_stripped = inner.strip()
+
+        # 블록쿼트 안의 이미지 임베드 (예: '> ![[Pasted image ...png]]')
+        inner_image_match = re.match(r'^!\[\[([^|\]]+)(?:\|([^\]]+))?\]\]$', inner_stripped)
+        if inner_image_match:
+            name = inner_image_match.group(1).strip()
+            alt = Path(name).stem
+            src = IMAGE_URLS.get(name)
+            if src:
+                return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
+            return f'<div class="missing-image">이미지를 찾을 수 없음: {html.escape(name)}</div>'
+        inner_md_image_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)$', inner_stripped)
+        if inner_md_image_match:
+            alt = inner_md_image_match.group(1).strip()
+            name = inner_md_image_match.group(2).strip()
+            src = IMAGE_URLS.get(name) or name
+            return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
+
         is_indent = inner.startswith(('\t', '  '))
-        content = inline_format(html.escape(inner.strip()))
+        content = inline_format(html.escape(inner_stripped))
         cls = 'quote-line indent' if is_indent else 'quote-line'
         return f'<div class="{cls}">{content}</div>'
 
