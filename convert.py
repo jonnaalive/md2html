@@ -122,6 +122,22 @@ def clean_title(title: str) -> str:
     return title
 
 
+def slugify(title: str) -> str:
+    """제목 → URL 앵커. 한글은 그대로 두고 공백·기호만 하이픈으로."""
+    s = re.sub(r'[^0-9A-Za-z가-힣]+', '-', title).strip('-').lower()
+    return s or 'section'
+
+
+def assign_ids(sections: list[dict]) -> None:
+    """제목 기반 앵커 부여. 앞에 글이 추가돼도 기존 북마크가 유지된다."""
+    used = {}
+    for sec in sections:
+        base = slugify(sec['title'])
+        n = used.get(base, 0) + 1
+        used[base] = n
+        sec['id'] = base if n == 1 else f'{base}-{n}'
+
+
 def process_line(line: str) -> str:
     """한 줄을 HTML로 변환. line은 rstrip만 된 상태 (좌측 들여쓰기 유지)"""
     stripped = line.strip()
@@ -931,6 +947,7 @@ def main():
     IMAGE_URLS = prepare_images(md_text, src, dst.parent)
 
     sections = parse_sections(md_text)
+    assign_ids(sections)
     print(f"  {len(sections)} sections parsed")
 
     title = make_title(src)
