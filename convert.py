@@ -33,6 +33,9 @@ def parse_sections(md_text: str) -> list[dict]:
         line = lines[i]
         stripped = line.strip()
 
+        # ####~###### 은 섹션 안 소제목으로 ### 와 같이 취급 (그대로 두면 기호가 화면에 찍힌다)
+        line = re.sub(r'^#{4,6}(\s+)', r'###\1', line)
+
         # ## 헤딩 감지
         h2_match = re.match(r'^##\s+(.+)', line)
         h3_match = re.match(r'^###\s+(.+)', line)
@@ -182,6 +185,15 @@ def process_line(line: str) -> str:
             name = inner_md_image_match.group(2).strip()
             src = IMAGE_URLS.get(name) or name
             return f'<figure class="note-image"><img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy"></figure>'
+
+        # 블록쿼트 안의 소제목('> ### 1. ...')은 기호를 떼고 굵게
+        inner_heading = re.match(r'^#{1,6}\s+(.+)', inner_stripped)
+        if inner_heading:
+            content = inline_format(html.escape(inner_heading.group(1).strip('* ')))
+            return f'<div class="quote-line"><strong>{content}</strong></div>'
+        # 블록쿼트 안의 표는 일반 표 줄로 처리
+        if inner_stripped.startswith('|'):
+            return process_line(inner_stripped)
 
         is_indent = inner.startswith(('\t', '  '))
         content = inline_format(html.escape(inner_stripped))
