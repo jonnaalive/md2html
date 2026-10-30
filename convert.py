@@ -805,6 +805,7 @@ html:has(.random-dialog[open]) { overflow: hidden; }
     * { transition-duration: 0.01ms !important; animation: none !important; }
 }
 </style>
+<link rel="stylesheet" href="assets/reading.css">
 </head>
 <body>
 
@@ -846,14 +847,16 @@ html:has(.random-dialog[open]) { overflow: hidden; }
 <dialog id="randomDialog" class="random-dialog" aria-labelledby="randomTitle">
     <div class="random-toolbar">
         <span>랜덤 노트</span>
-        <button class="btn" type="button" onclick="drawRandomNote()">다른 노트</button>
-        <a class="btn" id="randomSource" href="#" onclick="openRandomSource(event)">원래 위치로</a>
         <button class="btn" type="button" onclick="document.getElementById('randomDialog').close()" autofocus>닫기</button>
     </div>
     <article class="random-content">
         <h2 id="randomTitle" tabindex="-1"></h2>
         <div id="randomBody" class="section-body"></div>
     </article>
+    <div class="random-footer">
+        <a id="randomSource" href="#" onclick="openRandomSource(event)">원래 위치로</a>
+        <button type="button" onclick="drawRandomNote()">다른 노트</button>
+    </div>
 </dialog>
 
 <script>
@@ -998,6 +1001,7 @@ function drawRandomNote() {
         randomDialog.showModal();
     }
     randomDialog.scrollTop = 0;
+    document.querySelector('.random-content').scrollTop = 0;
     title.focus({preventScroll: true});
 }
 function openRandomSource(event) {

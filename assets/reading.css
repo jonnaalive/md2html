@@ -1,0 +1,47 @@
+/* Hallmark · component: article reading · genre: editorial · theme: existing paper
+ * states: reading, dark theme, mobile, keyboard focus · pre-emit critique: P5 H5 E4 S5 R5 V4 */
+.section-body, .shelf-random .body {font-size:17px;line-height:1.95;letter-spacing:-.012em;color:var(--color-ink)}
+.section-body {max-width:780px}
+.section-title {font-size:18px;line-height:1.55}
+.section-header {padding-top:20px;padding-bottom:20px}
+.section-body .source-quote, .body .source-quote {background:transparent;border:0;border-left:2px solid var(--color-rule);border-radius:0;padding:4px 0 4px 18px;margin:18px 0;font-size:inherit;color:var(--color-ink)}
+.section-body .memo-block, .body .memo-block {background:transparent;border:0;border-left:2px solid var(--color-accent);padding:4px 0 4px 18px;margin:18px 0;font-size:inherit}
+.section-body .memo-item, .section-body .memo-bullet, .body .memo-item, .body .memo-bullet {font-size:inherit;padding:3px 0}
+.section-body .sub-summary, .body .sub-summary {background:transparent;border:0;border-top:1px solid var(--color-rule);border-radius:0;padding:20px 0 0;margin:24px 0}
+.section-body .sub-summary h4, .body .sub-summary h4 {color:var(--color-ink-2);font:600 12px/1.6 var(--font-body);letter-spacing:.06em;margin:0 0 12px}
+.section-body .sub-summary .memo-block, .body .sub-summary .memo-block {border:0;padding:0;margin:8px 0}
+.section-body .text-line, .body .text-line {margin:6px 0}
+.section-body .bold-line, .body .bold-line {margin:14px 0 8px}
+.section-body br, .body br {display:block;content:"";margin:10px 0}
+.section-body br+br, .body br+br {display:none}
+.section-body .note-image, .body .note-image {margin:24px 0}
+.section-body .note-image img {border-radius:2px}
+.section-body .data-table, .body .data-table {font-size:14px;line-height:1.7}
+.section-body h4.topic {font-size:20px;color:var(--color-ink);border-top:1px solid var(--color-rule);padding-top:24px;margin:32px 0 16px}
+.section-body h5 {font-size:18px;line-height:1.6;color:var(--color-ink);margin:24px 0 12px}
+.body .sub-section {background:transparent}
+.shelf-random .body, .memo[data-open="1"]>.body {background:transparent;border:0;padding:0}
+@media(max-width:768px){
+ .section-body, .shelf-random .body {font-size:16px;line-height:1.9}
+ .section-title {font-size:16px}
+ .section-body .source-quote,.section-body .memo-block {padding-left:14px}
+}
+/* Native dialog keeps focus contained; only the reading area scrolls. */
+.random-dialog[open], .shelf-random[open] {display:flex;flex-direction:column;overflow:hidden}
+.random-toolbar, .random-tools {position:static;flex-shrink:0}
+.random-content, .random-reading {overflow-y:auto;min-height:0;overscroll-behavior:contain}
+.random-footer {display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--color-rule);background:var(--color-paper)}
+.random-footer a,.random-footer button {white-space:nowrap}
+.random-footer button {background:var(--color-accent);color:var(--color-paper);border:1px solid var(--color-accent);padding:10px 22px;font:600 14px/1.5 var(--font-body);border-radius:4px;cursor:pointer}
+.random-footer button:disabled {opacity:.55;cursor:wait}
+.random-footer a {font-size:13px;color:var(--color-ink-2);text-decoration:none}
+.random-footer button:focus-visible {outline:2px solid var(--color-focus);outline-offset:3px}
+.random-dialog .random-content {padding-top:24px;padding-bottom:28px}
+.shelf-random .random-reading {padding-bottom:28px}
+@media(max-width:414px){.random-footer {padding-left:14px;padding-right:14px}.random-footer button{padding:10px 18px}}
+
+/* Generated blank lines should not double the spacing around article blocks. */
+.section-body>br:first-child,.section-body>br:last-child,.section-body>.source-quote+br,.sub-summary>br:first-of-type,.sub-summary>br:last-child{display:none}
+
+:root{--reading-overlay:oklch(10% .01 60 / .55)}
+.random-dialog::backdrop,.shelf-random::backdrop{background:var(--reading-overlay);opacity:1}
