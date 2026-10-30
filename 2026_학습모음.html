@@ -316,6 +316,28 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 .scroll-top.visible { opacity: 1; pointer-events: auto; }
 .scroll-bottom { bottom: 70px; }
 
+
+/* Hallmark · component: random-note dialog · genre: editorial · theme: existing paper
+ * states: open, closed, keyboard focus · pre-emit critique: P5 H4 E4 S5 R5 V4 */
+.random-dialog {
+    margin: auto; padding: 0; width: min(820px, calc(100% - 24px)); max-height: calc(100dvh - 32px);
+    border: 1px solid var(--color-rule); border-radius: 4px;
+    color: var(--color-ink); background: var(--color-paper); font-family: var(--font-body);
+}
+.random-dialog::backdrop { background: var(--color-ink); opacity: .45; }
+.random-toolbar {
+    position: sticky; top: 0; z-index: 1; display: flex; align-items: center;
+    flex-wrap: wrap; gap: 8px; padding: 12px 16px;
+    background: var(--color-paper); border-bottom: 1px solid var(--color-rule);
+}
+.random-toolbar span { flex: 1; color: var(--color-ink-2); font-size: 12px; }
+.random-toolbar .btn { white-space: nowrap; }
+.random-content { padding: 24px clamp(16px, 4vw, 36px); overflow-wrap: anywhere; }
+.random-content h2 { margin: 0 0 24px; font: 600 22px/1.5 var(--font-display); }
+.random-content .section-body { display: block; padding: 0; }
+.random-dialog img { max-width: 100%; height: auto; }
+html:has(.random-dialog[open]) { overflow: hidden; }
+
 /* 모바일 */
 @media (max-width: 768px) {
     .top-header { padding: 8px 10px; gap: 6px; flex-wrap: wrap; }
@@ -366,6 +388,7 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
         <input type="text" id="searchInput" placeholder="검색어 입력... (제목 + 본문)" oninput="handleSearch(this.value)">
     </div>
     <div class="header-actions">
+        <button class="btn" type="button" onclick="drawRandomNote()">랜덤 노트</button>
         <button class="btn" onclick="expandAll()">전체 펼치기</button>
         <button class="btn" onclick="collapseAll()">전체 접기</button>
         <button class="btn" onclick="toggleTheme()" id="themeBtn" aria-label="테마 전환"><svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.2A8 8 0 1 1 10.8 4a6.5 6.5 0 0 0 9.2 9.2z"/></svg><svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8V5M12 19v2.2M2.8 12H5M19 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg></button>
@@ -10129,6 +10152,20 @@ h4 { font-size: 14px; margin: 12px 0 6px; color: var(--color-accent); font-style
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5.5 11.5 12 5l6.5 6.5"/></svg></button>
 <button class="scroll-top scroll-bottom" id="scrollBottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="맨 아래로"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5.5 12.5 12 19l6.5-6.5"/></svg></button>
 
+
+<dialog id="randomDialog" class="random-dialog" aria-labelledby="randomTitle">
+    <div class="random-toolbar">
+        <span>랜덤 노트</span>
+        <button class="btn" type="button" onclick="drawRandomNote()">다른 노트</button>
+        <a class="btn" id="randomSource" href="#" onclick="openRandomSource(event)">원래 위치로</a>
+        <button class="btn" type="button" onclick="document.getElementById('randomDialog').close()" autofocus>닫기</button>
+    </div>
+    <article class="random-content">
+        <h2 id="randomTitle" tabindex="-1"></h2>
+        <div id="randomBody" class="section-body"></div>
+    </article>
+</dialog>
+
 <script>
 // 테마
 function toggleTheme() {
@@ -10246,6 +10283,49 @@ function updateScrollBtns() {
 window.addEventListener('scroll', updateScrollBtns);
 window.addEventListener('resize', updateScrollBtns);
 updateScrollBtns();
+
+
+// Random reading uses the original sections, independent of search and collapsed state.
+const randomCards = Array.from(document.querySelectorAll('#mainContent > .section-card'));
+const randomDialog = document.getElementById('randomDialog');
+let previousRandomCard = null;
+let randomReturnFocus = null;
+function drawRandomNote() {
+    if (!randomCards.length) return;
+    const candidates = randomCards.filter(card => card !== previousRandomCard);
+    const pool = candidates.length ? candidates : randomCards;
+    const card = pool[Math.floor(Math.random() * pool.length)];
+    previousRandomCard = card;
+    const title = document.getElementById('randomTitle');
+    title.textContent = card.querySelector('.section-title').textContent;
+    const body = card.querySelector('.section-body').cloneNode(true);
+    // Avoid duplicate anchors and image IDs in the document.
+    body.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+    document.getElementById('randomBody').replaceChildren(...body.childNodes);
+    document.getElementById('randomSource').href = '#' + encodeURIComponent(card.id);
+    if (!randomDialog.open) {
+        randomReturnFocus = document.activeElement;
+        randomDialog.showModal();
+    }
+    randomDialog.scrollTop = 0;
+    title.focus({preventScroll: true});
+}
+function openRandomSource(event) {
+    event.preventDefault();
+    const card = previousRandomCard;
+    clearTimeout(searchTimeout);
+    document.getElementById('searchInput').value = '';
+    doSearch('');
+    card.classList.remove('collapsed');
+    randomReturnFocus = null;
+    randomDialog.close();
+    history.replaceState(null, '', '#' + encodeURIComponent(card.id));
+    card.scrollIntoView({block: 'start'});
+    card.querySelector('.section-header').focus({preventScroll: true});
+}
+randomDialog.addEventListener('close', () => {
+    if (randomReturnFocus) randomReturnFocus.focus({preventScroll: true});
+});
 
 // 기본 접기
 document.addEventListener('DOMContentLoaded', () => {
