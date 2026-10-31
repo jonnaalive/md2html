@@ -47,7 +47,7 @@
 .random-dialog::backdrop,.shelf-random::backdrop{background:var(--reading-overlay);opacity:1}
 
 /* Second-half study notes keep the original semantic box colors. */
-.classic-boxes .section-body .source-quote{background:var(--quote-bg);border-left:2px solid var(--quote-rule);padding:12px 16px}
+.classic-boxes .section-body .source-quote{background:var(--memo-bg);border-left:2px solid var(--memo-rule);padding:12px 16px}
 .classic-boxes .section-body .memo-block{background:var(--memo-bg);border-left:2px solid var(--memo-rule);padding:8px 14px}
 .classic-boxes .section-body .sub-summary{background:var(--summary-bg);border:1px solid var(--summary-rule);padding:14px 16px}
 .classic-boxes .section-body .sub-summary h4{color:var(--summary-head)}
