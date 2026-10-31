@@ -52,3 +52,7 @@
 .classic-boxes .section-body .sub-summary{background:var(--summary-bg);border:1px solid var(--summary-rule);padding:14px 16px}
 .classic-boxes .section-body .sub-summary h4{color:var(--summary-head)}
 .classic-boxes .section-body .sub-summary .memo-block{background:transparent;border:0;padding:0}
+
+/* Fluorescent highlights stay legible in both themes. */
+:root{--reading-highlight:#eeff41;--reading-highlight-ink:#20230e}
+.classic-boxes mark{background:var(--reading-highlight);color:var(--reading-highlight-ink);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
