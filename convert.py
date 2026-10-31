@@ -8,6 +8,7 @@ import re
 import html
 import sys
 import shutil
+import unicodedata
 from urllib.parse import quote
 from pathlib import Path
 
@@ -364,7 +365,8 @@ def generate_html(sections: list[dict], title: str) -> str:
     return (HTML_TEMPLATE.replace('{{TOC}}', toc_html)
             .replace('{{SECTIONS}}', sections_html)
             .replace('{{COUNT}}', str(len(sections)))
-            .replace('{{TITLE}}', html.escape(title)))
+            .replace('{{TITLE}}', html.escape(title))
+            .replace('{{BOX_STYLE}}', 'classic-boxes' if '하반기' in unicodedata.normalize('NFC', title) else ''))
 
 
 def wrap_quotes(body: str) -> str:
@@ -807,7 +809,7 @@ html:has(.random-dialog[open]) { overflow: hidden; }
 </style>
 <link rel="stylesheet" href="assets/reading.css">
 </head>
-<body>
+<body class="{{BOX_STYLE}}">
 
 <div class="top-header">
     <a href="/" class="btn" aria-label="홈"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.8 12 3.5l9 7.3"/><path d="M5.5 9.5V20a.8.8 0 0 0 .8.8h11.4a.8.8 0 0 0 .8-.8V9.5"/></svg></a>
