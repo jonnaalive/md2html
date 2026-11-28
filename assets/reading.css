@@ -12,6 +12,9 @@
 .section-body .sub-summary .memo-block, .body .sub-summary .memo-block {border:0;padding:0;margin:8px 0}
 .section-body .text-line, .body .text-line {margin:6px 0}
 .section-body .bold-line, .body .bold-line {margin:14px 0 8px}
+/* 위 padding·margin 축약 리셋이 들여쓰기를 지우지 않도록 indent를 다시 지정 */
+.section-body .memo-item.indent, .section-body .memo-bullet.indent, .body .memo-item.indent, .body .memo-bullet.indent {padding-left:24px}
+.section-body .text-line.indent, .section-body .bold-line.indent, .body .text-line.indent, .body .bold-line.indent {margin-left:24px}
 .section-body br, .body br {display:block;content:"";margin:10px 0}
 .section-body br+br, .body br+br {display:none}
 .section-body .note-image, .body .note-image {margin:24px 0}
